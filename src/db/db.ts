@@ -1,4 +1,7 @@
 import Dexie, {Table} from "dexie";
+import { itemsList } from "./items";
+import { skillList } from "./skills";
+import { equipmentList } from "./equipment";
 
 // Zur Übersicht der DB werden die Interfaces hier beschrieben
 // So lässt sich leichter lesen was die DB beinhaltet
@@ -80,5 +83,11 @@ export class TryDB extends Dexie {
         this.on('populate', ()=> this.populate());
     }
 
-    async populate(){}
+    async populate(){
+        await tryDB.items_DB.bulkAdd(itemsList);
+        await tryDB.skills_DB.bulkAdd(skillList);
+        await tryDB.equipment_DB.bulkAdd(equipmentList);
+    }
 }
+
+export const tryDB = new TryDB();
