@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Item, Player, db } from 'src/db/db';
+import { Item, Player, db } from 'src/db/db.old';
 import { liveQuery } from 'dexie';
 import { BagComponent } from '../bag/bag.component';
 import { FormsModule} from '@angular/forms';

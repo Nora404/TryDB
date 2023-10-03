@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Player, db } from 'src/db/db';
+import { Player, db } from 'src/db/db.old';
 import { liveQuery } from 'dexie';
 
 @Component({
