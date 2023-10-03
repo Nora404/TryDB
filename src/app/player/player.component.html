@@ -4,7 +4,8 @@
     Klasse: {{player.class}}<br>
     Gold: {{player.gold}}<br>
     <app-bag [player]="player"></app-bag>
-    <button (click)="addItem('Apfel', player.id)">Apfel kaufen (10 Gold)</button>
+    <button (click)="addItem('Apfel', player.id)">Apfel kaufen (10 Gold)</button><br>
+    <button (click)="sellItem('Apfel', player.id)">Apfel verkaufen (5 Gold)</button>
 </div>
 
 <hr>

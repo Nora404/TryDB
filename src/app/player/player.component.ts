@@ -121,6 +121,22 @@ export class PlayerComponent {
       }
       
     }
+
+    async sellItem(name:string, playerId:number){
+      const item = await db.items_DB
+      .where('name')
+      .equals(name)
+      .and((item)=> item.playerId === playerId)
+      .first();
+
+      if(item && item.count > 0){
+        await db.items_DB.update(item.id!, {count: item.count - 1});
+        this.gainGold(5, playerId);
+      } else {
+        alert("Du hast nichts zum verkaufen");
+      }
+    }
+
     
     async checkGold(needGold: number, playerId: number){
       const player = await db.player_DB
@@ -140,5 +156,16 @@ export class PlayerComponent {
       if(player){
         await db.player_DB.update(playerId, {gold: player.gold - lostGold})
       }  
+    }
+
+    async gainGold(gold: number, playerId: number){
+      const player = await db.player_DB
+      .where('id')
+      .equals(playerId)
+      .first()
+
+    if(player){
+      await db.player_DB.update(playerId, {gold: player.gold + gold})
+    }  
     }
 }
