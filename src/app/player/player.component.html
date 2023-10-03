@@ -1,0 +1,43 @@
+<div *ngFor="let player of player$ | async">
+    <h2>{{player.name}}</h2>
+    Rasse: {{player.race}}<br>
+    Klasse: {{player.class}}<br>
+    Gold: {{player.gold}}<br>
+    <app-bag [player]="player"></app-bag>
+    <button (click)="addItem('Apfel', player.id)">Apfel kaufen (10 Gold)</button>
+</div>
+
+<hr>
+
+<h2>Neuer Bewohner</h2>
+<label>
+    Name:
+    <input
+        type="text"
+        id="name" #name
+        [(ngModel)]="playerName"
+    />
+</label><br>
+<label>
+    Rasse:
+    <select name="race" id="race" #race [(ngModel)]="playerRace">
+        <option value="Mensch">Mensch</option>
+        <option value="Elf">Elf</option>
+        <option value="Zwerg">Zwerg</option>
+    </select>
+</label><br>
+<label>
+    Klasse:
+    <select name="race" id="race" #race [(ngModel)]="playerClass">
+        <option value="Bewohner">Bewohner</option>
+        <option value="Krieger">Krieger</option>
+        <option value="Magier">Magier</option>
+        <option value="Jäger">Jäger</option>
+    </select>
+</label><br>
+
+<button type="submit" (click)="addNewPlayer()">hinzufügen</button><br>
+
+<hr>
+
+<button (click)="resetPlayer()">Zurück setzten</button>
