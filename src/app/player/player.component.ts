@@ -14,14 +14,19 @@ import { FormsModule} from '@angular/forms';
 })
 export class PlayerComponent {
     player$ = liveQuery(()=> db.player_DB.toArray());
+
+    // Sind mit dem Formular im Template verbunden
     playerName = 'Ein neuer Bewohner';
     playerRace = 'Mensch';
     playerClass = 'Bewohner';
 
+    // Setzt die Datenbank wieder zurück
     async resetPlayer(){
       await db.resetDB();
     }
 
+    // Fügt einen neuen "Player" hinzu
+    // Dafür benutzt es die Werte aus dem Formular
     async addNewPlayer(){
       const playerId = await db.player_DB.add({
         name: this.playerName,
@@ -32,6 +37,8 @@ export class PlayerComponent {
         gold: 50,
       });  
 
+      // Jenachdem bekommt der Player andere Gegenstände
+      // Das sollte später ausgelagert werden!
       switch(this.playerClass){
         case "Krieger":{
           await db.items_DB.add(
@@ -84,6 +91,8 @@ export class PlayerComponent {
       }
     }
 
+    // Dem Player können Items hinzugefügt werden
+    // Dabei wird gefrüft ob er das Item schon besitzt oder nicht
     async addItem(name: string, playerId: number){
       const existItem: Item | undefined = await db.items_DB
         .where('name')
