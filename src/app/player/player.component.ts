@@ -93,16 +93,20 @@ export class PlayerComponent {
 
     // Dem Player können Items hinzugefügt werden
     // Dabei wird gefrüft ob er das Item schon besitzt oder nicht
-    async addItem(name: string, playerId: number){
-      const existItem: Item | undefined = await db.items_DB
+    async addItem(name: string, playerId: number){     
+
+      const item = await db.items_DB
         .where('name')
         .equals(name)
         .and((item)=> item.playerId === playerId)
         .first();
 
-      if(existItem){
-        await db.items_DB.update(existItem.id!, {count: existItem.count + 1})
-      } else {
+      const haveGold = await this.checkGold(10, playerId);  
+
+      if(item && haveGold){
+        await db.items_DB.update(item.id!, {count: item.count + 1});
+        this.removeGold(10, playerId);
+      } else if (haveGold) {
         await db.items_DB.add({
           playerId,
           name: name,
@@ -111,7 +115,30 @@ export class PlayerComponent {
           ekPrice: 10,
           vkPrice: 0
         });
+        this.removeGold(10, playerId);
+      } else {
+        alert("Du kannst dir den Apfel nicht leisten!");
       }
+      
     }
     
+    async checkGold(needGold: number, playerId: number){
+      const player = await db.player_DB
+        .where('id')
+        .equals(playerId)
+        .first();
+
+      return (player && player.gold >= needGold) ? true : false;
+    }  
+
+    async removeGold(lostGold: number, playerId: number){
+      const player = await db.player_DB
+        .where('id')
+        .equals(playerId)
+        .first()
+
+      if(player){
+        await db.player_DB.update(playerId, {gold: player.gold - lostGold})
+      }  
+    }
 }
