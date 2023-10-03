@@ -24,41 +24,41 @@ export interface Player {
 export interface Item {
     id?:         number;
     name:        string;
-    typ:         string;
-    ekPrice:     number;
-    vkPrice:     number;
-    discription: string;
+    typ:         string; // Zutaten, Material, Zeug ...
+    ekPrice:     number; // Einkaufs-Preis
+    vkPrice:     number; // Verkaufs-Preis
+    discription: string; // Beschreibung
 }
 
 export interface Skill {
     id?:         number;
     name:        string;
-    typ:         string;
-    element:     string;
-    need:        string;
-    kost:        number;
-    force:       number;
-    critForce:   number;
-    critChance:  number;
-    discription: string;
+    typ:         string; // Zauber, Angriff, Heilung, ...
+    element:     string; // Wasser, Feuer, Physisch ...
+    need:        string; // Mana?
+    kost:        number; // Wieviel Mana?
+    force:       number; // Wie hoch ist Heilung oder Schaden?
+    critForce:   number; // Wie viel zusatz Schaden macht ein Krit?
+    critChance:  number; // Wie warscheinlich ist ein Krit in %
+    discription: string; // Beschreibung
 }
 
 export interface Equipment {
     id?:         number;
     name:        string;
-    typ:         string;
-    effect:      string;
-    power:       number;
-    ekPrice:     number;
-    vkPrice:     number;
-    discription: string;
+    typ:         string; // Waffe, Schmuck, Rüstung, Gegenstand ...
+    effect:      string; // Schaden, Heilung, Buff ...
+    power:       number; // Wie hoch ist der Effekt
+    ekPrice:     number; // Einkaufs-Preis
+    vkPrice:     number; // Verkaufs-Preis
+    discription: string; // Beschreibung
 }
 
 export interface Progress {
     id?:      number;
     name:     string;
-    category: string;
-    value:    any;
+    category: string; // Gelöste Quests, Schalter, ...
+    value:    any;    // Warscheinlich meist ein Boolean
 }
 
 export class TryDB extends Dexie {
