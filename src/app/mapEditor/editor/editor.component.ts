@@ -14,12 +14,12 @@ export class MapEditorComponent{
 
   map = tryMap;
 
-  top: number = 0;
-  left: number = 0;
+  top: number = -50;
+  left: number = -50;
   size: number = 50;
   myPosition$ = new BehaviorSubject<string>(this.findMyPosition())
 
-  cssClass = {
+  cssTile = {
     'width': this.size +'px',
     'height': this.size +'px',
     'top': this.top +'px',
@@ -55,15 +55,11 @@ export class MapEditorComponent{
   update(){
     this.myPosition$.next(this.findMyPosition());
 
-    this.cssClass = {
-      ...this.cssClass,
+    this.cssTile = {
+      ...this.cssTile,
       'top': this.top+'px',
       'left': this.left+'px',
     };
-
-    // console.log((this.top - 100) +' / '+(this.left - 100))
-    // console.log(tryMap.length +' / '+ tryMap[0].length)
-    console.log(this.findMyPosition())
   }
 
   findMyPosition(){
@@ -76,8 +72,6 @@ export class MapEditorComponent{
     let playerPositionTop = Math.abs(this.top - (this.size*middelHeigth-this.size)) / this.size;
     let playerPositionLeft = Math.abs(this.left - (this.size*middelWidth-this.size)) / this.size;
 
-    console.log(playerPositionTop + ' / ' + playerPositionLeft);
-    
     return tryMap[playerPositionLeft][playerPositionTop].name;
   }
 
