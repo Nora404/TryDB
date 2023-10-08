@@ -1,7 +1,11 @@
 <h2>Erstelle eine Karte</h2>
 
+<strong style="margin: 10px;">Du befindest dich hier: {{myPosition$ | async}} </strong>
+
+<p></p>
+
 <div id="playground">
-    <div id="map">
+    <div id="map" [ngStyle]="cssMap">
         <div *ngFor="let row of map">
             <div *ngFor="let cell of row" [ngClass]="kachelLayout(cell.layout)" [ngStyle]="cssClass">
                 <!-- {{cell}} -->

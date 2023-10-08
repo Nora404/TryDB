@@ -1,3 +1,7 @@
+export interface Biom {
+    name: string;
+    layout: string;
+}
 
 export const biom = {
     1: {
@@ -30,5 +34,6 @@ export const  tryMap = [
         [biom[1],biom[1],biom[4],biom[1],biom[1],biom[1],biom[2],biom[1]],
         [biom[2],biom[4],biom[4],biom[1],biom[1],biom[3],biom[1],biom[1]],
         [biom[2],biom[2],biom[1],biom[1],biom[3],biom[2],biom[2],biom[1]],
+        [biom[2],biom[2],biom[1],biom[1],biom[1],biom[2],biom[1],biom[1]],
         [biom[2],biom[2],biom[1],biom[1],biom[1],biom[2],biom[1],biom[1]]
 ];  

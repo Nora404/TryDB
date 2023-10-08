@@ -8,10 +8,7 @@
 
 #map{
     display: grid;
-    grid-template-columns: repeat(20, 50px);
-    // grid-template-rows: repeat(20, 10px);
     overflow: hidden;
-    // gap: 5px;
     box-sizing: border-box;
     background-color: rgb(102, 160, 102);
     outline: 5px solid rgb(49, 49, 49);
@@ -89,4 +86,7 @@ button{
     height: 25px;
     text-align: center;
     box-shadow: 2px 2px 5px gray;
+}
+button:hover{
+    background-color: rgb(189, 207, 197);
 }
