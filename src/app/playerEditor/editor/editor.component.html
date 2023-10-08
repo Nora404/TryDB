@@ -1,0 +1,39 @@
+<div *ngIf="isfirstVisit; else noPlayer">
+    <h2>Willkommen zurück {{playerName}}</h2>
+</div>
+
+<ng-template #noPlayer>
+    <h2>Erstelle einen neuen Bewohner</h2>
+
+    <label>
+        Name:
+        <input
+            type="text"
+            id="name" #name
+            [(ngModel)]="playerName"
+        />
+    </label><br>
+    <label>
+        Rasse:
+        <select name="race" id="race" #race [(ngModel)]="playerRace">
+            <option value="Mensch">Mensch</option>
+            <option value="Elf">Elf</option>
+            <option value="Zwerg">Zwerg</option>
+        </select>
+    </label><br>
+    <label>
+        Job:
+        <select name="race" id="race" #race [(ngModel)]="playerJob">
+            <option value="Bewohner">Bewohner</option>
+            <option value="Krieger">Krieger</option>
+            <option value="Magier">Magier</option>
+            <option value="Jäger">Jäger</option>
+        </select>
+    </label><br>
+    
+    <button type="submit" (click)="addNewPlayer()">hinzufügen</button><br>
+
+</ng-template><br>
+
+<button (click)="test()">test</button>
+<button (click)="kill()">kill</button>

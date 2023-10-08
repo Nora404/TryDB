@@ -1,0 +1,63 @@
+#map{
+    display: grid;
+    grid-template-columns: repeat(20, 50px);
+    // grid-template-rows: repeat(20, 10px);
+    overflow: hidden;
+    // gap: 5px;
+    box-sizing: border-box;
+    background-color: rgb(102, 160, 102);
+    outline: 5px solid rgb(49, 49, 49);
+    width: 250px;
+    height: 250px;
+}
+
+.kachel{
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box; 
+    background-size : 75%;
+    background-repeat : no-repeat;
+    background-position : center;
+    transition: all;
+}
+
+.kachelStar{
+    background-image : url(../../../assets/mapIcons/star.svg);
+    border: 2px dotted rgb(146, 104, 14);
+    background-color: rgb(212, 186, 97);
+    color: rgb(212, 186, 97);
+}
+
+.kachelWater{
+    background-image : url(../../../assets/mapIcons/water.svg);
+    border: 2px dotted rgb(37, 41, 80);
+    background-color: rgb(65, 103, 161);
+    color: rgb(65, 103, 161);
+}
+
+.kachelFlower{
+    background-image : url(../../../assets/mapIcons/flower.svg);
+    border: 2px dotted rgb(71, 37, 80);
+    background-color: rgb(161, 65, 137);
+    color: rgb(161, 65, 137);
+}
+
+.kachelTree{
+    background-image : url(../../../assets/mapIcons/tree.svg);
+    border: 2px dotted rgb(37, 75, 80);
+    background-color: rgb(65, 161, 132);
+    color:  rgb(65, 161, 132);
+}
+
+.kachelGreen{
+    border: 2px dotted rgb(37, 80, 56);
+    background-color: rgb(102, 160, 102);
+    color: rgb(102, 160, 102);
+}
+
+#player{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    z-index: 10;
+}

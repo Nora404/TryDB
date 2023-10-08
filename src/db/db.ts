@@ -8,9 +8,10 @@ import { equipmentList } from "./equipment";
 
 export interface Player {
     id?:   number;
+    activ: 0 | 1;
     name:  string;
     race:  string;
-    class: string;
+    job:   string;
     hp:    number;
     mana:  number;
     str:   number;
@@ -73,8 +74,8 @@ export class TryDB extends Dexie {
 
     constructor(){
         super('ngdexieliveQuery');
-        this.version(1).stores({
-            player_DB: '++id, name, hp, mana, str, sta, int, def, gold, *skills, *equipment, *progress, *items',
+        this.version(4).stores({
+            player_DB: '++id, activ, name, hp, mana, str, sta, int, def, gold, *skills, *equipment, *progress, *items',
             items_DB: '++id, name, typ, ekPrice, vkPrice',
             skills_DB: '++id, name, typ, element, need, kost, force',
             equipment_DB: '++id, name, typ, effect, power, ekPrice, vkPrice',

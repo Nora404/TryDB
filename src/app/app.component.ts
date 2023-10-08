@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { PlayerComponent } from './player/player.component';
+import { UserDBService } from 'src/db/userDB.service';
+import { FormsModule } from '@angular/forms';
+import { PlayerEditorComponent } from "./playerEditor/editor/editor.component";
+import { MapEditorComponent } from "./mapEditor/editor/editor.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet, PlayerComponent],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    imports: [CommonModule, RouterOutlet, FormsModule, PlayerEditorComponent, MapEditorComponent]
 })
-export class AppComponent {
+export class AppComponent{
   title = 'TryDB';
+
 }
