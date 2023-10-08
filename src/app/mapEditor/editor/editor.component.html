@@ -1,13 +1,16 @@
 <h2>Erstelle eine Karte</h2>
 
-<div id="map">
-    <!-- <img class="player" src="../../../assets/mapIcons/person.svg"> -->
-
-    <div *ngFor="let row of map">
-        <div *ngFor="let cell of row" [ngClass]="getBackground(cell)" [ngStyle]="cssClass">
-            <!-- {{cell}} -->
-            .
+<div id="playground">
+    <div id="map">
+        <div *ngFor="let row of map">
+            <div *ngFor="let cell of row" [ngClass]="getBackground(cell)" [ngStyle]="cssClass">
+                <!-- {{cell}} -->
+                .
+            </div>
         </div>
+    </div>
+    <div id="player">
+        <img class="player" src="../../../assets/mapIcons/person.svg">
     </div>
 </div>
 

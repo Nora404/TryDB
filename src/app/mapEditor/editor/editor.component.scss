@@ -1,3 +1,9 @@
+#playground{
+    position: relative;
+    width: 250px;
+    height: 250px;
+}
+
 #map{
     display: grid;
     grid-template-columns: repeat(20, 50px);
@@ -7,8 +13,8 @@
     box-sizing: border-box;
     background-color: rgb(102, 160, 102);
     outline: 5px solid rgb(49, 49, 49);
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    height: 100%;
 }
 
 .kachel{
@@ -56,8 +62,17 @@
 }
 
 #player{
-    position: relative;
-    width: 60px;
-    height: 60px;
+    position: absolute;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
     z-index: 10;
+}
+#player img{
+    width: 100%;
+    height: 100%;
 }
