@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { biom, tryMap } from './biom';
 
 @Component({
   selector: 'app-mapEditor',
@@ -10,19 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class MapEditorComponent{
 
-  // 1 = Wiese
-  // 2 = Baum
-  // 3 = Blume
-  // 4 = Wasser
-  // 5 = Stern
-
-  map = [[2,2,3,1,5,1,4],
-         [2,2,2,1,3,4,1],
-         [2,2,1,4,4,2,1],
-         [2,1,1,4,3,1,1],
-         [1,1,1,4,4,4,2],
-         [2,1,1,1,4,4,1],
-         [2,2,1,1,1,4,3]];
+  map = tryMap;
 
   top: number = -50;
   left: number = -50;
@@ -35,33 +24,8 @@ export class MapEditorComponent{
     'left': this.left +'px',
   }
 
-  getBackground(value:number){
-    let className = 'kachelGreen';
-
-    switch(value){
-      case 1: {
-        className = 'kachelGreen';
-        break;
-      }
-      case 2: {
-        className = 'kachelTree';
-        break;
-      }
-      case 3: {
-        className = 'kachelFlower';
-        break;
-      }
-      case 4: {
-        className = 'kachelWater';
-        break;
-      }
-      case 5: {
-        className = 'kachelStar';
-        break;
-      }
-    }
-
-    return 'kachel ' + className;
+  kachelLayout(value: string){
+    return 'kachel ' + value;
   }
 
   west(){
@@ -86,6 +50,12 @@ export class MapEditorComponent{
       ...this.cssClass,
       'top': this.top+'px',
       'left': this.left+'px',
-    }
+    };
+
+    this.test();
+  }
+
+  test(){
+    console.log(biom[1]);
   }
 }

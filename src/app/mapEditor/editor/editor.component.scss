@@ -2,6 +2,8 @@
     position: relative;
     width: 250px;
     height: 250px;
+    box-shadow: 2px 10px 5px gray;
+    margin: 10px;
 }
 
 #map{
@@ -24,39 +26,40 @@
     background-size : 75%;
     background-repeat : no-repeat;
     background-position : center;
-    transition: all;
+    transition: top 0.4s, left 0.4s;
+    border: 2px dotted;
 }
 
 .kachelStar{
     background-image : url(../../../assets/mapIcons/star.svg);
-    border: 2px dotted rgb(146, 104, 14);
+    border-color: rgb(146, 104, 14);
     background-color: rgb(212, 186, 97);
     color: rgb(212, 186, 97);
 }
 
 .kachelWater{
     background-image : url(../../../assets/mapIcons/water.svg);
-    border: 2px dotted rgb(37, 41, 80);
+    border-color: rgb(37, 41, 80);
     background-color: rgb(65, 103, 161);
     color: rgb(65, 103, 161);
 }
 
 .kachelFlower{
     background-image : url(../../../assets/mapIcons/flower.svg);
-    border: 2px dotted rgb(71, 37, 80);
+    border-color: rgb(71, 37, 80);
     background-color: rgb(161, 65, 137);
     color: rgb(161, 65, 137);
 }
 
 .kachelTree{
     background-image : url(../../../assets/mapIcons/tree.svg);
-    border: 2px dotted rgb(37, 75, 80);
+    border-color: rgb(37, 75, 80);
     background-color: rgb(65, 161, 132);
     color:  rgb(65, 161, 132);
 }
 
 .kachelGreen{
-    border: 2px dotted rgb(37, 80, 56);
+    border-color: rgb(37, 80, 56);
     background-color: rgb(102, 160, 102);
     color: rgb(102, 160, 102);
 }
@@ -64,10 +67,11 @@
 #player{
     position: absolute;
     border: 2px solid rgb(0, 0, 0);
+    border-radius: 15px;
     background-color: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
     width: 50px;
     height: 50px;
-    transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
     z-index: 10;
@@ -75,4 +79,14 @@
 #player img{
     width: 100%;
     height: 100%;
+}
+
+button{
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 80px;
+    height: 25px;
+    text-align: center;
+    box-shadow: 2px 2px 5px gray;
 }
