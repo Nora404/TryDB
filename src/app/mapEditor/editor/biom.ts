@@ -1,28 +1,40 @@
 export interface Biom {
     name: string;
+    icon: string;
     layout: string;
+    discription: string;
 }
 
 export const biom = {
     1: {
-        name: 'grass',
+        name: 'Auf einer Wiese',
+        icon: 'nothing',
         layout: 'kachelGreen',
+        discription: 'Weit und breit wächst nur Gras',
        },
     2: {
-        name: 'tree',
+        name: 'Im Wald',
+        icon: 'tree',
         layout: 'kachelTree',
+        discription: 'Man sieht lauter Bäume',
        },
     3: {
-        name: 'flower',
+        name: 'Eine Blumenwiese',
+        icon: 'flower',
         layout: 'kachelFlower',
+        discription: 'Wilde Blumen sind überall gewachsen',
        },
     4: {
-        name: 'water',
+        name: 'Am Fluss',
+        icon: 'water',
         layout: 'kachelWater',
+        discription: 'Das Wasser ist klar und kalt',
        },
     5: {
-        name: 'star',
+        name: 'Etwas Besonderes',
+        icon: 'star',
         layout: 'kachelStar',
+        discription: 'Hier ist doch irgend etwas!',
        },
   }
 

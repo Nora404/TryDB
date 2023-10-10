@@ -20,7 +20,11 @@ export class MapEditorComponent{
   playgroundWidth: number = 350;
   playgroundHeight: number = 250;
 
-  myPosition$ = new BehaviorSubject<string>(this.findMyPosition())
+  // TODO Funktioniert noch nicht
+  minTop: number = 0;
+  minLeft: number = 0;
+  maxTop: number = this.playgroundHeight - this.size;
+  maxLeft: number = this.playgroundWidth - this.size;
 
   imgUrl: string = '../../../assets/mapIcons/';
 
@@ -37,12 +41,18 @@ export class MapEditorComponent{
   }
 
   cssPlayer = {
-    'width': this.size +'px',
-    'height': this.size +'px',
+    'width': this.size * 0.8 +'px',
+    'height': this.size * 0.8 +'px',
   }
 
   iconUrl(name:string){
     return this.imgUrl + name + '.svg'
+  }
+
+  iconError(icon: EventTarget | null){
+    if(icon instanceof HTMLImageElement){
+      icon.style.display = 'none';
+    }  
   }
 
   kachelLayout(value: string){
@@ -67,8 +77,6 @@ export class MapEditorComponent{
   }
 
   update(){
-    this.myPosition$.next(this.findMyPosition());
-
     this.cssTile = {
       ...this.cssTile,
       'top': this.top+'px',
@@ -86,11 +94,6 @@ export class MapEditorComponent{
     let playerPositionTop = Math.abs(this.top - (this.size*middelHeigth-this.size)) / this.size;
     let playerPositionLeft = Math.abs(this.left - (this.size*middelWidth-this.size)) / this.size;
 
-    return tryMap[playerPositionLeft][playerPositionTop].name;
-  }
-
-
-  test(){
-    console.log(biom[1]);
+    return tryMap[playerPositionLeft][playerPositionTop];
   }
 }
