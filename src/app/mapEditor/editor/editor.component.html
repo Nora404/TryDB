@@ -8,18 +8,18 @@
     <div id="map" [ngStyle]="cssMap">
         <div *ngFor="let row of map">
             <div *ngFor="let cell of row" [ngClass]="kachelLayout(cell.layout)" [ngStyle]="cssTile">
-                .
+                <img [attr.src]="iconUrl(cell.name)" alt="" class="icon">
             </div>
         </div>
     </div>
-    <div id="player">
+    <div id="player" [ngStyle]="cssPlayer">
         <img class="player" src="../../../assets/mapIcons/person.svg">
     </div>
 </div>
 
 <p></p>
 
-<table style="width: 250px; text-align: center; margin: 10px;">
+<table style="width: 350px; text-align: center; margin: 10px;">
     <tr>
         <td style="width: 33%;"></td>
         <td><button (click)="nord()">norden</button><br></td>
@@ -36,3 +36,4 @@
         <td style="width: 33%;"></td>
     </tr>
 </table>
+

@@ -14,10 +14,15 @@ export class MapEditorComponent{
 
   map = tryMap;
 
-  top: number = -50;
-  left: number = -50;
+  top: number = 0;
+  left: number = 0;
   size: number = 50;
+  playgroundWidth: number = 350;
+  playgroundHeight: number = 250;
+
   myPosition$ = new BehaviorSubject<string>(this.findMyPosition())
+
+  imgUrl: string = '../../../assets/mapIcons/';
 
   cssTile = {
     'width': this.size +'px',
@@ -31,24 +36,33 @@ export class MapEditorComponent{
     'grid-template-rows': 'repeat(' + tryMap[0].length + ',' + this.size + 'px)',
   }
 
+  cssPlayer = {
+    'width': this.size +'px',
+    'height': this.size +'px',
+  }
+
+  iconUrl(name:string){
+    return this.imgUrl + name + '.svg'
+  }
+
   kachelLayout(value: string){
     return 'kachel ' + value;
   }
 
   west(){
-    this.left = this.left + 50;
+    this.left = this.left + this.size;
     this.update();
   }
   nord(){
-    this.top = this.top + 50;
+    this.top = this.top + this.size;
     this.update();
   }
   ost(){
-    this.left = this.left - 50;
+    this.left = this.left - this.size;
     this.update();
   }
   sud(){
-    this.top = this.top - 50;
+    this.top = this.top - this.size;
     this.update();
   }
 
@@ -63,11 +77,11 @@ export class MapEditorComponent{
   }
 
   findMyPosition(){
-    const playgroundWidth = 250 / this.size;
-    const playgroundHeigth = 250 / this.size;
+    const kachelnWidth = this.playgroundWidth / this.size;
+    const kachelnHeigth = this.playgroundHeight / this.size;
 
-    let middelWidth = Math.round(playgroundWidth / 2);
-    let middelHeigth = Math.round(playgroundHeigth / 2);
+    let middelWidth = Math.round(kachelnWidth / 2);
+    let middelHeigth = Math.round(kachelnHeigth / 2);
 
     let playerPositionTop = Math.abs(this.top - (this.size*middelHeigth-this.size)) / this.size;
     let playerPositionLeft = Math.abs(this.left - (this.size*middelWidth-this.size)) / this.size;

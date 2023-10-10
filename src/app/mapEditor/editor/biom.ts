@@ -5,23 +5,23 @@ export interface Biom {
 
 export const biom = {
     1: {
-        name: 'Grass',
+        name: 'grass',
         layout: 'kachelGreen',
        },
     2: {
-        name: 'Tree',
+        name: 'tree',
         layout: 'kachelTree',
        },
     3: {
-        name: 'Flower',
+        name: 'flower',
         layout: 'kachelFlower',
        },
     4: {
-        name: 'Water',
+        name: 'water',
         layout: 'kachelWater',
        },
     5: {
-        name: 'Star',
+        name: 'star',
         layout: 'kachelStar',
        },
   }
