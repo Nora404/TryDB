@@ -1,6 +1,6 @@
 <!-- <h2>Erstelle eine Karte</h2> -->
 
-<h3 class="element" [ngClass]="findMyPosition().layout">Du befindest dich hier: {{this.findMyPosition().name}} </h3>
+<h3 class="element" [ngClass]="getMyPositionTile().layout">Du befindest dich hier: {{this.getMyPositionTile().name}} </h3>
 
 <p></p>
 
@@ -14,12 +14,12 @@
             
         </div>
     </div>
-    <div id="player" [ngStyle]="cssPlayer" [ngClass]="findMyPosition().layout">
+    <div id="player" [ngStyle]="cssPlayer" [ngClass]="getMyPositionTile().layout">
         <img class="player" src="../../../assets/mapIcons/person.svg">
     </div>
 </div>
 
-    <p class="element">{{findMyPosition().discription}}</p>
+    <p class="element">{{getMyPositionTile().discription}}</p>
 
 <table class="element" >
     <tr>
