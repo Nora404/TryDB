@@ -41,24 +41,51 @@ export class MapEditorComponent{
   tileMiddelWidth: number = Math.round(this.tileWidth / 2);
   tileMiddelHeigth: number = Math.round(this.tileHeight / 2);
 
-
   imgUrl: string = '../../../assets/mapIcons/';
-
-  cssTile = {
-    'width': this.size +'px',
-    'height': this.size +'px',
-    'top': this.top +'px',
-    'left': this.left +'px',
-  }
 
   cssMap = {
     'grid-template-columns': 'repeat(' + this.map.length + ',' + this.size + 'px)',
     'grid-template-rows': 'repeat(' + this.map[0].length + ',' + this.size + 'px)',
   }
 
-  cssPlayer = {
-    'width': this.size * 0.8 +'px',
-    'height': this.size * 0.8 +'px',
+  // -------------------------------------------------------------------------------
+
+  createPlayerStyle(){
+    const color = this.getMyPositionTile().color;
+    const styleColors = this.getStyleColors(color);
+
+    const style = {
+      'width': this.size * 0.8 +'px',
+      'height': this.size * 0.8 +'px',
+      ... styleColors,
+    }
+    return style
+  }
+
+  createTileStyle(color: number[]){
+    const styleColors = this.getStyleColors(color);
+
+    const style = {
+      'width': this.size +'px',
+      'height': this.size +'px',
+      'top': this.top +'px',
+      'left': this.left +'px',
+      ... styleColors,
+    }
+    return style;
+  }
+
+  getStyleColors(color: number[]){
+    const red: number = (color[0] || 100); 
+    const green: number = (color[1] || 100); 
+    const blue: number = (color[2] || 100); 
+
+    const style = {
+      'color':            `rgb(${red * 0.2},${green * 0.2},${blue * 0.2})`,
+      'border-color':     `rgb(${red * 0.5},${green * 0.5},${blue * 0.5})`,
+      'background-color': `rgb(${red},${green},${blue})`,
+    }
+    return style
   }
 
   iconUrl(name:string){
@@ -71,52 +98,35 @@ export class MapEditorComponent{
     }  
   }
 
-  kachelLayout(value: string){
-    return 'kachel ' + value;
-  }
+  // -------------------------------------------------------------------------------
 
   west(){
     const futureLeft =  this.left + this.size;
-
     if(this.isPositionAllowed(this.top, futureLeft)){
       this.left = this.left + this.size;
-      this.update();
     }
   }
   nord(){
     const futureTop = this.top + this.size;
-
     if(this.isPositionAllowed(futureTop, this.left)){
       this.top = futureTop;
-      this.update();
     }
   }
   ost(){
     const futureLeft = this.left - this.size; 
-
     if(this.isPositionAllowed(this.top, futureLeft)){
       this.left = futureLeft;
-      this.update();
     }
   }
   sud(){
     const futureTop = this.top - this.size;
-    console.log(futureTop)
-
     if(this.isPositionAllowed(futureTop, this.left)){
 
       this.top = futureTop;
-      this.update();
     }
   }
 
-  update(){
-    this.cssTile = {
-      ...this.cssTile,
-      'top': this.top+'px',
-      'left': this.left+'px',
-    };
-  }
+  // -------------------------------------------------------------------------------
 
   findMyPosition(top = this.top, left = this.left){
     // Um den Index[?][?] zu finden werden zur besseren lesbarkeit Hilfsvariabeln erstellt
@@ -133,7 +143,7 @@ export class MapEditorComponent{
     let indexMiddleWidth: number = Math.abs(relativeLeft) / this.size;
     let indexMiddleHeigth: number = Math.abs(relativeTop) / this.size;
 
-    return [indexMiddleWidth, indexMiddleHeigth];
+    return [indexMiddleWidth, indexMiddleHeigth, relativeLeft, relativeTop];
   }
 
   getMyPositionTile(){
@@ -142,15 +152,17 @@ export class MapEditorComponent{
   }
 
   isPositionAllowed(futureTop: number, futureLeft: number){
-    // Logik zur Bestimmung der zukünftigen Index-Position
+    // futureIndex = [indexWidth, indexHeigth, relativeLeft, relativeTop]
     const futureIndex = this.findMyPosition(futureTop, futureLeft);
 
-    if(futureIndex[0] < 0 || futureIndex[0] >= this.maxWidth) {
+    // furtureIndex hat keine negativen Werte, sie werden in positive umgewandelt
+    // Also ist -1 = 1 und ich muss zusätzlich mit dem relativen Wert vergleichen
+    if(futureIndex[0] === 1 && futureIndex[2] > 0 || futureIndex[0] >= this.maxWidth) {
       console.log('Horizontal außerhalb der Grenzen!');
       return false;
     }
   
-    if(futureIndex[1] < 0 || futureIndex[1] >= this.maxHeight) {
+    if(futureIndex[1] === 1 && futureIndex[3] > 0 || futureIndex[1] >= this.maxHeight) {
       console.log('Vertikal außerhalb der Grenzen!');
       return false;
     }

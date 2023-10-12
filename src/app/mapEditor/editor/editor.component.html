@@ -1,6 +1,9 @@
 <!-- <h2>Erstelle eine Karte</h2> -->
 
-<h3 class="element" [ngClass]="getMyPositionTile().layout">Du befindest dich hier: {{this.getMyPositionTile().name}} </h3>
+<h3 class="element" 
+    [ngStyle]="getStyleColors(this.getMyPositionTile().color)">
+    Du befindest dich hier: {{this.getMyPositionTile().name}} 
+</h3>
 
 <p></p>
 
@@ -8,18 +11,16 @@
     <div id="map" [ngStyle]="cssMap">
         <div *ngFor="let row of map">
             
-            <div *ngFor="let cell of row" [ngClass]="kachelLayout(cell.layout)" [ngStyle]="cssTile">
+            <div *ngFor="let cell of row" class="kachel" [ngStyle]="createTileStyle(cell.color)">
                 <img [attr.src]="iconUrl(cell.icon)" alt="" class="icon" (error)="iconError($event.target)">
             </div>
             
         </div>
     </div>
-    <div id="player" [ngStyle]="cssPlayer" [ngClass]="getMyPositionTile().layout">
+    <div id="player" [ngStyle]="createPlayerStyle()">
         <img class="player" src="../../../assets/mapIcons/person.svg">
     </div>
 </div>
-
-    <p class="element">{{getMyPositionTile().discription}}</p>
 
 <table class="element" >
     <tr>

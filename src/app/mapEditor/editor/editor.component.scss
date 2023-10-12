@@ -10,6 +10,7 @@
     width: 350px;
     padding: 5px;
     margin: 10px;
+    transition: all 0.4s;
     text-align: center;
 }
 
@@ -17,7 +18,7 @@
     display: grid;
     overflow: hidden;
     box-sizing: border-box;
-    background-color: rgb(102, 160, 102);
+    background-color: rgb(49, 49, 49);
     outline: 5px solid rgb(49, 49, 49);
     width: 100%;
     height: 100%;
@@ -31,7 +32,7 @@
     align-items: center;
 
     box-sizing: border-box; 
-    transition: top 0.4s, left 0.4s;
+    transition: all 0.4s;
     border: 2px dotted;
 }
 
@@ -40,45 +41,10 @@
     height: 80%;
 }
 
-.kachelStar{
-    transition: all 0.4s;
-    border-color: rgb(146, 104, 14);
-    background-color: rgb(212, 186, 97);
-    color: rgb(66, 47, 6);
-}
-
-.kachelWater{
-    transition: all 0.4s;
-    border-color: rgb(37, 41, 80);
-    background-color: rgb(93, 125, 172);
-    color: rgb(21, 26, 65);
-}
-
-.kachelFlower{
-    transition: all 0.4s;
-    border-color: rgb(71, 37, 80);
-    background-color: rgb(177, 125, 164);
-    color: rgb(53, 21, 61);
-}
-
-.kachelTree{
-    transition: all 0.4s;
-    border-color: rgb(37, 75, 80);
-    background-color: rgb(71, 124, 108);
-    color:  rgb(11, 57, 63);
-}
-
-.kachelGreen{
-    transition: all 0.4s;
-    border-color: rgb(37, 80, 56);
-    background-color: rgb(135, 167, 135);
-    color: rgb(8, 51, 27);
-}
-
 #player{
     position: absolute;
-    // border: 2px solid;
     border-radius: 40%;
+    transition: all 0.4s;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
