@@ -6,11 +6,15 @@ export interface Biom {
     discription: string;
 }
 
+
 export const biom = {
     1: {
         name: 'Auf einer Wiese',
         icon: 'nothing',
-        color: [135, 167, 135],
+        color: [
+            135 + (Math.floor(Math.random() * 21)), 
+            167 + (Math.floor(Math.random() * 21)), 
+            135 + (Math.floor(Math.random() * 21))],
         discription: 'Weit und breit wächst nur Gras',
        },
     2: {

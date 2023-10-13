@@ -8,7 +8,7 @@
 <p></p>
 
 <div id="playground">
-    <div id="map" [ngStyle]="cssMap">
+    <div id="map" [ngStyle]="getMapStyle()">
         <div *ngFor="let row of map">
             
             <div *ngFor="let cell of row" class="kachel" [ngStyle]="createTileStyle(cell.color)">

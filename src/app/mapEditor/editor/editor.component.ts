@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Biom, biom, tryMap } from './biom';
-import { BehaviorSubject, retry } from 'rxjs';
+import { BiomService, Biom } from './biom.service';
 
 @Component({
   selector: 'app-mapEditor',
@@ -10,11 +9,11 @@ import { BehaviorSubject, retry } from 'rxjs';
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss']
 })
-export class MapEditorComponent{
+export class MapEditorComponent implements OnInit{
 
   // Das ist die Karte, ein Mehrdimensionales Array
   // [[1,2,3][1,2,3]] Diese Karte ist 2x3 Kacheln groß
-  map = tryMap;
+  map: Biom[][] = [[]];
 
   // Die Position der Karte, in Pixeln
   // Es bestimmt den Startpunkt
@@ -43,9 +42,14 @@ export class MapEditorComponent{
 
   imgUrl: string = '../../../assets/mapIcons/';
 
-  cssMap = {
-    'grid-template-columns': 'repeat(' + this.map.length + ',' + this.size + 'px)',
-    'grid-template-rows': 'repeat(' + this.map[0].length + ',' + this.size + 'px)',
+
+
+  // -------------------------------------------------------------------------------
+
+  constructor(private biomService: BiomService){}
+
+  ngOnInit(): void {
+    this.map = this.biomService.tryMap;
   }
 
   // -------------------------------------------------------------------------------
@@ -86,6 +90,13 @@ export class MapEditorComponent{
       'background-color': `rgb(${red},${green},${blue})`,
     }
     return style
+  }
+
+  getMapStyle() {
+    return{
+      'grid-template-columns': 'repeat(' + this.map.length + ',' + this.size + 'px)',
+      'grid-template-rows': 'repeat(' + this.map[0].length + ',' + this.size + 'px)',
+    }
   }
 
   iconUrl(name:string){
@@ -157,15 +168,15 @@ export class MapEditorComponent{
 
     // furtureIndex hat keine negativen Werte, sie werden in positive umgewandelt
     // Also ist -1 = 1 und ich muss zusätzlich mit dem relativen Wert vergleichen
-    if(futureIndex[0] === 1 && futureIndex[2] > 0 || futureIndex[0] >= this.maxWidth) {
-      console.log('Horizontal außerhalb der Grenzen!');
-      return false;
-    }
+    // if(futureIndex[0] === 1 && futureIndex[2] > 0 || futureIndex[0] >= this.maxWidth) {
+    //   console.log('Horizontal außerhalb der Grenzen!');
+    //   return false;
+    // }
   
-    if(futureIndex[1] === 1 && futureIndex[3] > 0 || futureIndex[1] >= this.maxHeight) {
-      console.log('Vertikal außerhalb der Grenzen!');
-      return false;
-    }
+    // if(futureIndex[1] === 1 && futureIndex[3] > 0 || futureIndex[1] >= this.maxHeight) {
+    //   console.log('Vertikal außerhalb der Grenzen!');
+    //   return false;
+    // }
 
     return true;
   }
