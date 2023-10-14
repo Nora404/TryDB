@@ -27,7 +27,8 @@ $smallWidth: $pgWigth + 10px;
 #left, #main, #right {
   padding: 5px;
   margin: 5px;
-  border: 2px solid rgb(49, 49, 49);
+  border: 4px dotted rgb(49, 49, 49);
+  align-items: start;
 }
 
 #left {

@@ -5,16 +5,16 @@
     width: $pgWigth;
     height: $pgHeight;
     box-shadow: 2px 10px 5px rgb(0, 0, 0);
-    margin: 10px;
+    margin-bottom: 15px;
 }
 
 .element{
     width: $pgWigth;
     padding: 5px;
-    margin: 10px;
     box-sizing: border-box;
     transition: all 0.4s;
     text-align: center;
+    margin: 0;
 }
 
 #map{
