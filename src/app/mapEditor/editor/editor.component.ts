@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BiomService, Biom } from './biom.service';
+import { KeyboardEventService } from 'src/app/keyboard-event.service';
 
 @Component({
   selector: 'app-mapEditor',
@@ -46,10 +47,19 @@ export class MapEditorComponent implements OnInit{
 
   // -------------------------------------------------------------------------------
 
-  constructor(private biomService: BiomService){}
+  constructor(private biomService: BiomService, private keyService: KeyboardEventService){
+    this.keyService.keydown$.subscribe((e:KeyboardEvent)=>{
+      if(e.key === 'w'){this.nord()};
+      if(e.key === 'a'){this.west()};
+      if(e.key === 's'){this.sud()};
+      if(e.key === 'd'){this.ost()};
+    });
+  }
 
   ngOnInit(): void {
     this.map = this.biomService.tryMap;
+    this.maxWidth = this.map.length;
+    this.maxHeight = this.map[0].length;
   }
 
   // -------------------------------------------------------------------------------
@@ -85,7 +95,7 @@ export class MapEditorComponent implements OnInit{
     const blue: number = (color[2] || 100); 
 
     const style = {
-      'color':            `rgb(${red * 0.2},${green * 0.2},${blue * 0.2})`,
+      'color':            `rgb(${red * 0.3},${green * 0.3},${blue * 0.3})`,
       'border-color':     `rgb(${red * 0.5},${green * 0.5},${blue * 0.5})`,
       'background-color': `rgb(${red},${green},${blue})`,
     }
@@ -168,15 +178,15 @@ export class MapEditorComponent implements OnInit{
 
     // furtureIndex hat keine negativen Werte, sie werden in positive umgewandelt
     // Also ist -1 = 1 und ich muss zusätzlich mit dem relativen Wert vergleichen
-    // if(futureIndex[0] === 1 && futureIndex[2] > 0 || futureIndex[0] >= this.maxWidth) {
-    //   console.log('Horizontal außerhalb der Grenzen!');
-    //   return false;
-    // }
+    if(futureIndex[0] === 1 && futureIndex[2] > 0 || futureIndex[0] >= this.maxWidth) {
+      console.log('Horizontal außerhalb der Grenzen!');
+      return false;
+    }
   
-    // if(futureIndex[1] === 1 && futureIndex[3] > 0 || futureIndex[1] >= this.maxHeight) {
-    //   console.log('Vertikal außerhalb der Grenzen!');
-    //   return false;
-    // }
+    if(futureIndex[1] === 1 && futureIndex[3] > 0 || futureIndex[1] >= this.maxHeight) {
+      console.log('Vertikal außerhalb der Grenzen!');
+      return false;
+    }
 
     return true;
   }

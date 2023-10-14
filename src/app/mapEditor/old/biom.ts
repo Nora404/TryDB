@@ -12,9 +12,9 @@ export const biom = {
         name: 'Auf einer Wiese',
         icon: 'nothing',
         color: [
-            135 + (Math.floor(Math.random() * 21)), 
-            167 + (Math.floor(Math.random() * 21)), 
-            135 + (Math.floor(Math.random() * 21))],
+            135 + (Math.floor(Math.random() * 1)), 
+            167 + (Math.floor(Math.random() * 1)), 
+            135 + (Math.floor(Math.random() * 1))],
         discription: 'Weit und breit wächst nur Gras',
        },
     2: {
