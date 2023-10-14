@@ -1,22 +1,24 @@
 @import '../styles.scss';
 
-$layoutWidth: 200px;
-$middleWidth: $layoutWidth + $pgWigth;
+$layoutWidth: 250px;
+$maxWidth: ($layoutWidth*2) + $pgWigth + 20px;
+$middleWidth: $layoutWidth + $pgWigth + 10px;
+$smallWidth: $pgWigth + 10px;
 
 #game {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  max-width: $pgWigth*2.3;
+  max-width: $maxWidth;
   margin: auto;
 
-  @media (max-width: #{$pgWigth*3}) {
-    width: $pgWigth*1.7;
+  @media (max-width: #{$maxWidth}) {
+    width: $middleWidth;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
   }
 
-  @media (max-width: #{$pgWigth*2.15}) {
-    width: $pgWigth*1.1;
+  @media (max-width: #{$middleWidth}) {
+    width: $smallWidth;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
   }
@@ -33,15 +35,15 @@ $middleWidth: $layoutWidth + $pgWigth;
   justify-items: right;
   text-align: right;
 
-  @media (max-width: #{$pgWigth*3}) {
+  @media (max-width: #{$maxWidth}) {
     grid-column: 1;
     grid-row: 1 / span 2;
   }
 
-  @media (max-width: #{$pgWigth*2.15}) {
+  @media (max-width: #{$middleWidth}) {
     grid-row: 3;
     grid-column: 1;
-    min-width: $pgWigth*1.1;
+    min-width: $smallWidth;
     justify-items: center;
     text-align: center;
   }
@@ -50,15 +52,15 @@ $middleWidth: $layoutWidth + $pgWigth;
 #main {
   display: grid;
   justify-items: center;
-  min-width: $pgWigth*1.1;
+  min-width: $smallWidth;
   text-align: center;
 
-  @media (max-width: #{$pgWigth*3}) {
+  @media (max-width: #{$maxWidth}) {
     grid-column: 2;
     grid-row: 1;
   }
 
-  @media (max-width: #{$pgWigth*2.15}) {
+  @media (max-width: #{$middleWidth}) {
     grid-row: 1;
     grid-column: 1;
   }
@@ -69,17 +71,17 @@ $middleWidth: $layoutWidth + $pgWigth;
   justify-items: left;
   text-align: left;
 
-  @media (max-width: #{$pgWigth*3}) {
+  @media (max-width: #{$maxWidth}) {
     grid-row: 2;
     grid-column: 2;
     justify-items: center;
     text-align: center;
   }
 
-  @media (max-width: #{$pgWigth*2.15}) {
+  @media (max-width: #{$middleWidth}) {
     grid-row: 2;
     grid-column: 1;
-    min-width: $pgWigth*1.1;
+    min-width: $smallWidth;
     justify-items: center;
     text-align: center;
   }
