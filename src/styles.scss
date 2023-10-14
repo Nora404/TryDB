@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+$pgWigth: 350px*1.5;
+$pgHeight: 250px*1.5; 
+
+body{
+    background-color: rgb(31, 30, 30);
+    text-align: center;
+}
+
+button{
+    background-color: rgb(44, 44, 44);
+    border: 2px solid black;
+    color: rgb(187, 187, 187);
+    border-radius: 5px;
+    width: $pgWigth*0.30;
+    height: 25px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgb(0, 0, 0);
+}
+button:hover{
+    background-color: rgb(0, 0, 0);
+}

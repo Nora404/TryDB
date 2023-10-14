@@ -22,7 +22,7 @@ export class MapEditorComponent implements OnInit{
   left: number = 0;
 
   // Die Größe der Kacheln, in Pixeln
-  size: number = 50;
+  size: number = 50*1.5;
 
   // Die Größe des sichtbaren Spielfeldes
   // der Multiplikator (ungerade) sind die gewünschten Kacheln
