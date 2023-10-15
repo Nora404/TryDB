@@ -1,10 +1,26 @@
+@import '../../styles.scss';
+
+$layoutWidth: 250px;
+$maxWidth: ($layoutWidth*2) + $pgWigth + 20px;
+$middleWidth: $layoutWidth + $pgWigth + 10px;
+$smallWidth: $pgWigth + 10px;
+
 #menuContainer{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
 }
 
-#chara, #skill, #craft, #map, #quest, #package, #menu, #book, #stats{
+span {
+    display: none;
+}
+@media (max-width: #{$middleWidth}) {
+    span{
+        display: inline;
+    }
+  }
+
+.icon{
     background-color: rgb(44, 44, 44);
     border: 2px solid black;
     color: rgb(187, 187, 187);
@@ -12,7 +28,11 @@
     text-align: center;
     box-shadow: 2px 2px 5px rgb(0, 0, 0);
     margin: 10px;
+    padding: 5px 0 5px 0;
+}.icon:hover{
+    background-color: black;
 }
+
 
 #chara{
     grid-column: 1;
