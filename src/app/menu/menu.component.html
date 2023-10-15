@@ -1,26 +1,43 @@
 <div id="menuContainer">
-    <div id="chara" class="icon"><img src="../../assets/uiIcons/chara.svg"> 
+    <div id="chara" class="icon" (click)="setActiveMenu('chara')">
+        <img src="../../assets/uiIcons/chara.svg"> 
         <span><br>Charakter</span></div>
-    <div id="skill" class="icon"><img src="../../assets/uiIcons/swords.svg"> 
+    <div id="skill" class="icon" (click)="setActiveMenu('skill')">
+        <img src="../../assets/uiIcons/swords.svg"> 
         <span><br>Fähigkeiten</span></div>
-    <div id="craft" class="icon"><img src="../../assets/uiIcons/craft.svg"> 
-        <span><br>Herstellen</span></div>
+    <div id="craft" class="icon" (click)="setActiveMenu('craft')">
+        <img src="../../assets/uiIcons/craft.svg"> 
+        <span><br>Handwerk</span></div>
 
-    <div id="map" class="icon"><img src="../../assets/uiIcons/map.svg"> 
-        <span><br>Karte</span></div>
-    <div id="quest" class="icon"><img src="../../assets/uiIcons/quest.svg"> 
+    <div id="map" class="icon" (click)="setActiveMenu('world')">
+        <img src="../../assets/uiIcons/map.svg"> 
+        <span><br>Welt</span></div>
+    <div id="quest" class="icon" (click)="setActiveMenu('quest')">
+        <img src="../../assets/uiIcons/quest.svg"> 
         <span><br>Aufgaben</span></div>
-    <div id="package" class="icon"><img src="../../assets/uiIcons/package.svg"> 
+    <div id="package" class="icon" (click)="setActiveMenu('bag')">
+        <img src="../../assets/uiIcons/package.svg"> 
         <span><br>Inventar</span></div>
 
-    <div id="menu" class="icon"><img src="../../assets/uiIcons/menu.svg"> 
-        <span><br>Menü</span></div>
-    <div id="book" class="icon"><img src="../../assets/uiIcons/book.svg"> 
+    <div id="menu" class="icon" (click)="setActiveMenu('setting')">
+        <img src="../../assets/uiIcons/menu.svg"> 
+        <span><br>Settings</span></div>
+    <div id="book" class="icon" (click)="setActiveMenu('book')">
+        <img src="../../assets/uiIcons/book.svg"> 
         <span><br>Buch</span></div>
-    <div id="stats" class="icon"><img src="../../assets/uiIcons/stats.svg"> 
+    <div id="stats" class="icon" (click)="setActiveMenu('stats')">
+        <img src="../../assets/uiIcons/stats.svg"> 
         <span><br>Zahlen</span></div>
 </div>
 
 <hr>
 
-<app-bag></app-bag>
+<app-bag *ngIf="bag"></app-bag>
+<app-book *ngIf="book"></app-book>
+<app-chara *ngIf="chara"></app-chara>
+<app-craft *ngIf="craft"></app-craft>
+<app-quest *ngIf="quest"></app-quest>
+<app-setting *ngIf="setting"></app-setting>
+<app-skill *ngIf="skill"></app-skill>
+<app-stats *ngIf="stats"></app-stats>
+<app-world *ngIf="world"></app-world>
