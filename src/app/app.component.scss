@@ -7,20 +7,20 @@ $smallWidth: $pgWigth + 10px;
 
 #game {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto auto auto;
   max-width: $maxWidth;
   margin: auto;
 
   @media (max-width: #{$maxWidth}) {
     width: $middleWidth;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
   }
 
   @media (max-width: #{$middleWidth}) {
     width: $smallWidth;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
   }
 }
 

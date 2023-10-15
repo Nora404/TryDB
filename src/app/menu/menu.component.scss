@@ -1,0 +1,56 @@
+#menuContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+}
+
+#chara, #skill, #craft, #map, #quest, #package, #menu, #book, #stats{
+    background-color: rgb(44, 44, 44);
+    border: 2px solid black;
+    color: rgb(187, 187, 187);
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgb(0, 0, 0);
+    margin: 10px;
+}
+
+#chara{
+    grid-column: 1;
+    grid-row: 1;
+}
+#skill{
+    grid-column: 1;
+    grid-row: 2;
+}
+#craft{
+    grid-column: 1;
+    grid-row: 3;
+}
+
+
+#map{
+    grid-column: 2;
+    grid-row: 1;
+}
+#quest{
+    grid-column: 2;
+    grid-row: 2;
+}
+#package{
+    grid-column: 2;
+    grid-row: 3;
+}
+
+
+#menu{
+    grid-column: 3;
+    grid-row: 1;
+}
+#book{
+    grid-column: 3;
+    grid-row: 2;
+}
+#stats{
+    grid-column: 3;
+    grid-row: 3;
+}
