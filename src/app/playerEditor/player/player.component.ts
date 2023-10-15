@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Item, Player, db } from 'src/db/db.old';
 import { liveQuery } from 'dexie';
-import { BagComponent } from '../../bag/bag.component';
 import { FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-player',
   standalone: true,
-  imports: [CommonModule, BagComponent, FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss']
 })

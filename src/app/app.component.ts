@@ -5,13 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { PlayerEditorComponent } from "./playerEditor/editor/editor.component";
 import { MenuComponent } from './menu/menu.component';
 import { MapComponent } from './map/map.component';
+import { EventComponent } from "./event/event.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    imports: [CommonModule, RouterOutlet, FormsModule, PlayerEditorComponent, MapComponent, MenuComponent]
+    imports: [CommonModule, RouterOutlet, FormsModule, PlayerEditorComponent, MapComponent, MenuComponent, EventComponent]
 })
 export class AppComponent{
   title = 'TryDB';
