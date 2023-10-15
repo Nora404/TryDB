@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BiomService, Biom } from './biom.service';
+import { Biom, BiomService } from './biom.service';
 import { KeyboardEventService } from 'src/app/keyboard-event.service';
 
 @Component({
-  selector: 'app-mapEditor',
+  selector: 'app-map',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.scss']
+  templateUrl: './map.component.html',
+  styleUrls: ['./map.component.scss']
 })
-export class MapEditorComponent implements OnInit{
+export class MapComponent implements OnInit{
 
   // Das ist die Karte, ein Mehrdimensionales Array
   // [[1,2,3][1,2,3]] Diese Karte ist 2x3 Kacheln groß
