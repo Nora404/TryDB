@@ -21,7 +21,6 @@ span {
   }
 
 .icon{
-    background-color: rgb(44, 44, 44);
     border: 2px solid black;
     color: rgb(187, 187, 187);
     border-radius: 5px;
@@ -37,40 +36,49 @@ span {
 #chara{
     grid-column: 1;
     grid-row: 1;
+    background-color: rgb(34, 34, 34);
 }
 #skill{
     grid-column: 1;
     grid-row: 2;
+    background-color: rgb(44, 44, 44);
 }
 #craft{
     grid-column: 1;
     grid-row: 3;
+    background-color: rgb(54, 54, 54);
 }
 
 
 #map{
     grid-column: 2;
     grid-row: 1;
+    background-color: rgb(44, 44, 44);
 }
 #quest{
     grid-column: 2;
     grid-row: 2;
+    background-color: rgb(54, 54, 54);
 }
 #package{
     grid-column: 2;
     grid-row: 3;
+    background-color: rgb(64, 64, 64);
 }
 
 
 #menu{
     grid-column: 3;
     grid-row: 1;
+    background-color: rgb(54, 54, 54);
 }
 #book{
     grid-column: 3;
     grid-row: 2;
+    background-color: rgb(64, 64, 64);
 }
 #stats{
     grid-column: 3;
     grid-row: 3;
+    background-color: rgb(74, 74, 74);
 }
