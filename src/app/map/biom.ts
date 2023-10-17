@@ -6,6 +6,13 @@ export interface Biom {
     discription: string;
 }
 
+export const EmptyBiom: Biom = {
+    name: "",
+    icon: "",
+    color: [100,100,100],
+    layout: "",
+    discription: "",
+}
 
 export const biom = {
     1: {

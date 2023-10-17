@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Biom, BiomService } from './biom.service';
 import { KeyboardEventService } from 'src/app/keyboard-event.service';
@@ -11,6 +11,8 @@ import { KeyboardEventService } from 'src/app/keyboard-event.service';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit{
+
+  @Output() currentTile: EventEmitter<Biom> = new EventEmitter<Biom>()
 
   // Das ist die Karte, ein Mehrdimensionales Array
   // [[1,2,3][1,2,3]] Diese Karte ist 2x3 Kacheln groß
@@ -125,25 +127,28 @@ export class MapComponent implements OnInit{
     const futureLeft =  this.left + this.size;
     if(this.isPositionAllowed(this.top, futureLeft)){
       this.left = this.left + this.size;
+      this.currentTile.emit(this.getMyPositionTile());
     }
   }
   nord(){
     const futureTop = this.top + this.size;
     if(this.isPositionAllowed(futureTop, this.left)){
       this.top = futureTop;
+      this.currentTile.emit(this.getMyPositionTile());
     }
   }
   ost(){
     const futureLeft = this.left - this.size; 
     if(this.isPositionAllowed(this.top, futureLeft)){
       this.left = futureLeft;
+      this.currentTile.emit(this.getMyPositionTile());
     }
   }
   sud(){
     const futureTop = this.top - this.size;
     if(this.isPositionAllowed(futureTop, this.left)){
-
       this.top = futureTop;
+      this.currentTile.emit(this.getMyPositionTile());
     }
   }
 
@@ -167,7 +172,7 @@ export class MapComponent implements OnInit{
     return [indexMiddleWidth, indexMiddleHeigth, relativeLeft, relativeTop];
   }
 
-  getMyPositionTile(){
+  getMyPositionTile(): Biom{
     const index = this.findMyPosition();
     return this.map[index[0]][index[1]]
   }

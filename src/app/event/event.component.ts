@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Biom } from '../map/biom.service';
+import { EmptyBiom } from '../map/biom';
 
 @Component({
   selector: 'app-event',
@@ -10,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class EventComponent {
 
+  @Input() tile: Biom | null = EmptyBiom;
 
   getStyleColors(color: number[]){
     const red: number = (color[0] || 100); 
