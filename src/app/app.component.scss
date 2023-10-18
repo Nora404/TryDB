@@ -30,12 +30,14 @@
 }
 
 #left {
+  width: $layoutWidth;
   @media (max-width: #{$maxWidth}) {
     grid-column: 1;
     grid-row: 1 / span 2;
   }
 
   @media (max-width: #{$middleWidth}) {
+    width: $smallWidth;
     grid-row: 3;
     grid-column: 1;
   }
@@ -43,6 +45,7 @@
 
 #main {
   display: grid;
+  width: $smallWidth;
 
   @media (max-width: #{$maxWidth}) {
     grid-column: 2;
@@ -56,12 +59,15 @@
 }
 
 #right {
+  width: $layoutWidth;
   @media (max-width: #{$maxWidth}) {
+    width: $smallWidth;
     grid-row: 2;
     grid-column: 2;
   }
 
   @media (max-width: #{$middleWidth}) {
+    width: $smallWidth;
     grid-row: 2;
     grid-column: 1;
   }

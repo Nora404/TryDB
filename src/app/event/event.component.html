@@ -1,8 +1,12 @@
 <h3 class="element" style="border: 5px solid;"
-    [ngStyle]="getStyleColors([])">
+    [ngStyle]="getStyleColors(tile?.color || [])">
     Ereignis
 </h3>
 
-<p>{{tile?.icon}}</p>
+
+<div id="tileImgCon">
+    <img src="{{getImgUrl(tile?.icon)}}" [ngStyle]="getRadialColors(tile?.color)">
+</div>
+
 
 <p>{{tile?.discription}}</p>

@@ -19,7 +19,7 @@ import { Biom } from './map/biom.service';
 })
 export class AppComponent{
   title = 'TryDB';
-  _currentTile: BehaviorSubject<Biom> = new BehaviorSubject<Biom>(EmptyBiom);
+  private _currentTile: BehaviorSubject<Biom> = new BehaviorSubject<Biom>(EmptyBiom);
 
   setCurrentTile(tile: Biom){
     this._currentTile.next(tile);

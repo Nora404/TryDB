@@ -13,6 +13,7 @@ import { EmptyBiom } from '../map/biom';
 export class EventComponent {
 
   @Input() tile: Biom | null = EmptyBiom;
+  private _imgUrl: string = '../../../assets/mapIcons/';
 
   getStyleColors(color: number[]){
     const red: number = (color[0] || 100); 
@@ -25,6 +26,26 @@ export class EventComponent {
       'background-color': `rgb(${red},${green},${blue})`,
     }
     return style
+  }
+
+  getImgUrl(name: string | undefined){
+    if(!name){
+      return this._imgUrl + 'nothing.svg';
+    }
+    return this._imgUrl + name + '.svg';
+  }
+
+  getRadialColors(color: number[] | undefined){
+    if(color){
+      return {
+        'background': `radial-gradient(circle, 
+            rgba(${color[0]}, ${color[1]}, ${color[2]}, 1) 0%, 
+            rgba(${color[0] * 0.5}, ${color[1] * 0.5}, ${color[2] * 0.5}, 1) 100%)`,
+        'border' : `5px solid rgb(${color[0] * 0.4}, ${color[1] * 0.4}, ${color[2] * 0.4})`,   
+        'height' : '100%',
+      }
+    }
+    return
   }
 
 }

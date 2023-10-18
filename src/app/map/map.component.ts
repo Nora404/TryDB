@@ -62,6 +62,7 @@ export class MapComponent implements OnInit{
     this.map = this.biomService.tryMap;
     this.maxWidth = this.map.length;
     this.maxHeight = this.map[0].length;
+    this.currentTile.emit(this.getMyPositionTile());
   }
 
   // -------------------------------------------------------------------------------
