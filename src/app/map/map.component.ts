@@ -127,29 +127,55 @@ export class MapComponent implements OnInit{
   west(){
     const futureLeft =  this.left + this.size;
     if(this.isPositionAllowed(this.top, futureLeft)){
-      this.left = this.left + this.size;
-      this.currentTile.emit(this.getMyPositionTile());
+
+      const newPosition = this.findMyPosition(this.top, futureLeft);
+      const newTile = this.map[newPosition[0]][newPosition[1]];
+
+      if(this.isWayAllowed('west', newTile)){
+        this.left = this.left + this.size;
+        this.currentTile.emit(this.getMyPositionTile());
+      }
     }
   }
   nord(){
     const futureTop = this.top + this.size;
-    if(this.isPositionAllowed(futureTop, this.left)){
-      this.top = futureTop;
-      this.currentTile.emit(this.getMyPositionTile());
+    const currentTile = this.getMyPositionTile();
+
+    if(this.isPositionAllowed(futureTop, this.left) && this.isWayAllowed('nord', currentTile)){
+
+      const newPosition = this.findMyPosition(futureTop, this.left);
+      const newTile = this.map[newPosition[0]][newPosition[1]];
+
+      if(this.isWayAllowed('nord', newTile)){
+        this.top = futureTop;
+        this.currentTile.emit(this.getMyPositionTile());
+      }
     }
   }
   ost(){
     const futureLeft = this.left - this.size; 
     if(this.isPositionAllowed(this.top, futureLeft)){
-      this.left = futureLeft;
-      this.currentTile.emit(this.getMyPositionTile());
+
+      const newPosition = this.findMyPosition(this.top, futureLeft);
+      const newTile = this.map[newPosition[0]][newPosition[1]];
+
+      if(this.isWayAllowed('ost', newTile)){
+        this.left = futureLeft;
+        this.currentTile.emit(this.getMyPositionTile());
+      }
     }
   }
   sud(){
     const futureTop = this.top - this.size;
     if(this.isPositionAllowed(futureTop, this.left)){
-      this.top = futureTop;
-      this.currentTile.emit(this.getMyPositionTile());
+
+      const newPosition = this.findMyPosition(futureTop, this.left);
+      const newTile = this.map[newPosition[0]][newPosition[1]];
+
+      if(this.isWayAllowed('sud', newTile)){
+        this.top = futureTop;
+        this.currentTile.emit(this.getMyPositionTile());
+      }
     }
   }
 
@@ -195,6 +221,14 @@ export class MapComponent implements OnInit{
     }
 
     return true;
+  }
+
+  isWayAllowed(way: 'west'|'nord'|'ost'|'sud', biom: Biom){
+    if(way==='west' && !biom.goWest){return false};
+    if(way==='nord' && !biom.goNord){return false};
+    if(way==='ost' && !biom.goOst){return false};
+    if(way==='sud' && !biom.goSud){return false};
+    return true
   }
 
   colorBlackSvg(rgb: number[]){
