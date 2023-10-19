@@ -196,4 +196,46 @@ export class MapComponent implements OnInit{
 
     return true;
   }
+
+  colorBlackSvg(rgb: number[]){
+    const red = rgb[0]*0.4;
+    const green = rgb[1]*0.4;
+    const blue = rgb[2]*0.4;
+
+    let hue = this.rgbToHueRotate([red, green, blue])
+
+    return{
+      'filter:': 'hue-rotate(' + Math.floor(hue) + 'deg)',
+      'width': '80%',
+      'height': '80%',
+    }
+  }
+
+  // mit hue-rotate(xy) lässt sich ein Bild färben
+  // xy hat einen wer von 0-360
+  // Hier wird der wert anhand von rgb umgerechnet
+  rgbToHueRotate(rgb: number[]){
+    const red = rgb[0]/255;
+    const green = rgb[1]/255;
+    const blue = rgb[2]/255;
+
+    const max = Math.max(red, green, blue);
+    const min = Math.min(red, green, blue);
+    const lightness = (max + min)/2;
+    const differenz = max - min;
+    let hue = 0
+
+    if(max !== min){
+      if(max === red){
+        hue = 60* (((green - blue)/differenz)%6);
+      }
+      if(max === green){
+        hue = 60* (((blue - red)/differenz)+2);
+      }
+      if(max === blue){
+        hue = 60* (((red - green)/differenz)+4);
+      }
+    }
+    return hue
+  }
 }

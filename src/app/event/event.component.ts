@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Biom } from '../map/biom.service';
-import { EmptyBiom } from '../map/biom';
+import { EmptyBiom } from '../db/biom';
 
 @Component({
   selector: 'app-event',
@@ -40,7 +40,7 @@ export class EventComponent {
       return {
         'background': `radial-gradient(circle, 
             rgba(${color[0]}, ${color[1]}, ${color[2]}, 1) 0%, 
-            rgba(${color[0] * 0.5}, ${color[1] * 0.5}, ${color[2] * 0.5}, 1) 100%)`,
+            rgba(${color[0] * 0.8}, ${color[1] * 0.8}, ${color[2] * 0.8}, 1) 100%)`,
         'border' : `5px solid rgb(${color[0] * 0.4}, ${color[1] * 0.4}, ${color[2] * 0.4})`,   
         'height' : '100%',
       }

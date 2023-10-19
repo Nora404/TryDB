@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { biom } from '../db/biom';
 
 
 export type Biom = {
@@ -12,40 +13,6 @@ export type Biom = {
   providedIn: 'root'
 })
 export class BiomService {
-
-  biom: {[key: number]:Biom} = {
-    1: {
-        name: 'Auf einer Wiese',
-        icon: 'nothing',
-        color: [135, 167, 135],
-        discription: 'Weit und breit wächst nur Gras',
-       },
-    2: {
-        name: 'Im Wald',
-        icon: 'tree',
-        color: [71, 124, 108],
-        discription: 'Man sieht lauter Bäume',
-       },
-    3: {
-        name: 'Eine Blumenwiese',
-        icon: 'flower',
-        color: [177, 125, 164],
-        discription: 'Wilde Blumen sind überall gewachsen',
-       },
-    4: {
-        name: 'Am Fluss',
-        icon: 'water',
-        color: [93, 125, 172],
-        discription: 'Das Wasser ist klar und kalt',
-       },
-    5: {
-        name: 'Etwas Besonderes',
-        icon: 'star',
-        color: [212, 186, 97],
-        discription: 'Hier ist doch irgend etwas!',
-       },
-  }
-
 
   getRandomColor(base: number){
     return base + Math.floor(Math.random() * 21);
@@ -75,7 +42,7 @@ export class BiomService {
       [1,2,1,1,1,1,2,2],
     ]
     return baseMap.map(row=>{
-      return row.map(biomCode => this.addRandomColorToBiom(this.biom[biomCode]))
+      return row.map(biomCode => this.addRandomColorToBiom(biom[biomCode]))
     })
   }
 }
