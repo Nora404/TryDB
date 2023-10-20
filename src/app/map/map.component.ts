@@ -51,10 +51,10 @@ export class MapComponent implements OnInit{
 
   constructor(private biomService: BiomService, private keyService: KeyboardEventService){
     this.keyService.keydown$.subscribe((e:KeyboardEvent)=>{
-      if(e.key === 'w'){this.nord()};
-      if(e.key === 'a'){this.west()};
-      if(e.key === 's'){this.sud()};
-      if(e.key === 'd'){this.ost()};
+      if(e.key === 'w' || e.key === 'ArrowUp'){this.nord()};
+      if(e.key === 'a' || e.key === 'ArrowLeft'){this.west()};
+      if(e.key === 's' || e.key === 'ArrowDown'){this.sud()};
+      if(e.key === 'd' || e.key === 'ArrowRight'){this.ost()};
     });
   }
 

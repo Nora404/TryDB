@@ -80,7 +80,7 @@ export const biom: {[key: number]: Biom} = {
        },
        6: {
         name: 'Eine Brücke am Fluss',
-        icon: 'brigeV',
+        icon: 'brigeH',
         color: [93, 125, 172],
         discription: 'Sieht stabil aus',
         events: [],
