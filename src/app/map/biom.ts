@@ -4,6 +4,7 @@ export interface Biom {
     color: number[],
     layout: string;
     discription: string;
+    events: [],
 }
 
 export const EmptyBiom: Biom = {
@@ -12,6 +13,7 @@ export const EmptyBiom: Biom = {
     color: [100,100,100],
     layout: "",
     discription: "",
+    events: [],
 }
 
 export const biom = {

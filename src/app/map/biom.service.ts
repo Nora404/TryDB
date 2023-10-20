@@ -6,12 +6,45 @@ export type Biom = {
   icon: string,
   color: number[],
   discription: string,
+  events: BiomEvent[],
 }
+
+export type BiomEvent = {
+  name: string,
+  probability: number, // warscheinlichkeit das es eintrift
+  icon: string,
+  color: number[],
+  discription: string,
+  actions: Actions[]
+}
+
+export type Actions = {
+  name: string,
+  execute: (context : BiomEvent)=> void;
+}
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class BiomService {
+
+  examined: Actions = {
+    name: 'Untersuchen',
+    execute: (context)=>console.log(context.name),
+  }
+
+  // Die Idee muss weiter ausgebaut werden
+  // Am besten die ganzen Events und Biome werden ausgelagert
+  stone: BiomEvent = {
+      name: 'Stein',
+      probability: 40,
+      icon: 'stone',
+      color: [80, 80, 80],
+      discription: 'Es ist blos ein Stein',
+      actions: [this.examined],
+  }
 
   biom: {[key: number]:Biom} = {
     1: {
@@ -19,30 +52,35 @@ export class BiomService {
         icon: 'nothing',
         color: [135, 167, 135],
         discription: 'Weit und breit wächst nur Gras',
+        events: [this.stone],
        },
     2: {
         name: 'Im Wald',
         icon: 'tree',
         color: [71, 124, 108],
         discription: 'Man sieht lauter Bäume',
+        events: [],
        },
     3: {
         name: 'Eine Blumenwiese',
         icon: 'flower',
         color: [177, 125, 164],
         discription: 'Wilde Blumen sind überall gewachsen',
+        events: [],
        },
     4: {
         name: 'Am Fluss',
         icon: 'water',
         color: [93, 125, 172],
         discription: 'Das Wasser ist klar und kalt',
+        events: [],
        },
     5: {
         name: 'Etwas Besonderes',
         icon: 'star',
         color: [212, 186, 97],
         discription: 'Hier ist doch irgend etwas!',
+        events: [],
        },
   }
 
@@ -62,6 +100,20 @@ export class BiomService {
     }
   }
 
+  addRandomEventtoBiom(biom: Biom) {
+    const triggeredEvents: BiomEvent[] = [];  // Liste der ausgelösten Events
+
+    for (const event of biom.events) {
+      const rand = Math.random() * 100;  // Zufallszahl zwischen 0 und 100
+      if (rand < event.probability) {
+        // Dieses Event tritt auf
+        triggeredEvents.push(event);
+      }
+    }
+  
+    return triggeredEvents;
+  }
+
   tryMap = this.generateTryMap();
   generateTryMap(){
     const baseMap = [
@@ -79,3 +131,21 @@ export class BiomService {
     })
   }
 }
+
+// generateTryMap() {
+//   // ...
+//   return baseMap.map(row => {
+//     return row.map(biomCode => {
+//       const baseBiom = this.biom[biomCode];
+//       const coloredBiom = this.addRandomColorToBiom(baseBiom);
+      
+//       // Events für das Biom generieren
+//       const triggeredEvents = this.triggerEventsForBiom(coloredBiom);
+      
+//       // Dem Biom die Events zuweisen
+//       coloredBiom.currentEvents = triggeredEvents;
+      
+//       return coloredBiom;
+//     });
+//   });
+// }
