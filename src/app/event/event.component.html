@@ -8,5 +8,10 @@
     <img src="{{getImgUrl(tile?.icon)}}" [ngStyle]="getRadialColors(tile?.color)">
 </div>
 
+<div class="textElement tileDiscription" [ngStyle]="getStyleColors([])">
+    {{ tile?.discription }}
+</div>
 
-<p>{{tile?.discription}}</p>
+<app-action></app-action>
+<app-action></app-action>
+<app-action></app-action>

@@ -2,13 +2,14 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Biom } from '../map/biom.service';
 import { EmptyBiom } from '../db/biom';
+import { ActionComponent } from "./action/action.component";
 
 @Component({
-  selector: 'app-event',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './event.component.html',
-  styleUrls: ['./event.component.scss']
+    selector: 'app-event',
+    standalone: true,
+    templateUrl: './event.component.html',
+    styleUrls: ['./event.component.scss'],
+    imports: [CommonModule, ActionComponent]
 })
 export class EventComponent {
 

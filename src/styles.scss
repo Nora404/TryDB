@@ -10,6 +10,7 @@ body{
     background-color: rgb(31, 30, 30);
     text-align: center;
     color: "afafaf";
+    font-family: monospace;
 }
 
 button{
@@ -33,6 +34,24 @@ button{
     transition: all 0.4s;
     text-align: center;
     margin: 0;
+}
+
+.textElement{
+    padding: 5px;
+    box-sizing: border-box;
+    transition: all 0.4s;
+    text-align: center;
+    border: 5px solid;
+    margin: 5px 0 5px 0; 
+    font-weight: bold;
+}
+
+.mapWight{
+    width: $smallWidth;
+}
+.tileDiscription{
+    width: 100%;
+    margin: 10px 0 10px 0; 
 }
 
 hr{
