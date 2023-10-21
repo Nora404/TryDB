@@ -48,7 +48,7 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
         <td>
             <img src="../assets/mapIcons/grass.svg" class="symbol"> 1.1 Wiese<br>
             <img src="../assets/mapIcons/flower.svg" class="symbol"> 1.2 Blumen<br>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 1.3 Gebäude<br>
+            <img src="../assets/mapIcons/home.svg" class="symbol"> 1.3 Gebäude<br>
         </td>
         <td id="npcs">Bauer (Q)<br>Bäuerin (Q)</td>
         <td id="angr">Schlange (10%)<br>Biene (50% Blumen)</td>
@@ -61,9 +61,9 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
     <tr>
         <td><div style="background-color: #8F9C52;" class="tile"></div></td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 2.1 Feld<br>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 2.2 Mühle<br>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 2.3 Brunnen<br>
+            <img src="../assets/mapIcons/sprout.svg" class="symbol"> 2.1 Feld<br>
+            <img src="../assets/mapIcons/mill.svg" class="symbol"> 2.2 Mühle<br>
+            <img src="../assets/mapIcons/spring.svg" class="symbol"> 2.3 Brunnen<br>
         </td>
         <td id="npcs">Vogelscheuche</td>
         <td id="angr">Ratte (25%)<br>Käfer (10%)</td>
