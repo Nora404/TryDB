@@ -81,7 +81,7 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
         <td id="npcs"></td>
         <td id="angr">Wolf (50%)</td>
         <td id="item">Hartholz<br>Pilze</td>
-        <td id="such">Lichtung<br>Hohler Baumstumpf</td>
+        <td id="such">Hohler Baumstumpf</td>
     </tr> 
     <tr>
         <td colspan="6">Dichter Tannenwald</td>
@@ -107,7 +107,7 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
         <td id="npcs"></td>
         <td id="angr"></td>
         <td id="item">Holz<br>Beeren</td>
-        <td id="such">Lichtung<br>Dichtes Gestrüpp</td>
+        <td id="such">Dichtes Gestrüpp</td>
     </tr>  
     <tr>
         <td colspan="6">Dichter Laubwald</td>

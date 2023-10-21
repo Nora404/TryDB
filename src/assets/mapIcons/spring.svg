@@ -3,7 +3,7 @@
 <svg width="100%" height="100%" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
     <g>
         <g transform="matrix(1,0,0,1.14017,0,-1.45203)">
-            <path d="M18.552,12.704C18.552,11.41 17.354,10.359 15.879,10.359L7.37,10.359C5.895,10.359 4.697,11.41 4.697,12.704L4.697,18.267C4.697,19.561 5.895,20.611 7.37,20.611L15.879,20.611C17.354,20.611 18.552,19.561 18.552,18.267L18.552,12.704Z" style="fill:none;stroke:rgb(110,110,110);stroke-width:1.12px;"/>
+            <rect x="4.697" y="10.359" width="13.855" height="10.252" style="fill:none;stroke:rgb(110,110,110);stroke-width:1.12px;"/>
         </g>
         <g transform="matrix(1,0,0,0.037186,0,13.0164)">
             <path d="M18.552,15.485C18.552,12.656 18.467,10.359 18.362,10.359L4.888,10.359C4.782,10.359 4.697,12.656 4.697,15.485C4.697,18.314 4.782,20.611 4.888,20.611L18.362,20.611C18.467,20.611 18.552,18.314 18.552,15.485Z" style="fill:none;stroke:rgb(110,110,110);stroke-width:1.41px;"/>
