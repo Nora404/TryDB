@@ -41,115 +41,100 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
         <td>Begegnungen</td>
         <td>Kreaturen</td>
         <td>Gegenstände</td>
-        <td>Erforschung</td>
-        <td>Eingang</td>
-        <td>Veränderung</td>
+        <td>Entdecken</td>
     </tr>
     <tr>
         <td><div style="background-color: #87a787;" class="tile"></div></td>
         <td>
             <img src="../assets/mapIcons/grass.svg" class="symbol"> 1.1 Wiese<br>
-            <img src="../assets/mapIcons/flower.svg" class="symbol"> 1.2 Blumen
+            <img src="../assets/mapIcons/flower.svg" class="symbol"> 1.2 Blumen<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 1.3 Gebäude<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs">Bauer (Q)<br>Bäuerin (Q)</td>
+        <td id="angr">Schlange (10%)<br>Biene (50% Blumen)</td>
+        <td id="item"></td>
+        <td id="such">Feldweg</td>
     </tr>
     <tr>
-        <td colspan="8">Feld</td>
+        <td colspan="6">Feld</td>
     </tr>
     <tr>
         <td><div style="background-color: #8F9C52;" class="tile"></div></td>
         <td>
             <img src="../assets/mapIcons/love.svg" class="symbol"> 2.1 Feld<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr">Ratte (25%)</td>
+        <td id="item">Kartoffeln</td>
+        <td id="such"></td>
     </tr>
     <tr>
-        <td colspan="8">Tannenwald</td>
+        <td colspan="6">Tannenwald</td>
     </tr>
     <tr>
         <td><div style="background-color: #477c6c;" class="tile"></div></td>
         <td>
             <img src="../assets/mapIcons/tree.svg" class="symbol"> 3.1 Tannenwald<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr">Wolf (50%)</td>
+        <td id="item">Hartholz<br>Pilze</td>
+        <td id="such">Lichtung<br>Hohler Baumstumpf</td>
     </tr> 
     <tr>
-        <td colspan="8">Dichter Tannenwald</td>
+        <td colspan="6">Dichter Tannenwald</td>
     </tr>
     <tr>
         <td><div style="background-color: #233d35;" class="tile">X</div></td>
         <td>
             <img src="../assets/mapIcons/forest.svg" class="symbol"> 3.1 Dichter Tannenwald<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item"></td>
+        <td id="such"></td>
     </tr>    
     <tr>
-        <td colspan="8">Laubwald</td>
+        <td colspan="6">Laubwald</td>
     </tr>
     <tr>
         <td><div style="background-color: #5a733f;" class="tile"></div></td>
         <td>
             <img src="../assets/mapIcons/love.svg" class="symbol"> 4.1 Laubwald<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item">Holz<br>Beeren</td>
+        <td id="such">Lichtung<br>Dichtes Gestrüpp</td>
     </tr>  
     <tr>
-        <td colspan="8">Dichter Laubwald</td>
+        <td colspan="6">Dichter Laubwald</td>
     </tr>
     <tr>
         <td><div style="background-color: #28331c;" class="tile">X</div></td>
         <td>
             <img src="../assets/mapIcons/love.svg" class="symbol"> 5.1 Dichter Laubwald<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item"></td>
+        <td id="such"></td>
     </tr>      
     <tr>
-        <td colspan="8">Flaches Wasser</td>
+        <td colspan="6">Flaches Wasser</td>
     </tr>
     <tr>
         <td><div style="background-color: #4c8491;" class="tile"></div></td>
         <td>
             <img src="../assets/mapIcons/love.svg" class="symbol"> 6.1 Flaches Wasser<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item">Fische<br>Wasser</td>
+        <td id="such">Glitzer</td>
     </tr> 
     <tr>
-        <td colspan="8">Fluss</td>
+        <td colspan="6">Fluss</td>
     </tr>
     <tr>
         <td><div style="background-color: #5d7dac;" class="tile">X</div></td>
@@ -158,90 +143,78 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
             <img src="../assets/mapIcons/brigeV.svg" class="symbol"> 7.2 Brücke Vertikal<br>
             <img src="../assets/mapIcons/brigeH.svg" class="symbol"> 7.3 Brücke Horizontal<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item"></td>
+        <td id="such"></td>
     </tr>          
     <tr>
-        <td colspan="8">Tiefes Wasser</td>
+        <td colspan="6">Tiefes Wasser</td>
     </tr>
     <tr>
         <td><div style="background-color: #304069;" class="tile">X</div></td>
         <td>
             <img src="../assets/mapIcons/love.svg" class="symbol"> 8.1 Tiefes Wasser<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item"></td>
+        <td id="such"></td>
     </tr>
     <tr>
-        <td colspan="8">Sand</td>
+        <td colspan="6">Sand</td>
     </tr>
     <tr>
         <td><div style="background-color: #ab9c5f;" class="tile"></div></td>
         <td>
             <img src="../assets/mapIcons/love.svg" class="symbol"> 9.1 Sand<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item">Sand</td>
+        <td id="such"></td>
     </tr>      
     <tr>
-        <td colspan="8">Gestein</td>
+        <td colspan="6">Gestein</td>
     </tr>
     <tr>
         <td><div style="background-color: #73706b;" class="tile"></div></td>
         <td>
             <img src="../assets/mapIcons/love.svg" class="symbol"> 10.1 Gestein<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item">Stein<br>Eisenerz</td>
+        <td id="such"></td>
     </tr> 
     <tr>
-        <td colspan="8">Gebirge</td>
+        <td colspan="6">Gebirge</td>
     </tr>
     <tr>
         <td><div style="background-color: #525252;" class="tile">X</div></td>
         <td>
             <img src="../assets/mapIcons/love.svg" class="symbol"> 11.1 Gebirge<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item"></td>
+        <td id="such"></td>
     </tr>    
     <tr>
-        <td colspan="8">Steinwände</td>
+        <td colspan="6">Steinwände</td>
     </tr>
     <tr>
         <td><div style="background-color: #363231;" class="tile">X</div></td>
         <td>
             <img src="../assets/mapIcons/love.svg" class="symbol"> 12.1 Steinwände<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item"></td>
+        <td id="such"></td>
     </tr>   
     <tr>
-        <td colspan="8">Klippen</td>
+        <td colspan="6">Klippen</td>
     </tr>
     <tr>
         <td><div style="background-color: #131313;" class="tile">X</div></td>
@@ -249,26 +222,22 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
             <img src="../assets/mapIcons/love.svg" class="symbol"> 13.1 Klippen<br>
             <img src="../assets/mapIcons/love.svg" class="symbol"> 13.2 Höhle<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item"></td>
+        <td id="such"></td>
     </tr>   
     <tr>
-        <td colspan="8">Schnee</td>
+        <td colspan="6">Schnee</td>
     </tr>
     <tr>
         <td><div style="background-color: #b5b5bd;" class="tile"></div></td>
         <td>
             <img src="../assets/mapIcons/love.svg" class="symbol"> 14.1 Schnee<br>
         </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item"></td>
+        <td id="such"></td>
     </tr>      
 </table>
