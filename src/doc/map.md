@@ -52,7 +52,7 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
         </td>
         <td id="npcs">Bauer (Q)<br>Bäuerin (Q)</td>
         <td id="angr">Schlange (10%)<br>Biene (50% Blumen)</td>
-        <td id="item"></td>
+        <td id="item">Brot (Gebäude)<br>Suppe (Gebäude)</td>
         <td id="such">Feldweg</td>
     </tr>
     <tr>
@@ -62,10 +62,12 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
         <td><div style="background-color: #8F9C52;" class="tile"></div></td>
         <td>
             <img src="../assets/mapIcons/love.svg" class="symbol"> 2.1 Feld<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 2.2 Mühle<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 2.3 Brunnen<br>
         </td>
-        <td id="npcs"></td>
-        <td id="angr">Ratte (25%)</td>
-        <td id="item">Kartoffeln</td>
+        <td id="npcs">Vogelscheuche</td>
+        <td id="angr">Ratte (25%)<br>Käfer (10%)</td>
+        <td id="item">Kartoffeln<br>Karotten<br>Zwiebeln<br>Weizen<br>Wasser (Brunnen)<br>Mehl (Mühle)</td>
         <td id="such"></td>
     </tr>
     <tr>
