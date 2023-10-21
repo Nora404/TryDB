@@ -128,7 +128,7 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
     <tr>
         <td><div style="background-color: #4c8491;" class="tile"></div></td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 6.1 Flaches Wasser<br>
+            <img src="../assets/mapIcons/waterFlat.svg" class="symbol"> 6.1 Flaches Wasser<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
@@ -156,7 +156,7 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
     <tr>
         <td><div style="background-color: #304069;" class="tile">X</div></td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 8.1 Tiefes Wasser<br>
+            <img src="../assets/mapIcons/waterDeep.svg" class="symbol"> 8.1 Tiefes Wasser<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
