@@ -5,7 +5,7 @@ Auf Ereignisse kann mit einer Aktion reagiert werden. Aus Platzgründen sollte e
 
 <hr>
 
-<b>Items</b><br>
+<img src="../assets/uiIcons/item.svg" style="width: 40px"><b>Items</b><br>
 Gegenstände mit denen interagiert werden kann. Mansche haben eine Vorbedingung, zum Beispiel das ein Werkzeug gebraucht wird, eine aktive Quest oder mehrmaliges Auslösen des Ereignisses.
 
 - Ein Feld kann mit Samen bepflanzt und mit der Gieskanne bewässert werden
@@ -14,30 +14,30 @@ Gegenstände mit denen interagiert werden kann. Mansche haben eine Vorbedingung,
 
 <hr>
 
-<b>Begegnung</b><br>
+<img src="../assets/uiIcons/people.svg" style="width: 40px"><b>Begegnung</b><br>
 Meist NPCs, seltener Kreaturen, sie können Quests vergeben, Handeln oder nur Reden. Es wird immer ein Dialog gestartet.
 
 <hr>
 
-<b>Kampf</b><br>
+<img src="../assets/uiIcons/swords.svg" style="width: 40px"><b>Kampf</b><br>
 Hier startet ein Kampf, wobei diese automatisch starten oder aktiv gestartet werden können.
 
 <hr>
 
-<b>Erforschung</b><br>
+<img src="../assets/uiIcons/explore.svg" style="width: 40px"><b>Erforschung</b><br>
 Das Gebiet lässt sich genauer untersuchen, dabei wird in einem Dialog Auswahlmöglichkeiten angezeigt. Diese können zu weiteren Ereignissen führen, zum Beispiel einem Kampf oder einem Item.
 
 <hr>
 
-<b>Eingang</b><br>
+<img src="../assets/uiIcons/go.svg" style="width: 40px"><b>Eingang</b><br>
 Hier ist der wechsel der Karte möglich, ob in einem Dungeon oder einem anderen Gebiet.
 
 <hr>
 
-<b>Veränderung</b><br>
+<img src="../assets/uiIcons/pottedPlant.svg" style="width: 40px"><b>Veränderung</b><br>
 Der Spieler kann diese Kachel ändern (Terraform) zum Beispiel indem er Bäume fällt und eine Wiese zurück lässt oder ein Gebäude zerstört wird.
 
 <hr>
 
-<b>Aktion<br>
+<img src="../assets/uiIcons/footprint.svg" style="width: 40px"><b>Aktion</b><br>
 Eine bestimmte Aktion kann aufgrund einer Bedingung ausgeführt werden, zum Beispiel das überwinden von Grenzen (Springen oder Klettern) Der Spieler erreicht so andere Kacheln was vorher unmöglich war

@@ -10,6 +10,12 @@
         height: 30px;
         margin: 0 5px 0 0;
     }
+    .event{
+        width: 25px;
+        height: 25px;
+        float: left;
+        margin: 0 5px 0 0;
+    }
 </style>
 
 <p style="color: red">Leider sieht diese Datei in GitHub schrecklich aus<br>
@@ -26,7 +32,7 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
 
 <hr>
 
-### Naturboden
+### Biome
 
 <table>
     <tr>
@@ -52,53 +58,129 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
         <td></td>
         <td></td>
     </tr>
+    <tr>
+        <td colspan="8">Feld</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #8F9C52;" class="tile"></div></td>
+        <td>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> Feld<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="8">Tannenwald</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #477c6c;" class="tile"></div></td>
+        <td>
+            <img src="../assets/mapIcons/tree.svg" class="symbol"> Tannenwald<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr> 
+    <tr>
+        <td colspan="8">Dichter Tannenwald</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #233d35;" class="tile">X</div></td>
+        <td>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> Dichter Tannenwald<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>    
+    <tr>
+        <td colspan="8">Laubwald</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #5a733f;" class="tile"></div></td>
+        <td>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> Laubwald<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>  
+    <tr>
+        <td colspan="8">Dichter Laubwald</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #28331c;" class="tile">X</div></td>
+        <td>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> Dichter Laubwald<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>      
+    <tr>
+        <td colspan="8">Flaches Wasser</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #4c8491;" class="tile"></div></td>
+        <td>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> Flaches Wasser<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr> 
+    <tr>
+        <td colspan="8">Fluss</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #5d7dac;" class="tile">X</div></td>
+        <td>
+            <img src="../assets/mapIcons/water.svg" class="symbol"> Fluss<br>
+            <img src="../assets/mapIcons/brigeV.svg" class="symbol"> Brücke Vertikal<br>
+            <img src="../assets/mapIcons/brigeH.svg" class="symbol"> Brücke Horizontal<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>          
+    <tr>
+        <td colspan="8">Tiefes Wasser</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #304069;" class="tile">X</div></td>
+        <td>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> Tiefes Wasser<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr> 
 </table>
-
-<div style="background-color: #8F9C52;" class="tile"></div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Feld</b><br><br>
-
-<img src="../assets/mapIcons/flower.svg" class="symbol"> <b>Blumenwiese</b><br>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"> <b>Gebäude</b><br>
-
-<hr>
-
-### Wald
-
-<div style="background-color: #477c6c;" class="tile"></div>
-<img src="../assets/mapIcons/tree.svg" class="symbol"><br>
-<b>Tannenwald</b> <br><br>
-
-<div style="background-color: #233D35;" class="tile">X</div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Dichter Tannenwald</b><br><br>
-
-<div style="background-color: #5A733F;" class="tile"></div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Laubwand</b><br><br>
-
-<div style="background-color: #28331C;" class="tile">X</div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Dichter Laubwand</b><br><br>
-
-<hr>
-
-### Wasser
-
-<div style="background-color: #304069;" class="tile">x</div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Tiefes Wasser</b><br><br>
-
-<div style="background-color: #5d7dac;" class="tile">X</div>
-<img src="../assets/mapIcons/water.svg" class="symbol"><br>
-<b>Fluss</b> <br><br>
-
-<div style="background-color: #4C8491;" class="tile"></div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Flaches Wasser</b><br><br>
-
-<img src="../assets/mapIcons/brigeV.svg" class="symbol"> <b>Brücke Vertikal</b><br>
-<img src="../assets/mapIcons/brigeH.svg" class="symbol"> <b>Brücke Horizontal</b><br>
 
 <hr>
 
