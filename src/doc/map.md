@@ -12,6 +12,9 @@
     }
 </style>
 
+<p style="color: red">Leider sieht diese Datei in GitHub schrecklich aus<br>
+In VSC kann die Vorschau ohne Probleme den html und css Code erkennen</p>
+
 ### MAP
 
 Die Karte besteht aus quadratichen Kacheln, die Biome genannt werden. Sie haben eine Hintergrundfarbe und ein Symbol im SVG-Format. Diese Symbole haben maximal zwei Volltonfarben. Kacheln die in dieser Liste mit einem <b>X</b> makiert sind, sind undurchdrinbar und meist als Kartenrand oder Abgrenzung gedacht. Es gibt noch Varianten die den gleichen Hintergund, aber ein anderes Symbol besitzten. Dort befinden sich andere Ereignisse.
