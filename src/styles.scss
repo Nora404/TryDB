@@ -6,10 +6,13 @@ $maxWidth: ($layoutWidth*2) + $pgWigth*1.2;
 $middleWidth: $layoutWidth + $pgWigth*1.2;
 $smallWidth: $pgWigth*1.1;
 
+$textColor: rgb(187, 187, 187);
+
 body{
     background-color: rgb(31, 30, 30);
     text-align: center;
-    color: "afafaf";
+    color: rgb(187, 187, 187);
+    font-weight: bold;
     font-family: monospace;
 }
 

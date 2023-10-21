@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,6 +9,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./chara.component.scss']
 })
 export class CharaComponent {
+
+
+  charaName = "Name des Charakters";
+
   getStyleColors(color: number[]){
     const red: number = (color[0] || 100); 
     const green: number = (color[1] || 100); 

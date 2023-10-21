@@ -1,0 +1,57 @@
+@import '../../../styles.scss';
+
+#equipment{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    box-sizing: border-box;
+    background-image: url("../../../assets/uiIcons/playerOutline.svg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    width: $layoutWidth;
+    height: calc($layoutWidth / 5)*7;
+    margin: 10px 0 10px 0;
+    padding: 5px;
+}
+
+#equipment div{
+    width: calc($layoutWidth / 5);
+    height: calc($layoutWidth / 5);
+    border: 2px outset $textColor;
+    background-color: black;
+    filter: opacity(0.2);
+}
+
+#head{
+    grid-row: 1;
+    grid-column: 3;
+}
+#top{
+    grid-row: 3;
+    grid-column: 3;
+}
+#legs{
+    grid-row: 5;
+    grid-column: 3;
+}
+#shoes{
+    grid-row: 7;
+    grid-column: 3;
+}
+
+#talisman{
+    grid-row: 3;
+    grid-column: 1;
+}
+#jewelry{
+    grid-row: 3;
+    grid-column: 5;
+}
+#mainWapon{
+    grid-row: 5;
+    grid-column: 1;
+}
+#seconWapon{
+    grid-row: 5;
+    grid-column: 5;
+}
