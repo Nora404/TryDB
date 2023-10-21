@@ -17,17 +17,25 @@ Gegenstände mit denen interagiert werden kann. Mansche haben eine Vorbedingung,
 <hr>
 
 <img src="../assets/uiIcons/people.svg" style="width: 40px"><b>Begegnung</b><br>
-Meist NPCs, seltener Kreaturen, sie können Quests vergeben, Handeln oder nur Reden. Es wird immer ein Dialog gestartet.
+Meist NPCs, seltener Kreaturen, sie können Quests vergeben, Handeln oder nur Reden. Es wird immer ein Dialog gestartet.<br>
+<i>geplant</i>:
+
+- Bauer (Quest: Start)
+- Bäuerin (Quest: Tutorial)
 
 <hr>
 
 <img src="../assets/uiIcons/swords.svg" style="width: 40px"><b>Kampf</b><br>
-Hier startet ein Kampf, wobei diese automatisch starten oder aktiv gestartet werden können.
+Hier startet ein Kampf, wobei diese automatisch starten oder aktiv gestartet werden können.<br>
+<i>geplant</i>:
+
+- Ratten (passiv)
+- Wölfe (agro)
 
 <hr>
 
 <img src="../assets/uiIcons/explore.svg" style="width: 40px"><b>Erforschung</b><br>
-Das Gebiet lässt sich genauer untersuchen, dabei wird in einem Dialog Auswahlmöglichkeiten angezeigt. Diese können zu weiteren Ereignissen führen, zum Beispiel einem Kampf oder einem Item.
+Das Gebiet lässt sich genauer untersuchen, dabei wird in einem Dialog Auswahlmöglichkeiten angezeigt. Diese können zu weiteren Ereignissen führen, zum Beispiel einem Kampf oder einem Item.<br>
 
 <hr>
 
