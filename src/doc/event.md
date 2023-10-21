@@ -3,6 +3,8 @@
 Ereignisse finden auf Kacheln(Biomen) statt. Eine Kachel kann bis zu drei Ereignisse haben. Dabei kann eine Kachel mehr als drei Ereignisse besitzten. Jedes Ereignis hat eine gewisse Warscheinlichkeit einzutreffen. Das kommt auf die Kachel und das Ereignis an. <br>
 Auf Ereignisse kann mit einer Aktion reagiert werden. Aus Platzgründen sollte es nicht mehr wie drei Aktionen je Ereigniss geben.
 
+![Alt text](image.png)
+
 <hr>
 
 <img src="../assets/uiIcons/item.svg" style="width: 40px"><b>Items</b><br>
