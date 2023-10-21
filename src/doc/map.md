@@ -64,7 +64,7 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
     <tr>
         <td><div style="background-color: #8F9C52;" class="tile"></div></td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> Feld<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 2.1 Feld<br>
         </td>
         <td></td>
         <td></td>
@@ -79,7 +79,7 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
     <tr>
         <td><div style="background-color: #477c6c;" class="tile"></div></td>
         <td>
-            <img src="../assets/mapIcons/tree.svg" class="symbol"> Tannenwald<br>
+            <img src="../assets/mapIcons/tree.svg" class="symbol"> 3.1 Tannenwald<br>
         </td>
         <td></td>
         <td></td>
@@ -94,7 +94,7 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
     <tr>
         <td><div style="background-color: #233d35;" class="tile">X</div></td>
         <td>
-            <img src="../assets/mapIcons/forest.svg" class="symbol"> Dichter Tannenwald<br>
+            <img src="../assets/mapIcons/forest.svg" class="symbol"> 3.1 Dichter Tannenwald<br>
         </td>
         <td></td>
         <td></td>
@@ -109,7 +109,7 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
     <tr>
         <td><div style="background-color: #5a733f;" class="tile"></div></td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> Laubwald<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 4.1 Laubwald<br>
         </td>
         <td></td>
         <td></td>
@@ -124,7 +124,7 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
     <tr>
         <td><div style="background-color: #28331c;" class="tile">X</div></td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> Dichter Laubwald<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 5.1 Dichter Laubwald<br>
         </td>
         <td></td>
         <td></td>
@@ -139,7 +139,7 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
     <tr>
         <td><div style="background-color: #4c8491;" class="tile"></div></td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> Flaches Wasser<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 6.1 Flaches Wasser<br>
         </td>
         <td></td>
         <td></td>
@@ -154,9 +154,9 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
     <tr>
         <td><div style="background-color: #5d7dac;" class="tile">X</div></td>
         <td>
-            <img src="../assets/mapIcons/water.svg" class="symbol"> Fluss<br>
-            <img src="../assets/mapIcons/brigeV.svg" class="symbol"> Brücke Vertikal<br>
-            <img src="../assets/mapIcons/brigeH.svg" class="symbol"> Brücke Horizontal<br>
+            <img src="../assets/mapIcons/water.svg" class="symbol"> 7.1 Fluss<br>
+            <img src="../assets/mapIcons/brigeV.svg" class="symbol"> 7.2 Brücke Vertikal<br>
+            <img src="../assets/mapIcons/brigeH.svg" class="symbol"> 7.3 Brücke Horizontal<br>
         </td>
         <td></td>
         <td></td>
@@ -171,7 +171,37 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
     <tr>
         <td><div style="background-color: #304069;" class="tile">X</div></td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> Tiefes Wasser<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 8.1 Tiefes Wasser<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="8">Sand</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #ab9c5f;" class="tile"></div></td>
+        <td>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 9.1 Sand<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>      
+    <tr>
+        <td colspan="8">Gestein</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #73706b;" class="tile"></div></td>
+        <td>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 10.1 Gestein<br>
         </td>
         <td></td>
         <td></td>
@@ -180,50 +210,65 @@ Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um d
         <td></td>
         <td></td>
     </tr> 
+    <tr>
+        <td colspan="8">Gebirge</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #525252;" class="tile">X</div></td>
+        <td>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 11.1 Gebirge<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>    
+    <tr>
+        <td colspan="8">Steinwände</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #363231;" class="tile">X</div></td>
+        <td>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 12.1 Steinwände<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>   
+    <tr>
+        <td colspan="8">Klippen</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #131313;" class="tile">X</div></td>
+        <td>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 13.1 Klippen<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 13.2 Höhle<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>   
+    <tr>
+        <td colspan="8">Schnee</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #b5b5bd;" class="tile"></div></td>
+        <td>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 14.1 Schnee<br>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>      
 </table>
-
-<hr>
-
-### Stein
-
-<div style="background-color: #AB9C5F;" class="tile"></div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Sand</b><br><br>
-
-<div style="background-color: #73706B;" class="tile"></div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Gestein</b><br><br>
-
-<div style="background-color: #525252;" class="tile">X</div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Gebirge</b><br><br>
-
-<div style="background-color: #363231;" class="tile">X</div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Steinwände</b><br><br>
-
-<div style="background-color: #131313;" class="tile">X</div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Klippen</b><br><br>
-
-<img src="../assets/mapIcons/nothing.svg" class="symbol"> <b>Höhle</b><br>
-
-<hr>
-
-### Element
-
-<div style="background-color: #B5B5BD;" class="tile"></div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Schnee</b><br><br>
-
-<hr>
-
-### Bauwerk
-
-<div style="background-color: #362C26;" class="tile">X</div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Holzwände</b><br><br>
-
-<div style="background-color: #82624D;" class="tile"></div>
-<img src="../assets/mapIcons/nothing.svg" class="symbol"><br>
-<b>Holzboden</b><br><br>
