@@ -31,11 +31,19 @@ Hier startet ein Kampf, wobei diese automatisch starten oder aktiv gestartet wer
 
 - Ratten (passiv)
 - Wölfe (agro)
+- Schlange (agro)
+- Biene (passiv)
+- Käfer (passiv)
 
 <hr>
 
 <img src="../assets/uiIcons/explore.svg" style="width: 40px"><b>Erforschung</b><br>
 Das Gebiet lässt sich genauer untersuchen, dabei wird in einem Dialog Auswahlmöglichkeiten angezeigt. Diese können zu weiteren Ereignissen führen, zum Beispiel einem Kampf oder einem Item.<br>
+
+- Feldweg ~-~ (Item: Anhänger/ nichts)
+- Hohler Baumstumpf ~-~ (Kampf: Schlange / Item: Ring)
+- Dichtes Gestrüpp ~-~ (Kampf: Wolf / Item: Beeren)
+- Glitzer ~-~ (Item: Stein / Item: Kette)
 
 <hr>
 

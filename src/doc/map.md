@@ -71,7 +71,7 @@ Es gibt
         </td>
         <td id="npcs">Vogelscheuche</td>
         <td id="angr">Ratte (25%)<br>Käfer (10%)</td>
-        <td id="item">Kartoffeln<br>Karotten<br>Zwiebeln<br>Weizen<br>Wasser (Brunnen)<br>Mehl (Mühle)</td>
+        <td id="item">Kartoffeln<br>Zwiebeln<br>Weizen<br>Wasser (Brunnen)<br>Mehl (Mühle)</td>
         <td id="such"></td>
     </tr>
     <tr>
