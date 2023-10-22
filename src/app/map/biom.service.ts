@@ -48,4 +48,18 @@ export class BiomService {
     }
     return EmptyBiom;
   }
+
+  rotateMap90Degrees(baseMap: number[][]): number[][] {
+    const rotatedMap: number[][] = [];
+
+    for (let i = 0; i < baseMap[0].length; i++) {
+        const newRow: number[] = [];
+        for (let j = baseMap.length - 1; j >= 0; j--) {
+            newRow.unshift(baseMap[j][i]);
+        }
+        rotatedMap.push(newRow);
+    }
+
+    return rotatedMap;
+  }
 }

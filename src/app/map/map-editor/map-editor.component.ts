@@ -17,18 +17,7 @@ export class MapEditorComponent {
     [0, 0, 0]
   ]; // Beispielwert, du kannst die Größe und die Initialwerte anpassen
 
-  // biomes = [
-  //   { id: 0.0, color: 'white', name: 'Leer', symbol: 'nothing' },
-  //   { id: 1.1, color: '#87a787', name: 'Wiese', symbol: 'grass' },
-  //   { id: 1.2, color: '#87a787', name: 'Blumen', symbol: 'flower' },
-  //   { id: 1.3, color: '#87a787', name: 'Gebäude', symbol: 'home' },
-  //   { id: 2.1, color: '#8F9C52', name: 'Feld', symbol: 'sprout' },
-  //   { id: 2.2, color: '#8F9C52', name: 'Mühle', symbol: 'mill' },
-  //   { id: 2.3, color: '#8F9C52', name: 'Brunnen', symbol: 'spring' },
-  //   // Füge hier weitere Biome hinzu, wenn du möchtest
-  // ];
   selectedBiome: any = '';
-
 
   expandUp() {
     this.mapArray.unshift(new Array(this.mapArray[0].length).fill(0));

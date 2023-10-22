@@ -66,7 +66,9 @@ export class MapComponent implements OnInit{
   async loadMap(map:string) {
     const loadedMap = await this.biomService.loadMap(map);
     if (loadedMap){
-      this.biomService.generateMap(loadedMap);
+      // Die Map wurde um 90° gedreht, also muss sie zurück gedreht werden
+      const rotMap = this.biomService.rotateMap90Degrees(loadedMap)
+      this.biomService.generateMap(rotMap);
       this.map = this.biomService.tryMap;
       this.maxWidth = this.map.length;
       this.maxHeight = this.map[0].length;
