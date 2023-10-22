@@ -1,7 +1,7 @@
 <div class="editor-container">
   <div class="map-controls">
-      <button (click)="expandUp()">▲</button>
-      <button (click)="expandLeft()">◄</button>
+      <button class="arrow" (click)="expandUp()">▲ Nach oben erweitern</button>
+      <button class="arrow" (click)="expandLeft()">◄ Nach links erweitern</button>
       <div class="map-view">
           <!-- Die äußere Schleife, die die Zeilen deiner Karte rendert -->
           <div *ngFor="let row of mapArray; let rowIndex = index" class="map-row">
@@ -14,8 +14,8 @@
               </div>
           </div>
       </div>
-      <button (click)="expandRight()">►</button>
-      <button (click)="expandDown()">▼</button>
+      <button class="arrow" (click)="expandRight()">► Nach rechts erweitern</button>
+      <button class="arrow" (click)="expandDown()">▼ Nach unten erweitern</button>
   </div>
   
   <div class="biome-selector">
