@@ -93,7 +93,7 @@ Es gibt
     <tr>
         <td><div style="background-color: #233d35;" class="tile">X</div><br>#233d35</td>
         <td>
-            <img src="../assets/mapIcons/forest.svg" class="symbol"> 3.1 Dichter Tannenwald<br>
+            <img src="../assets/mapIcons/forest.svg" class="symbol"> 4.1 Dichter Tannenwald<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
@@ -106,7 +106,7 @@ Es gibt
     <tr>
         <td><div style="background-color: #5a733f;" class="tile"></div><br>#5a733f</td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 4.1 Laubwald<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 5.1 Laubwald<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
@@ -119,7 +119,7 @@ Es gibt
     <tr>
         <td><div style="background-color: #28331c;" class="tile">X</div><br>#28331c</td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 5.1 Dichter Laubwald<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 6.1 Dichter Laubwald<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
@@ -132,7 +132,7 @@ Es gibt
     <tr>
         <td><div style="background-color: #4c8491;" class="tile"></div><br>#4c8491</td>
         <td>
-            <img src="../assets/mapIcons/waterFlat.svg" class="symbol"> 6.1 Flaches Wasser<br>
+            <img src="../assets/mapIcons/waterFlat.svg" class="symbol"> 7.1 Flaches Wasser<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
@@ -145,9 +145,9 @@ Es gibt
     <tr>
         <td><div style="background-color: #5d7dac;" class="tile">X</div><br>#5d7dac</td>
         <td>
-            <img src="../assets/mapIcons/water.svg" class="symbol"> 7.1 Fluss<br>
-            <img src="../assets/mapIcons/brigeV.svg" class="symbol"> 7.2 Brücke Vertikal<br>
-            <img src="../assets/mapIcons/brigeH.svg" class="symbol"> 7.3 Brücke Horizontal<br>
+            <img src="../assets/mapIcons/water.svg" class="symbol"> 8.1 Fluss<br>
+            <img src="../assets/mapIcons/brigeV.svg" class="symbol"> 8.2 Brücke Vertikal<br>
+            <img src="../assets/mapIcons/brigeH.svg" class="symbol"> 8.3 Brücke Horizontal<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
@@ -160,7 +160,7 @@ Es gibt
     <tr>
         <td><div style="background-color: #304069;" class="tile">X</div><br>#304069</td>
         <td>
-            <img src="../assets/mapIcons/waterDeep.svg" class="symbol"> 8.1 Tiefes Wasser<br>
+            <img src="../assets/mapIcons/waterDeep.svg" class="symbol"> 9.1 Tiefes Wasser<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
@@ -173,7 +173,7 @@ Es gibt
     <tr>
         <td><div style="background-color: #ab9c5f;" class="tile"></div><br>#ab9c5f</td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 9.1 Sand<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 10.1 Sand<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
@@ -186,7 +186,7 @@ Es gibt
     <tr>
         <td><div style="background-color: #73706b;" class="tile"></div><br>#73706b</td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 10.1 Gestein<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 11.1 Gestein<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
@@ -199,7 +199,7 @@ Es gibt
     <tr>
         <td><div style="background-color: #525252;" class="tile">X</div><br>#525252</td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 11.1 Gebirge<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 12.1 Gebirge<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
@@ -212,7 +212,7 @@ Es gibt
     <tr>
         <td><div style="background-color: #363231;" class="tile">X</div><br>#363231</td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 12.1 Steinwände<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 13.1 Steinwände<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
@@ -225,8 +225,8 @@ Es gibt
     <tr>
         <td><div style="background-color: #131313;" class="tile">X</div><br>#131313</td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 13.1 Klippen<br>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 13.2 Höhle<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 14.1 Klippen<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 14.2 Höhle<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
@@ -239,7 +239,7 @@ Es gibt
     <tr>
         <td><div style="background-color: #b5b5bd;" class="tile"></div><br>#b5b5bd</td>
         <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 14.1 Schnee<br>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 15.1 Schnee<br>
         </td>
         <td id="npcs"></td>
         <td id="angr"></td>
