@@ -58,3 +58,8 @@ img {
     display: block;      /* Mache das Bild zu einem Block-Element */
     margin: auto;        /* Zentriere das Bild horizontal und vertikal */
 }
+
+.selected-biome {
+    border: 3px solid rgb(255, 69, 85);    /* Ein 2px breiter, blauer Rahmen */
+    box-sizing: border-box;    /* Damit die Gesamtgröße des Elements nicht durch den Rahmen beeinflusst wird */
+}

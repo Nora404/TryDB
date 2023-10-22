@@ -23,6 +23,7 @@
       <div class="biome-tile" 
           *ngFor="let biome of biomes" 
           [style.background-color]="biome.color"
+          [class.selected-biome]="selectedBiome === biome" 
           (click)="selectBiome(biome)">
           <img [src]="'../../../assets/mapIcons/' + biome.symbol + '.svg'" alt="">
       </div>
