@@ -60,7 +60,10 @@ export class MapComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.loadMap('trymap');
+    // this.loadMap('trymap');
+    this.loadMap('trymap').then(() => {
+      this.setStartPosition(4, 4);
+    });
   }
 
   async loadMap(map:string) {
@@ -75,6 +78,22 @@ export class MapComponent implements OnInit{
       this.currentTile.emit(this.getMyPositionTile());
     }
   }
+
+  setStartPosition(right: number, down: number) {
+    // Berechne den neuen Startpunkt in Pixeln
+    const newLeft = this.left - (this.size * right);
+    const newTop = this.top - (this.size * down);
+  
+    // Überprüfe, ob die neue Position innerhalb der Grenzen der Karte liegt
+    if (this.isPositionAllowed(newTop, newLeft)) {
+      this.left = newLeft;
+      this.top = newTop;
+      this.currentTile.emit(this.getMyPositionTile()); // Aktualisiere die aktuelle Kachel
+    } else {
+      console.log('Die gewünschte Startposition ist außerhalb der Karte.');
+    }
+  }
+  
 
   // -------------------------------------------------------------------------------
 

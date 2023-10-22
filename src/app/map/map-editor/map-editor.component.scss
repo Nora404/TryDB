@@ -38,14 +38,16 @@
   }
   
   .biome-selector {
-    display: flex;
+    //display: flex;
     margin-top: 20px;
+    width: $smallWidth;
   }
   
   .biome-tile {
     width: 50px;   /* Größe der Biome-Kachel */
     height: 50px;  /* Größe der Biome-Kachel */
     margin: 5px;
+    float: left;
     border: 1px solid #ddd;
     cursor: pointer;
   }
