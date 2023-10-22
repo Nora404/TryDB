@@ -1,0 +1,52 @@
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .map-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .map-controls button {
+    padding: 10px 20px;
+    margin: 5px;
+  }
+  
+  .map-view {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+  }
+  
+  .map-row {
+    display: flex;
+  }
+  
+  .map-tile {
+    width: 50px;   /* Größe der Kachel */
+    height: 50px;  /* Größe der Kachel */
+    border: 1px solid #ddd;
+    cursor: pointer;  /* Zeigt einen Hand-Cursor beim Überfahren mit der Maus an */
+  }
+  
+  .biome-selector {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  .biome-tile {
+    width: 50px;   /* Größe der Biome-Kachel */
+    height: 50px;  /* Größe der Biome-Kachel */
+    margin: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
+  
+  .map-array-output {
+    margin-top: 20px;
+  }

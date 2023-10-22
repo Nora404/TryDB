@@ -1,0 +1,36 @@
+<div class="editor-container">
+  <div class="map-controls">
+      <button (click)="expandUp()">▲</button>
+      <button (click)="expandLeft()">◄</button>
+      <div class="map-view">
+          <!-- Die äußere Schleife, die die Zeilen deiner Karte rendert -->
+          <div *ngFor="let row of mapArray; let rowIndex = index" class="map-row">
+              <!-- Die innere Schleife, die die Kacheln in einer Zeile rendert -->
+              <div *ngFor="let tile of row; let colIndex = index" 
+                  class="map-tile" 
+                  [style.background-color]="getTileColor(tile)"
+                  (click)="setTile(rowIndex, colIndex)">
+                  <!-- Der Inhalt der Kachel (z.B. Symbole oder Texturen) kann später hinzugefügt werden -->
+              </div>
+          </div>
+      </div>
+      <button (click)="expandRight()">►</button>
+      <button (click)="expandDown()">▼</button>
+  </div>
+  
+  <div class="biome-selector">
+      <!-- Biome-Auswahl -->
+      <div class="biome-tile" 
+          *ngFor="let biome of biomes" 
+          [style.background-color]="biome.color"
+          (click)="selectBiome(biome)">
+          <!-- Hier könnte das Symbol oder der Name des Bioms stehen -->
+      </div>
+  </div>
+  
+  <div class="map-array-output">
+      <button (click)="saveArray()">Save</button>
+      <button (click)="clearArray()">Clear</button>
+      <pre>{{ mapArray | json }}</pre>
+  </div>
+</div>

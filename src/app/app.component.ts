@@ -9,13 +9,14 @@ import { EventComponent } from "./event/event.component";
 import { EmptyBiom } from './db/biom';
 import { BehaviorSubject, Observable, Observer, of } from 'rxjs';
 import { Biom } from './map/biom.service';
+import { MapEditorComponent } from './map/map-editor/map-editor.component';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    imports: [CommonModule, RouterOutlet, FormsModule, PlayerEditorComponent, MapComponent, MenuComponent, EventComponent]
+    imports: [CommonModule, RouterOutlet, FormsModule, PlayerEditorComponent, MapComponent, MenuComponent, EventComponent, MapEditorComponent]
 })
 export class AppComponent{
   title = 'TryDB';
