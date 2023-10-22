@@ -27,6 +27,13 @@ Die Karte besteht aus quadratichen Kacheln, die Biome genannt werden. Sie haben 
 
 Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um die Karte lebendiger zu gestalten. Die Farben der Symbole lassen sich zur Zeit nicht per Code verändern und sind fix (Hardcodiert)
 
+Es gibt
+
+- Böden, (immer begehbar)
+- Wasser, (benötigt Schwimmen)
+- Wälder, (benötigt Durchdringen)
+- Wände, (benötigt Klettern)
+
 <hr>
 
 ### Biome
