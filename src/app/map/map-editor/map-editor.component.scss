@@ -50,3 +50,11 @@
   .map-array-output {
     margin-top: 20px;
   }
+
+  /* Stil für das Tile-Bild */
+img {
+    width: 80%;          /* Setze die Breite auf 80% */
+    height: auto;        /* Behalte das Seitenverhältnis bei */
+    display: block;      /* Mache das Bild zu einem Block-Element */
+    margin: auto;        /* Zentriere das Bild horizontal und vertikal */
+}

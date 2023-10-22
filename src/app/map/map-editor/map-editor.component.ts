@@ -16,8 +16,8 @@ export class MapEditorComponent {
   ]; // Beispielwert, du kannst die Größe und die Initialwerte anpassen
 
   biomes = [
-    { id: 0, color: 'white', name: 'Leer' },
-    { id: 1, color: 'green', name: 'Gras' },
+    { id: 0, color: 'white', name: 'Leer', symbol: 'nothing' },
+    { id: 1, color: '#87a787', name: 'Gras', symbol: 'grass' },
     // Füge hier weitere Biome hinzu, wenn du möchtest
   ];
   selectedBiome: any = null;
@@ -43,6 +43,12 @@ export class MapEditorComponent {
     const biome = this.biomes.find(b => b.id === tileValue);
     return biome ? biome.color : 'transparent';
   }
+
+  getTileSymbol(tileValue: number): string {
+    const biome = this.biomes.find(b => b.id === tileValue);
+    return biome ? biome.symbol : 'empty';
+}
+
 
   setTile(row: number, col: number) {
     if (this.selectedBiome) {

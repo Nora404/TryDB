@@ -10,7 +10,7 @@
                   class="map-tile" 
                   [style.background-color]="getTileColor(tile)"
                   (click)="setTile(rowIndex, colIndex)">
-                  <!-- Der Inhalt der Kachel (z.B. Symbole oder Texturen) kann später hinzugefügt werden -->
+                  <img [src]="'../../../assets/mapIcons/' + getTileSymbol(tile) + '.svg'" alt="">
               </div>
           </div>
       </div>
@@ -24,7 +24,7 @@
           *ngFor="let biome of biomes" 
           [style.background-color]="biome.color"
           (click)="selectBiome(biome)">
-          <!-- Hier könnte das Symbol oder der Name des Bioms stehen -->
+          <img [src]="'../../../assets/mapIcons/' + biome.symbol + '.svg'" alt="">
       </div>
   </div>
   
@@ -34,3 +34,5 @@
       <pre>{{ mapArray | json }}</pre>
   </div>
 </div>
+
+<img src="../../../assets/mapIcons/forest.svg">
