@@ -1,9 +1,10 @@
 export interface Biom {
+    id: number;
     name: string;
     icon: string;
     color: number[],
     discription: string;
-    events: [];
+    events: string[];
     goWest: boolean;
     goNord: boolean;
     goOst: boolean;
@@ -11,6 +12,7 @@ export interface Biom {
 }
 
 export const EmptyBiom: Biom = {
+    id: 0.0,
     name: "",
     icon: "",
     color: [100,100,100],
@@ -22,8 +24,21 @@ export const EmptyBiom: Biom = {
     goSud: true,
 }
 
-export const biom: {[key: number]: Biom} = {
-    1: {
+export const biom = [
+    {   
+        id: 0.0,
+        name: 'Nichts',
+        icon: 'nothing',
+        color: [255, 255, 255],
+        discription: '',
+        events: [],
+        goWest: false,
+        goNord: false,
+        goOst: false,
+        goSud: false,
+       },
+    {   
+        id: 1.1,
         name: 'Auf einer Wiese',
         icon: 'grass',
         color: [135, 167, 135],
@@ -34,7 +49,8 @@ export const biom: {[key: number]: Biom} = {
         goOst: true,
         goSud: true,
        },
-    2: {
+    {   
+        id: 1.2,
         name: 'Im Wald',
         icon: 'tree',
         color: [71, 124, 108],
@@ -45,7 +61,8 @@ export const biom: {[key: number]: Biom} = {
         goOst: true,
         goSud: true,
        },
-    3: {
+    {
+        id: 1.3,
         name: 'Eine Blumenwiese',
         icon: 'flower',
         color: [135, 167, 135],
@@ -56,7 +73,8 @@ export const biom: {[key: number]: Biom} = {
         goOst: true,
         goSud: true,
        },
-    4: {
+    {
+        id: 1.4,
         name: 'Am Fluss',
         icon: 'water',
         color: [93, 125, 172],
@@ -67,7 +85,8 @@ export const biom: {[key: number]: Biom} = {
         goOst: false,
         goSud: false,
        },
-    5: {
+    {
+        id: 1.5,
         name: 'Etwas Besonderes',
         icon: 'star',
         color: [212, 186, 97],
@@ -78,7 +97,8 @@ export const biom: {[key: number]: Biom} = {
         goOst: true,
         goSud: true,
        },
-       6: {
+     {
+        id: 1.6,
         name: 'Eine Brücke am Fluss',
         icon: 'brigeH',
         color: [93, 125, 172],
@@ -89,6 +109,6 @@ export const biom: {[key: number]: Biom} = {
         goOst: true,
         goSud: false,
        },
-  }
+    ]
 
  

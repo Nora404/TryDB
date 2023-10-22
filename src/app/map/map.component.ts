@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Biom, BiomService } from './biom.service';
+import { BiomService } from './biom.service';
 import { KeyboardEventService } from 'src/app/keyboard-event.service';
+import { Biom, EmptyBiom } from '../db/biom';
 
 @Component({
   selector: 'app-map',
@@ -59,10 +60,18 @@ export class MapComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.map = this.biomService.tryMap;
-    this.maxWidth = this.map.length;
-    this.maxHeight = this.map[0].length;
-    this.currentTile.emit(this.getMyPositionTile());
+    this.loadMap('trymap');
+  }
+
+  async loadMap(map:string) {
+    const loadedMap = await this.biomService.loadMap(map);
+    if (loadedMap){
+      this.biomService.generateMap(loadedMap);
+      this.map = this.biomService.tryMap;
+      this.maxWidth = this.map.length;
+      this.maxHeight = this.map[0].length;
+      this.currentTile.emit(this.getMyPositionTile());
+    }
   }
 
   // -------------------------------------------------------------------------------
@@ -201,7 +210,11 @@ export class MapComponent implements OnInit{
 
   getMyPositionTile(): Biom{
     const index = this.findMyPosition();
-    return this.map[index[0]][index[1]]
+    if (!this.map || index[0] >= this.map.length || index[0] < 0 || 
+        index[1] >= this.map[index[0]].length || index[1] < 0) {
+      return EmptyBiom;
+    }
+    return this.map[index[0]][index[1]];
   }
 
   isPositionAllowed(futureTop: number, futureLeft: number){

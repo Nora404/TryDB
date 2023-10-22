@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { biom } from 'src/app/db/biom';
 
 @Component({
   selector: 'app-map-editor',
@@ -9,22 +10,23 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./map-editor.component.scss']
 })
 export class MapEditorComponent {
+  biomes = biom;
   mapArray: number[][] = [
     [0, 0, 0],
     [0, 0, 0],
     [0, 0, 0]
   ]; // Beispielwert, du kannst die Größe und die Initialwerte anpassen
 
-  biomes = [
-    { id: 0.0, color: 'white', name: 'Leer', symbol: 'nothing' },
-    { id: 1.1, color: '#87a787', name: 'Wiese', symbol: 'grass' },
-    { id: 1.2, color: '#87a787', name: 'Blumen', symbol: 'flower' },
-    { id: 1.3, color: '#87a787', name: 'Gebäude', symbol: 'home' },
-    { id: 2.1, color: '#8F9C52', name: 'Feld', symbol: 'sprout' },
-    { id: 2.2, color: '#8F9C52', name: 'Mühle', symbol: 'mill' },
-    { id: 2.3, color: '#8F9C52', name: 'Brunnen', symbol: 'spring' },
-    // Füge hier weitere Biome hinzu, wenn du möchtest
-  ];
+  // biomes = [
+  //   { id: 0.0, color: 'white', name: 'Leer', symbol: 'nothing' },
+  //   { id: 1.1, color: '#87a787', name: 'Wiese', symbol: 'grass' },
+  //   { id: 1.2, color: '#87a787', name: 'Blumen', symbol: 'flower' },
+  //   { id: 1.3, color: '#87a787', name: 'Gebäude', symbol: 'home' },
+  //   { id: 2.1, color: '#8F9C52', name: 'Feld', symbol: 'sprout' },
+  //   { id: 2.2, color: '#8F9C52', name: 'Mühle', symbol: 'mill' },
+  //   { id: 2.3, color: '#8F9C52', name: 'Brunnen', symbol: 'spring' },
+  //   // Füge hier weitere Biome hinzu, wenn du möchtest
+  // ];
   selectedBiome: any = '';
 
 
@@ -45,13 +47,20 @@ export class MapEditorComponent {
   }
 
   getTileColor(tileValue: number): string {
-    const biome = this.biomes.find(b => b.id === tileValue);
-    return biome ? biome.color : 'transparent';
+    const biome = biom.find(b => b.id === tileValue);
+    if (biome) {
+      return this.formatColor(biome.color);
+    }
+    return 'transparent';
+  }
+  formatColor(color: number[]){
+    const [r, g, b] = color; // Zerlege das Array in die einzelnen Farbwerte
+      return `rgb(${r}, ${g}, ${b})`; // Erstelle den CSS-Farbwert
   }
 
   getTileSymbol(tileValue: number): string {
-    const biome = this.biomes.find(b => b.id === tileValue);
-    return biome ? biome.symbol : 'empty';
+    const biome = biom.find(b => b.id === tileValue);
+    return biome ? biome.icon : 'empty';
 }
 
 

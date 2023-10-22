@@ -6,9 +6,8 @@ import { PlayerEditorComponent } from "./playerEditor/editor/editor.component";
 import { MenuComponent } from './menu/menu.component';
 import { MapComponent } from './map/map.component';
 import { EventComponent } from "./event/event.component";
-import { EmptyBiom } from './db/biom';
+import { Biom, EmptyBiom } from './db/biom';
 import { BehaviorSubject, Observable, Observer, of } from 'rxjs';
-import { Biom } from './map/biom.service';
 import { MapEditorComponent } from './map/map-editor/map-editor.component';
 
 @Component({

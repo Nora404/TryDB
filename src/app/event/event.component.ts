@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Biom } from '../map/biom.service';
-import { EmptyBiom } from '../db/biom';
+import { Biom, EmptyBiom } from '../db/biom';
 import { ActionComponent } from "./action/action.component";
 
 @Component({
