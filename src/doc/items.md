@@ -28,14 +28,74 @@
 
 #### Rohstoffe
 
-<br>
+Holz
+Hartholz
+Stein
+Kupfererz
+Eisenersz
+Titanerz
+Rohleder
+Hartleder
+Wildleder
+Drachenleder
+Leinen
+Wolle
+Seide
+Weizensamen
+
+<hr>
 
 #### Waffen
 
-<br>
+Schwert
+Schild
+Bogen
+Dolch
+Stab
+Relikt
+Hammer
+
+<hr>
 
 #### Rüstung
 
-<br>
+Leinen-Roben
+Woll-Roben
+Seiden-Roben
+Magische-Roben
+
+Rohleder-Kleidung
+Hartleder-Kleidung
+Wildleder-Kleidung
+Drachenleder-Kleidung
+
+Ketten-Rüstung
+Eisen-Rüstung
+Platten-Rüstung
+Titan-Rüstung
+
+<hr>
 
 #### Ausrüstung
+
+Ring
+Kette
+Amulett
+
+Buch
+Talisman
+Puppe
+
+<hr>
+
+#### Werkzeuge
+
+Sense
+Schaufel
+Axt
+Spitzhacke
+Gieskanne
+Harke
+Angel
+Netz
+Messer

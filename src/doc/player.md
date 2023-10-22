@@ -18,11 +18,11 @@ Die Figur des Players hat außer dem Namen, eine Rasse, ein Geschlecht und einen
 Mit dem Hintergrund ist das gemeint was in anderen Spielen die Klasse ist.
 Hier bestimmt es nur die Anfangswerte und die Startausrüstung.
 
-| Rasse  | Geschlecht | Items          | Ausgerüstet | STR | STA | INT | DEF | LUC | HP  |
-| ------ | ---------- | -------------- | ----------- | --- | --- | --- | --- | --- | --- |
-| Mensch | M/W        | Brot           | Leinenhemd  | +1  | +1  | +2  | +1  | +1  | 25  |
-| Elf    | M/W        | Kartoffelsamen | Lederweste  | 0   | +3  | +1  | 0   | +2  | 25  |
-| Zwerd  | M/W        | Spitzhacke     | Kettenhemd  | +3  | +1  | 0   | +2  | 0   | 25  |
+| Rasse  | Geschlecht | Items       | Ausgerüstet | STR | STA | INT | DEF | LUC | HP  |
+| ------ | ---------- | ----------- | ----------- | --- | --- | --- | --- | --- | --- |
+| Mensch | M/W        | Brot        | Leinenhemd  | +1  | +1  | +2  | +1  | +1  | 25  |
+| Elf    | M/W        | Weizensamen | Lederweste  | 0   | +3  | +1  | 0   | +2  | 25  |
+| Zwerd  | M/W        | Spitzhacke  | Kettenhemd  | +3  | +1  | 0   | +2  | 0   | 25  |
 
 <hr>
 
