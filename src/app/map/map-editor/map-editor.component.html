@@ -30,9 +30,10 @@
   </div>
   
   <div class="map-array-output">
-      <button (click)="saveArray()">Save</button>
-      <button (click)="clearArray()">Clear</button>
-      <pre>{{ mapArray | json }}</pre>
+      <button class="space" (click)="saveArray()">Karte exportieren</button><br>
+      <button class="space"  (click)="clearArray()">Karte zurück setzten</button><br>
+      <input type="file" id="fileInput" (change)="loadArray($event)" style="display: none;">
+      <label for="fileInput" class="custom-file-button space">Karte importieren</label>
   </div>
 </div>
 

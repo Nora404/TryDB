@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 .editor-container {
     display: flex;
     flex-direction: column;
@@ -62,4 +64,24 @@ img {
 .selected-biome {
     border: 3px solid rgb(255, 69, 85);    /* Ein 2px breiter, blauer Rahmen */
     box-sizing: border-box;    /* Damit die Gesamtgröße des Elements nicht durch den Rahmen beeinflusst wird */
+}
+.custom-file-button {
+    display: inline-block;
+    cursor: pointer;
+    line-height: 21px;
+    background-color: rgb(44, 44, 44);
+    border: 2px solid black;
+    color: rgb(187, 187, 187);
+    border-radius: 5px;
+    width: $pgWigth*0.295;
+    height: 21px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgb(0, 0, 0);
+
+    &:hover{
+        background-color: rgb(0, 0, 0);
+    }
+}
+.space{
+    margin: 6px;
 }

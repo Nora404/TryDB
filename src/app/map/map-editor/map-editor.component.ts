@@ -62,9 +62,25 @@ export class MapEditorComponent {
   }
 
   saveArray() {
-    // TODO: Logik zum Speichern des Arrays (kann später hinzugefügt werden)
-    console.log('Save array', this.mapArray);
+    const blob = new Blob([JSON.stringify(this.mapArray)], { type: 'application/json' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'map.json';
+    a.click();
+    window.URL.revokeObjectURL(url);
   }
+
+  loadArray(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+            this.mapArray = JSON.parse(e.target.result);
+        };
+        reader.readAsText(file);
+    }
+}
 
   clearArray() {
     this.mapArray = this.mapArray.map(row => row.map(() => 0)); // Setzt alle Werte im Array auf 0
