@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Biom, EmptyBiom } from '../db/biom';
 import { ActionComponent } from "./action/action.component";
+import { TileEvent, tileEvent } from '../db/events';
 
 @Component({
     selector: 'app-event',
@@ -10,10 +11,19 @@ import { ActionComponent } from "./action/action.component";
     styleUrls: ['./event.component.scss'],
     imports: [CommonModule, ActionComponent]
 })
-export class EventComponent {
+export class EventComponent{
 
   @Input() tile: Biom | null = EmptyBiom;
   private _imgUrl: string = '../../../assets/mapIcons/';
+
+  @Input() coordinate: number[] = [0,0];
+
+  isEvent(){
+    if(this.tile){     
+      return this.tile.events[0].length > 0 ? true : false;
+    }
+    return false
+  }
 
   getStyleColors(color: number[]){
     const red: number = (color[0] || 100); 

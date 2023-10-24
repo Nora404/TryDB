@@ -1,6 +1,6 @@
 <h3 class="element" style="border: 5px solid;"
     [ngStyle]="getStyleColors(tile?.color || [])">
-    Ereignis
+    Ereignis auf {{coordinate[0]}}/{{coordinate[1]}}
 </h3>
 
 
@@ -12,6 +12,10 @@
     {{ tile?.discription }}
 </div>
 
-<app-action></app-action>
-<app-action></app-action>
-<app-action></app-action>
+<span *ngIf="isEvent()">
+    <span *ngFor="let tileEvent of tile?.events">
+        <app-action [eventID]="tileEvent[0]"></app-action>
+    </span>
+</span>
+
+

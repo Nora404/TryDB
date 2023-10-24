@@ -13,7 +13,8 @@ import { Biom, EmptyBiom } from '../db/biom';
 })
 export class MapComponent implements OnInit{
 
-  @Output() currentTile: EventEmitter<Biom> = new EventEmitter<Biom>()
+  @Output() currentTile: EventEmitter<Biom> = new EventEmitter<Biom>();
+  @Output() currentCoordinate: EventEmitter<number[]> = new EventEmitter<number[]>();
 
   // Das ist die Karte, ein Mehrdimensionales Array
   // [[1,2,3][1,2,3]] Diese Karte ist 2x3 Kacheln groß
@@ -179,6 +180,7 @@ export class MapComponent implements OnInit{
       if(this.isWayAllowed('west', newTile)&&this.isWayAllowed('ost', currentTile)){
         this.left = this.left + this.size;
         this.currentTile.emit(this.getMyPositionTile());
+        this.currentCoordinate.emit([newPosition[0],newPosition[1]]);
       } else {
         this.hopUp();
       }
@@ -197,6 +199,7 @@ export class MapComponent implements OnInit{
       if(this.isWayAllowed('nord', newTile)&&this.isWayAllowed('sud', currentTile)){
         this.top = futureTop;
         this.currentTile.emit(this.getMyPositionTile());
+        this.currentCoordinate.emit([newPosition[0],newPosition[1]]);
       } else {
         this.hopUp();
       }
@@ -215,6 +218,7 @@ export class MapComponent implements OnInit{
       if(this.isWayAllowed('ost', newTile)&&this.isWayAllowed('west', currentTile)){
         this.left = futureLeft;
         this.currentTile.emit(this.getMyPositionTile());
+        this.currentCoordinate.emit([newPosition[0],newPosition[1]]);
       } else {
         this.hopUp();
       }
@@ -233,6 +237,7 @@ export class MapComponent implements OnInit{
       if(this.isWayAllowed('sud', newTile)&&this.isWayAllowed('nord', currentTile)){
         this.top = futureTop;
         this.currentTile.emit(this.getMyPositionTile());
+        this.currentCoordinate.emit([newPosition[0],newPosition[1]]);
       } else {
         this.hopUp();
       }

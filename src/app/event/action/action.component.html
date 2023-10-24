@@ -1,10 +1,8 @@
-<h3>Name einer Action</h3>
+<h3>{{getEvent().name}}</h3>
 
 <div class="action">
     <img src="../../../assets/kreatur/rat.svg" alt="">
-    <div>
-        <button>Untersuchen</button><br>
-        <button>Nehmen</button><br>
-        <button>Reden</button>
+    <div *ngFor="let action of getEvent().action">
+        <button>{{action}}</button><br>
     </div>
 </div>

@@ -8,8 +8,8 @@
 
 <div id="game">
     <div id="left"><app-menu></app-menu></div>
-    <div id="main"><app-map (currentTile)="setCurrentTile($event)"></app-map></div>
-    <div id="right"><app-event [tile]="currentTile | async"></app-event></div>
+    <div id="main"><app-map (currentTile)="setCurrentTile($event)" (currentCoordinate)="setCurrentCoordinate($event)"></app-map></div>
+    <div id="right"><app-event [tile]="currentTile | async" [coordinate]="(currentCoordinate | async) ?? [0,0]"></app-event></div>
 </div>
 
 <br>

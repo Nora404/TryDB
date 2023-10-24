@@ -20,6 +20,7 @@ import { MapEditorComponent } from './map/map-editor/map-editor.component';
 export class AppComponent{
   title = 'TryDB';
   private _currentTile: BehaviorSubject<Biom> = new BehaviorSubject<Biom>(EmptyBiom);
+  private _currentCoordinate: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([0,0])
 
   setCurrentTile(tile: Biom){
     this._currentTile.next(tile);
@@ -27,5 +28,13 @@ export class AppComponent{
 
   get currentTile(){
     return this._currentTile.asObservable();
+  }
+
+  setCurrentCoordinate(coor: number[]){
+    this._currentCoordinate.next(coor);
+  }
+
+  get currentCoordinate(){
+    return this._currentCoordinate.asObservable();
   }
 }
