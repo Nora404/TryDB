@@ -31,14 +31,14 @@
 }
 
 .icon{
-    width: 80%;
-    height: 80%;
+    width: 99%;
+    height: 99%;
     // opacity: 0.3;
 }
 
 #player{
     position: absolute;
-    border-radius: 40%;
+    border-radius: 0%;
     transition: all 0.4s;
     transform: translate(-50%, -50%);
     top: 50%;

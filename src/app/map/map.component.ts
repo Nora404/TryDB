@@ -62,7 +62,7 @@ export class MapComponent implements OnInit{
   ngOnInit(): void {
     // this.loadMap('trymap');
     this.loadMap('trymap').then(() => {
-      this.setStartPosition(4, 4);
+      this.setStartPosition(4, 5);
     });
   }
 

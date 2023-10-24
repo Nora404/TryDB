@@ -40,10 +40,11 @@
   .biome-selector {
     //display: flex;
     margin-top: 20px;
-    width: $smallWidth;
+    width: $smallWidth*1.1;
   }
   
   .biome-tile {
+    box-sizing: border-box;
     width: 50px;   /* Größe der Biome-Kachel */
     height: 50px;  /* Größe der Biome-Kachel */
     margin: 5px;
