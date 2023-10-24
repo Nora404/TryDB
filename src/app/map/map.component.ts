@@ -126,7 +126,7 @@ export class MapComponent implements OnInit{
   }
 
   getStyleBorder(biom: Biom){
-      const big = '2px solid';
+      const big = '3px solid';
       const small = '2px dotted'
       const border = {
         'border-top': biom.nord ? small : big,
