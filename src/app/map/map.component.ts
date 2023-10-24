@@ -109,8 +109,9 @@ export class MapComponent implements OnInit{
     return style
   }
 
-  createTileStyle(color: number[]){
-    const styleColors = this.getStyleColors(color);
+  createTileStyle(biom: Biom){
+    const styleColors = this.getStyleColors(biom.color);
+    const styleBorder = this.getStyleBorder(biom);
 
     const style = {
       'width': this.size +'px',
@@ -118,8 +119,21 @@ export class MapComponent implements OnInit{
       'top': this.top +'px',
       'left': this.left +'px',
       ... styleColors,
+      ... styleBorder,
     }
     return style;
+  }
+
+  getStyleBorder(biom: Biom){
+      const big = '2px solid';
+      const small = '2px dotted'
+      const border = {
+        'border-top': biom.nord ? small : big,
+        'border-right': biom.ost ? small : big,
+        'border-bottom': biom.sud ? small : big,
+        'border-left': biom.west ? small : big,
+    }
+    return border;
   }
 
   getStyleColors(color: number[]){
@@ -128,8 +142,8 @@ export class MapComponent implements OnInit{
     const blue: number = (color[2] || 100); 
 
     const style = {
-      'color':            `rgb(${red * 0.3},${green * 0.3},${blue * 0.3})`,
-      'border-color':     `rgb(${red * 0.5},${green * 0.5},${blue * 0.5})`,
+      'color':            `rgb(${red * 0.5},${green * 0.5},${blue * 0.5})`,
+      'border-color':     `rgb(${red * 0.8},${green * 0.8},${blue * 0.8})`,
       'background-color': `rgb(${red},${green},${blue})`,
     }
     return style
@@ -155,54 +169,56 @@ export class MapComponent implements OnInit{
   // -------------------------------------------------------------------------------
 
   west(){
+    const currentTile = this.getMyPositionTile();
     const futureLeft =  this.left + this.size;
     if(this.isPositionAllowed(this.top, futureLeft)){
 
       const newPosition = this.findMyPosition(this.top, futureLeft);
       const newTile = this.map[newPosition[0]][newPosition[1]];
 
-      if(this.isWayAllowed('west', newTile)){
+      if(this.isWayAllowed('west', newTile)&&this.isWayAllowed('ost', currentTile)){
         this.left = this.left + this.size;
         this.currentTile.emit(this.getMyPositionTile());
       }
     }
   }
   nord(){
-    const futureTop = this.top + this.size;
     const currentTile = this.getMyPositionTile();
-
+    const futureTop = this.top + this.size;
     if(this.isPositionAllowed(futureTop, this.left) && this.isWayAllowed('nord', currentTile)){
-
+      
       const newPosition = this.findMyPosition(futureTop, this.left);
       const newTile = this.map[newPosition[0]][newPosition[1]];
 
-      if(this.isWayAllowed('nord', newTile)){
+      if(this.isWayAllowed('nord', newTile)&&this.isWayAllowed('sud', currentTile)){
         this.top = futureTop;
         this.currentTile.emit(this.getMyPositionTile());
       }
     }
   }
   ost(){
+    const currentTile = this.getMyPositionTile();
     const futureLeft = this.left - this.size; 
     if(this.isPositionAllowed(this.top, futureLeft)){
 
       const newPosition = this.findMyPosition(this.top, futureLeft);
       const newTile = this.map[newPosition[0]][newPosition[1]];
 
-      if(this.isWayAllowed('ost', newTile)){
+      if(this.isWayAllowed('ost', newTile)&&this.isWayAllowed('west', currentTile)){
         this.left = futureLeft;
         this.currentTile.emit(this.getMyPositionTile());
       }
     }
   }
   sud(){
+    const currentTile = this.getMyPositionTile()
     const futureTop = this.top - this.size;
     if(this.isPositionAllowed(futureTop, this.left)){
 
       const newPosition = this.findMyPosition(futureTop, this.left);
       const newTile = this.map[newPosition[0]][newPosition[1]];
 
-      if(this.isWayAllowed('sud', newTile)){
+      if(this.isWayAllowed('sud', newTile)&&this.isWayAllowed('nord', currentTile)){
         this.top = futureTop;
         this.currentTile.emit(this.getMyPositionTile());
       }
@@ -258,10 +274,10 @@ export class MapComponent implements OnInit{
   }
 
   isWayAllowed(way: 'west'|'nord'|'ost'|'sud', biom: Biom){
-    if(way==='west' && !biom.goWest){return false};
-    if(way==='nord' && !biom.goNord){return false};
-    if(way==='ost' && !biom.goOst){return false};
-    if(way==='sud' && !biom.goSud){return false};
+    if(way==='west' && !biom.ost){return false};
+    if(way==='nord' && !biom.sud){return false};
+    if(way==='ost' && !biom.west){return false};
+    if(way==='sud' && !biom.nord){return false};
     return true
   }
 

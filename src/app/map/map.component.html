@@ -9,7 +9,7 @@
     <div id="map" [ngStyle]="getMapStyle()">
         <div *ngFor="let row of map">
             
-            <div *ngFor="let cell of row" class="kachel" [ngStyle]="createTileStyle(cell.color)">
+            <div *ngFor="let cell of row" class="kachel" [ngStyle]="createTileStyle(cell)">
                 <img [attr.src]="iconUrl(cell.icon)" alt="" 
                      (error)="iconError($event.target)" 
                      [ngStyle]="colorBlackSvg(cell.color)">
