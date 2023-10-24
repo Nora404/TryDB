@@ -17,8 +17,9 @@
             
         </div>
     </div>
-    <div id="player" [ngStyle]="createPlayerStyle()">
-        <img class="player" src="../../../assets/player/humanW.svg">
+    <div id="player" 
+        [ngStyle]="createPlayerStyle()">
+        <img class="player" [class.hop-up]="isHoppingUp"  src="../../../assets/player/humanW.svg">
     </div>
 </div>
 

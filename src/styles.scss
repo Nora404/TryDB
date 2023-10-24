@@ -61,3 +61,14 @@ hr{
     border: 2px dotted rgb(54, 54, 54);
     margin: 10px 0 10px 0;
 }
+
+//-------------------------------------------------------------
+
+.hop-up {
+    animation: hop-up 0.3s ease-in-out;
+  }
+@keyframes hop-up {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}

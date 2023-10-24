@@ -179,7 +179,11 @@ export class MapComponent implements OnInit{
       if(this.isWayAllowed('west', newTile)&&this.isWayAllowed('ost', currentTile)){
         this.left = this.left + this.size;
         this.currentTile.emit(this.getMyPositionTile());
+      } else {
+        this.hopUp();
       }
+    } else {
+      this.hopUp();
     }
   }
   nord(){
@@ -193,7 +197,11 @@ export class MapComponent implements OnInit{
       if(this.isWayAllowed('nord', newTile)&&this.isWayAllowed('sud', currentTile)){
         this.top = futureTop;
         this.currentTile.emit(this.getMyPositionTile());
+      } else {
+        this.hopUp();
       }
+    } else {
+      this.hopUp();
     }
   }
   ost(){
@@ -207,7 +215,11 @@ export class MapComponent implements OnInit{
       if(this.isWayAllowed('ost', newTile)&&this.isWayAllowed('west', currentTile)){
         this.left = futureLeft;
         this.currentTile.emit(this.getMyPositionTile());
+      } else {
+        this.hopUp();
       }
+    } else {
+      this.hopUp();
     }
   }
   sud(){
@@ -221,7 +233,11 @@ export class MapComponent implements OnInit{
       if(this.isWayAllowed('sud', newTile)&&this.isWayAllowed('nord', currentTile)){
         this.top = futureTop;
         this.currentTile.emit(this.getMyPositionTile());
+      } else {
+        this.hopUp();
       }
+    } else {
+      this.hopUp();
     }
   }
 
@@ -322,4 +338,15 @@ export class MapComponent implements OnInit{
     }
     return hue
   }
+
+  //-------------------------------------------------------------------
+
+  isHoppingUp:boolean = false;
+  hopUp() {
+    this.isHoppingUp = true;
+    setTimeout(() => {
+      this.isHoppingUp = false;
+    }, 300); // Dauer der Animation in Millisekunden
+  }
+
 }
