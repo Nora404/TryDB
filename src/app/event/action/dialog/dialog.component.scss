@@ -4,9 +4,9 @@
     position: relative;
     background-color: rgb(51, 51, 51);
     z-index: 99;
-    width: $smallWidth;
+    width: $smallWidth*0.9;
     height: $pgHeight*0.4;
     top: -$pgHeight*0.75;
-    left: -$pgWigth*0.009;
+    // left: -$pgWigth*0.009;
     border: 5px solid rgb(70, 70, 70);
 }

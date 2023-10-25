@@ -12,4 +12,5 @@ export class DialogComponent {
 
   // @Output closeDialog: string = ''
   // TODO Bubble das Close-Event nach oben um das Fenster zu schließen
+  // Cosebutton 
 }
