@@ -12,9 +12,10 @@ img{
     box-sizing: border-box;
     border: 3px solid rgb(70, 70, 70);
     padding: 5px 10px 5px 10px;
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
     align-items: center;
+    min-height: $layoutWidth*0.3;
 }
 
 h3{
@@ -31,4 +32,8 @@ h3{
 button{
     width: 150px;
     margin: 2px 0 2px 0;
+}
+
+span{
+    display: block;
 }

@@ -246,4 +246,17 @@ Es gibt
         <td id="item"></td>
         <td id="such"></td>
     </tr>      
+        <tr>
+        <td colspan="6">Weg</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #73706b;;" class="tile"></div><br>#b5b5bd</td>
+        <td>
+            <img src="../assets/mapIcons/weg.svg" class="symbol"> 22 Weg<br>
+        </td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item"></td>
+        <td id="such"></td>
+    </tr> 
 </table>

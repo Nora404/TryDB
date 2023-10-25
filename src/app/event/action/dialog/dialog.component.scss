@@ -1,0 +1,12 @@
+@import '../../../../styles.scss';
+
+.dialog{
+    position: relative;
+    background-color: rgb(51, 51, 51);
+    z-index: 99;
+    width: $smallWidth;
+    height: $pgHeight*0.4;
+    top: -$pgHeight*0.75;
+    left: -$pgWigth*0.009;
+    border: 5px solid rgb(70, 70, 70);
+}

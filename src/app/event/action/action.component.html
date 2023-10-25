@@ -1,8 +1,8 @@
 <h3>{{getEvent().name}}</h3>
 
 <div class="action">
-    <img src="../../../assets/kreatur/rat.svg" alt="">
-    <div *ngFor="let action of getEvent().action">
-        <button>{{action}}</button><br>
-    </div>
+    <img src={{getImage()}} alt="">
+    <span *ngFor="let action of getEvent().action">
+        <button (click)="handleAction(action)">{{action}}</button>
+    </span>
 </div>

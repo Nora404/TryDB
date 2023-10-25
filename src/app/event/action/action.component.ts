@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EmptyTileEvent, TileEvent, tileEvent } from 'src/app/db/events';
+import { tileEvent } from 'src/app/db/events';
 
 @Component({
   selector: 'app-action',
@@ -11,8 +11,16 @@ import { EmptyTileEvent, TileEvent, tileEvent } from 'src/app/db/events';
 })
 export class ActionComponent {
   @Input() eventID: number = 0;
+  @Output() actionID: EventEmitter<string> = new EventEmitter<string>();
 
   getEvent(){
     return tileEvent[this.eventID];
+  }
+  getImage(){
+    return "../../../assets/uiIcons/" + tileEvent[this.eventID].icon + ".svg"
+  }
+
+  handleAction(action: string){
+    this.actionID.emit(action);
   }
 }

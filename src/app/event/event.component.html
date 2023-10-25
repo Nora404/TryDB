@@ -14,8 +14,7 @@
 
 <span *ngIf="isEvent()">
     <span *ngFor="let tileEvent of tile?.events">
-        <app-action [eventID]="tileEvent[0]"></app-action>
+        <app-action [eventID]="tileEvent[0]" (actionID)="executeAction($event)"></app-action>
     </span>
 </span>
-
 

@@ -1,9 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Biom, EmptyBiom } from '../db/biom';
 import { ActionComponent } from "./action/action.component";
-import { TileEvent, tileEvent } from '../db/events';
-
+import { DialogComponent } from './action/dialog/dialog.component';
 @Component({
     selector: 'app-event',
     standalone: true,
@@ -17,6 +16,8 @@ export class EventComponent{
   private _imgUrl: string = '../../../assets/mapIcons/';
 
   @Input() coordinate: number[] = [0,0];
+
+  @Output() actionID: EventEmitter<string> = new EventEmitter<string>();
 
   isEvent(){
     if(this.tile){     
@@ -56,6 +57,11 @@ export class EventComponent{
       }
     }
     return
+  }
+
+
+  executeAction(actionID: string){
+    this.actionID.emit(actionID);
   }
 
 }
