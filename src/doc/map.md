@@ -259,4 +259,33 @@ Es gibt
         <td id="item"></td>
         <td id="such"></td>
     </tr> 
+        </tr>      
+        <tr>
+        <td colspan="6">Toter Baum</td>
+    </tr>
+    <tr>
+        <td><div style="background-color: #73706b;;" class="tile"></div><br>#b5b5bd</td>
+        <td>
+            <img src="../assets/mapIcons/love.svg" class="symbol"> 23 Toter Baum<br>
+        </td>
+        <td id="npcs"></td>
+        <td id="angr"></td>
+        <td id="item"></td>
+        <td id="such"></td>
+    </tr> 
 </table>
+
+<hr>
+
+### Mögliche weitere Biome
+
+- Wüste
+- Ruine
+- Kristall
+- Sumpf
+- Lava
+- Vulkan
+- Leere
+- Dorf (Menschen, Elfen, Zwerge)
+
+Varianten mit besonderen Inhalten wie Handwerk, Gebäude, Besondere Orte, sowas wie ein magischer Baum?

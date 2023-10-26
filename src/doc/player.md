@@ -92,7 +92,9 @@ Hier bestimmt es nur die Anfangswerte und die Startausrüstung.
 <b>- Vergiftung: </b> - Über Zeit (Runden) verliert der Betroffene HP.<br>
 <b>- Verwirrung: </b> - Über Zeit (Runden) könnte der Betroffene zu x% sich selbst verletzten.<br>
 <b>- Geblendet: </b> - Über Zeit (Runden) gehen die Angriffe des Betroffenen zu x% daneben.<br>
-<b>- Verletzt: </b> - Über Zeit (Runden) setzt der Betroffene zu x% die Runde aus.<br>
+<b>- Gefrohren: </b> - Über Zeit (Runden) setzt der Betroffene zu x% die Runde aus.<br>
+<b>- Verbrennung: </b> - Über Zeit (Runden) sind die Angriffe des Gegner weniger Effiktiv.<br>
+<b>- Kälte: </b> - Über Zeit (Runden) verliert der Betroffene HP.<br>
 
 <hr>
 
