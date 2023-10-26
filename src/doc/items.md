@@ -28,32 +28,51 @@
 
 #### Rohstoffe
 
-Holz
-Hartholz
-Stein
-Kupfererz
-Eisenersz
-Titanerz
-Rohleder
-Hartleder
-Wildleder
-Drachenleder
-Leinen
-Wolle
-Seide
+| Name      | Biom1      | Biom2      | Beschaffung1 | Beschafung2 |
+| --------- | ---------- | ---------- | ------------ | ----------- |
+| Holz      | Laubbaum   | Laubwald   | nehmen       | fällen      |
+| Hartholz  | Tanne      | Tannenwald | nehmen       | fällen      |
+| Stein     | Weg        | Gestein    | nehmen       | schlagen    |
+| Kupfererz | Gestein    |            | schlagen     |             |
+| Titanerz  | Steinwände |            | schlagen     |             |
+| Flachs    | Feld       |            | ernten       |             |
+
+<br>
+
+| Name         | Kreatur | Verb       |
+| ------------ | ------- | ---------- |
+| Rohleder     | Wolf    | kürschnern |
+| Hartleder    | ??      | kürschnern |
+| Wildleder    | ??      | kürschnern |
+| Drachenleder | Drache  | kürschnern |
+
+<br>
+
+| Name         | Hersteller  | Zutaten1  | Zutaten2 | Zutaten3 | Zutaten4 | Verb      |
+| ------------ | ----------- | --------- | -------- | -------- | -------- | --------- |
+| Leinen       | Schneider   | Flachs    | Faden    |          |          | nähen     |
+| Wolleballen  | Schneider   | Wolle     | Faden    |          |          | nähen     |
+| Seidenstoff  | Schneider   | Seide     | Faden    |          |          | nähen     |
+| Kupferbarren | Schmelzofen | Kupfererz | Holz     |          |          | schmelzen |
+| Eisenbarren  | Schmelzofen | Eisenerz  | Holz     |          |          | schmelzen |
+| Titanbarren  | Schmelzofen | Titanerz  | Holz     |          |          | schmelzen |
+
 Weizensamen
+Faden
 
 <hr>
 
 #### Waffen
 
-Schwert
-Schild
-Bogen
-Dolch
-Stab
-Relikt
-Hammer
+| Name    | Attribut |
+| ------- | -------- |
+| Schwert | str      |
+| Schild  | def      |
+| Bogen   | sta      |
+| Dolch   | sta      |
+| Stab    | int      |
+| Relikt  | int      |
+| Hammer  | str      |
 
 <hr>
 
@@ -90,12 +109,13 @@ Puppe
 
 #### Werkzeuge
 
-Sense
-Schaufel
-Axt
-Spitzhacke
-Gieskanne
-Harke
-Angel
-Netz
-Messer
+| Name       | Verb      |
+| ---------- | --------- |
+| Sense      | ernten    |
+| Schaufel   | graben    |
+| Axt        | fällen    |
+| Spitzhacke | schlagen  |
+| Gieskanne  | gießen    |
+| Angel      | fischen   |
+| Netz       | fangen    |
+| Messer     | schneiden |
