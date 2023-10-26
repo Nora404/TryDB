@@ -1,5 +1,14 @@
 ### Items
 
+Es gibt Items die
+
+- man in Biomen findet oder abbaut
+- man von Kreaturen erbeutet
+- als Zutat oder Rohstoff herstellt
+- an Stationen herstellt
+- man kaufen muss
+- man geschenkt bekommt
+
 #### Essen
 
 | Name             | Zutaten-1 | Zutaten-2  | Zutaten-3 | Zutaten-4 | EK  | VK  | Buff          | Runden |
@@ -78,32 +87,36 @@ Faden
 
 #### Rüstung
 
-Leinen-Roben
-Woll-Roben
-Seiden-Roben
-Magische-Roben
-
-Rohleder-Kleidung
-Hartleder-Kleidung
-Wildleder-Kleidung
-Drachenleder-Kleidung
-
-Ketten-Rüstung
-Eisen-Rüstung
-Platten-Rüstung
-Titan-Rüstung
+| Name                  |        |
+| --------------------- | ------ |
+| Leinen-Roben          | Leicht |
+| Woll-Roben            | Leicht |
+| Seiden-Roben          | Leicht |
+| Magische-Roben        | Leicht |
+|                       |        |
+| Rohleder-Kleidung     | Mittel |
+| Hartleder-Kleidung    | Mittel |
+| Wildleder-Kleidung    | Mittel |
+| Drachenleder-Kleidung | Mittel |
+|                       |        |
+| Ketten-Rüstung        | Schwer |
+| Eisen-Rüstung         | Schwer |
+| Platten-Rüstung       | Schwer |
+| Titan-Rüstung         | Schwer |
 
 <hr>
 
 #### Ausrüstung
 
-Ring
-Kette
-Amulett
-
-Buch
-Talisman
-Puppe
+| Name     | Kategorie | Attribut |
+| -------- | --------- | -------- |
+| Ring     | Schmuck   | sta      |
+| Kette    | Schmuck   | str      |
+| Amulett  | Schmuck   | int      |
+|          |           |
+| Buch     | Artefakte | int      |
+| Talisman | Artefakte | sta      |
+| Puppe    | Artefakte | str      |
 
 <hr>
 
