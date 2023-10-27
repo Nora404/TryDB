@@ -52,7 +52,7 @@ export const biom = [
        {   
         id: 2,
         name: 'Blumen',
-        icon: 'flower',
+        icon: 'flowers',
         color: [135, 167, 135],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -64,7 +64,7 @@ export const biom = [
        {   
         id: 3,
         name: 'Gebäude',
-        icon: 'home',
+        icon: 'wood-cabin',
         color: [135, 167, 135],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[1, 100],[2,50]],
@@ -76,7 +76,7 @@ export const biom = [
        {   
         id: 4,
         name: 'Feld',
-        icon: 'sprout',
+        icon: 'wheat',
         color: [160, 175, 100],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -88,7 +88,7 @@ export const biom = [
        {   
         id: 5,
         name: 'Mühle',
-        icon: 'mill',
+        icon: 'windmill',
         color: [160, 175, 100],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -100,7 +100,7 @@ export const biom = [
        {   
         id: 6,
         name: 'Brunnen',
-        icon: 'spring',
+        icon: 'well',
         color: [160, 175, 100],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -112,7 +112,7 @@ export const biom = [
        {   
         id: 7,
         name: 'Tannenwald',
-        icon: 'tree',
+        icon: 'pine-tree',
         color: [71, 124, 108],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -124,7 +124,7 @@ export const biom = [
        {   
         id: 8,
         name: 'Dichter Tannenwald',
-        icon: 'forest',
+        icon: 'pine-forest',
         color: [35, 61, 53],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -136,7 +136,7 @@ export const biom = [
        {   
         id: 9,
         name: 'Laubwald',
-        icon: 'nothing',
+        icon: 'beech',
         color: [90, 115, 63],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -148,7 +148,7 @@ export const biom = [
        {   
         id: 10,
         name: 'Dichter Laubwald',
-        icon: 'nothing',
+        icon: 'beechForest',
         color: [40, 51, 28],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -232,7 +232,7 @@ export const biom = [
        {   
         id: 17,
         name: 'Gestein',
-        icon: 'nothing',
+        icon: 'stone-pile',
         color: [115, 112, 107],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -256,7 +256,7 @@ export const biom = [
        {   
         id: 19,
         name: 'Steinwände',
-        icon: 'nothing',
+        icon: 'stone-wall',
         color: [54, 50, 49],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -280,7 +280,7 @@ export const biom = [
        {   
         id: 21,
         name: 'Höhlen',
-        icon: 'nothing',
+        icon: 'dongeon-gate',
         color: [19, 19, 19],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
