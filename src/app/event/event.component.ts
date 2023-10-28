@@ -4,6 +4,7 @@ import { Biom, EmptyBiom } from '../db/biom';
 import { ActionComponent } from "./action/action.component";
 import { DialogComponent } from './action/dialog/dialog.component';
 import { EventDialogComponent } from './event-dialog/event-dialog.component';
+import { LayoutService } from '../layout/layout.service';
 @Component({
     selector: 'app-event',
     standalone: true,
@@ -18,6 +19,8 @@ export class EventComponent{
 
   @Output() actionID: EventEmitter<string> = new EventEmitter<string>();
 
+  constructor(private layout: LayoutService){}
+
   isEvent(){
     if(this.tile){     
       return this.tile.events[0].length > 0 ? true : false;
@@ -25,17 +28,8 @@ export class EventComponent{
     return false
   }
 
-  getStyleColors(color: number[]){
-    const red: number = (color[0] || 100); 
-    const green: number = (color[1] || 100); 
-    const blue: number = (color[2] || 100); 
-
-    const style = {
-      'color':            `rgb(${red * 0.3},${green * 0.3},${blue * 0.3})`,
-      'border-color':     `rgb(${red * 0.5},${green * 0.5},${blue * 0.5})`,
-      'background-color': `rgb(${red},${green},${blue})`,
-    }
-    return style
+  getStyleColors(){
+    return this.layout.getStyleColors(this.tile!, false);
   }
 
   executeAction(actionID: string){
