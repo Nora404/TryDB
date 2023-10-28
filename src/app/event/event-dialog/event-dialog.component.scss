@@ -5,4 +5,29 @@
     width: $layoutWidth*0.4;
     height: $layoutWidth*0.4;
     padding: 10px;
+    // margin: 15px;
+}
+
+h3{
+    margin: 0 0 5px 0;
+}
+
+#actionButtons{
+    margin: 10px 5px 10px 0;
+    align-self: flex-end;
+}
+
+#discriptionContainer{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+#discription{
+    min-height: $layoutWidth*0.35;
+    height: fit-content;
+}
+
+#btn{
+    width: $layoutWidth*0.25;
 }

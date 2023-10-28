@@ -9,14 +9,13 @@ import { EventComponent } from "./event/event.component";
 import { Biom, EmptyBiom } from './db/biom';
 import { BehaviorSubject, Observable, Observer, of } from 'rxjs';
 import { MapEditorComponent } from './map/map-editor/map-editor.component';
-import { DialogComponent } from './event/action/dialog/dialog.component';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    imports: [CommonModule, RouterOutlet, FormsModule, PlayerEditorComponent, MapComponent, MenuComponent, EventComponent, MapEditorComponent, DialogComponent]
+    imports: [CommonModule, RouterOutlet, FormsModule, PlayerEditorComponent, MapComponent, MenuComponent, EventComponent, MapEditorComponent]
 })
 export class AppComponent{
   title = 'TryDB';
@@ -39,9 +38,5 @@ export class AppComponent{
 
   get currentCoordinate(){
     return this._currentCoordinate.asObservable();
-  }
-
-  toggleShowDialog(){
-    this.showDialog = !this.showDialog;
   }
 }

@@ -42,7 +42,7 @@ export const biom = [
         name: 'Wiese',
         icon: 'grass',
         color: [135, 167, 135],
-        discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
+        discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. AeneanLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.Lorem ipsum dolor sit amet, consectetuer adipiscinLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aeneang elit. Aenean commodo ligula eget dolor. Aenean Aenean',
         events: [[]],
         west: true,
         nord: true,

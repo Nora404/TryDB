@@ -1,7 +1,13 @@
 <div id="tileImgCon">
-    <img src="{{getImgUrl(tile?.icon)}}" [ngStyle]="getRadialColors(tile?.color)">
+    <img src="{{getImgUrl()}}" [ngStyle]="getRadialColors()">
 </div>
 
-<div class="textElement tileDiscription" [ngStyle]="getStyleColors([])">
-    {{ tile?.discription }}
+<div id="discriptionContainer" class="textElement tileDiscription">
+    <div id="discription">
+        <h3>{{header}}</h3>
+        {{ text }}<br>
+    </div>
+    <div id="actionButtons">
+        <button id="btn">weiter</button>
+    </div>
 </div>

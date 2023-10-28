@@ -3,10 +3,14 @@
     Ereignis auf {{coordinate[0]}}/{{coordinate[1]}}
 </h3>
 
-<app-event-dialog [tile]="tile"></app-event-dialog>
+    <app-event-dialog   [icon]="(icon$ | async)??''"
+                        [color]="(color$ | async)?? []"
+                        [header]="(header$ | async)??''"
+                        [text]="(text$ | async) ?? ''">
+    </app-event-dialog>
 
 <span *ngIf="isEvent()">
-    <span *ngFor="let tileEvent of tile?.events">
+    <span *ngFor="let tileEvent of _tile?.events">
         <app-action [eventID]="tileEvent[0]" (actionID)="executeAction($event)"></app-action>
     </span>
 </span>

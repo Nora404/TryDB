@@ -54,7 +54,11 @@ button{
 }
 .tileDiscription{
     width: 100%;
+    min-height: $layoutWidth*0.5;
     margin: 10px 0 10px 0; 
+    border: 5px solid rgb(54, 54, 54);
+    background-color: rgb(100, 100, 100);
+    color: black;
 }
 
 hr{

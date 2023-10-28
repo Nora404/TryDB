@@ -2,7 +2,9 @@
 
 <div class="action">
     <img src={{getImage()}} alt="">
-    <span *ngFor="let action of getEvent().action">
-        <button (click)="handleAction(action)">{{action}}</button>
-    </span>
+    <div>
+        <span *ngFor="let action of getEvent().action">
+            <button (click)="handleAction(action)">{{action}}</button>
+        </span>
+    </div>
 </div>
