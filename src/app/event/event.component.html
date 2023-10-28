@@ -6,7 +6,8 @@
     <app-event-dialog   [icon]="(icon$ | async)??''"
                         [color]="(color$ | async)?? []"
                         [header]="(header$ | async)??''"
-                        [text]="(text$ | async) ?? ''">
+                        [text]="(text$ | async) ?? ''"
+                        [path]="(path$ | async) ?? ''">
     </app-event-dialog>
 
 <span *ngIf="isEvent()">

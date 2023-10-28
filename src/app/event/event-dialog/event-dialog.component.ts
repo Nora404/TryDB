@@ -16,12 +16,25 @@ export class EventDialogComponent {
   @Input() text: string = "Hallo?";
   @Input() icon: string = 'nothing';
   @Input() color: number[] = [];
+  @Input() path: string = "map";
 
   constructor(private layout: LayoutService){}
 
 
   getImgUrl(){
-    return this.layout.getImgUrlMap(this.icon) || this.layout.getImgUrlUiIcons(this.icon);
+    switch(this.path){
+      case 'uiIcon':
+        return this.layout.getImgUrlUiIcons(this.icon);
+      case 'kreatur':
+        return this.layout.getImgUrlCreature(this.icon);
+      default:
+        return this.layout.getImgUrlMap(this.icon);  
+    }
+    
+  }
+
+  getImgUrlUiIcon(event:any){
+    event.target.scr = this.layout.getImgUrlUiIcons(this.icon);
   }
 
   getRadialColors(){

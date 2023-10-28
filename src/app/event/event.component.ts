@@ -23,6 +23,7 @@ export class EventComponent{
     this._text$.next(tile?.discription || 'Hallo?');
     this._icon$.next(tile?.icon || 'nothing');
     this._color$.next(tile?.color || [100, 100, 100]);
+    this._path$.next('map');
   }
   
   // tile: Biom | null = EmptyBiom;
@@ -46,6 +47,10 @@ export class EventComponent{
   get color$(){
     return this._color$.asObservable();
   }
+  private _path$: BehaviorSubject<string> = new BehaviorSubject<string>('map');
+  get path$(){
+    return this._path$.asObservable();
+  }
 
   constructor(private layout: LayoutService){}
 
@@ -64,5 +69,9 @@ export class EventComponent{
     this.actionID.emit(actionID);
     
     this._header$.next(actionID);
+    this._text$.next('Misstrauische Blicke sind auf dich gerichtet');
+    this._color$.next([100,50,60]);
+    this._icon$.next('chara');
+    this._path$.next('uiIcon')
   }
 }
