@@ -1,0 +1,8 @@
+@import '../../../styles.scss';
+
+#tileImgCon{
+    display: inline-block;
+    width: $layoutWidth*0.4;
+    height: $layoutWidth*0.4;
+    padding: 10px;
+}

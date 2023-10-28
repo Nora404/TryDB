@@ -1,0 +1,7 @@
+<div id="tileImgCon">
+    <img src="{{getImgUrl(tile?.icon)}}" [ngStyle]="getRadialColors(tile?.color)">
+</div>
+
+<div class="textElement tileDiscription" [ngStyle]="getStyleColors([])">
+    {{ tile?.discription }}
+</div>

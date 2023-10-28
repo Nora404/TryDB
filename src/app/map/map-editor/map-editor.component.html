@@ -32,13 +32,11 @@
 {{selectedBiome.name ?? ''}}
 
   <div class="map-array-output">
-      <button (click)="fillMapWithSelectedBiome()">Alles füllen</button><br>
-      <button class="space"  (click)="clearArray()">Karte zurück setzten</button><br><br>
+      <button (click)="fillMapWithSelectedBiome()">Alles füllen</button>
+      <button class="space"  (click)="clearArray()">Karte zurück setzten</button>
       
-      <button class="space" (click)="saveArray()">Karte exportieren</button><br>
+      <button class="space" (click)="saveArray()">Karte exportieren</button>
       <input type="file" id="fileInput" (change)="loadArray($event)" style="display: none;">
       <label for="fileInput" class="custom-file-button space">Karte importieren</label>
   </div>
 </div>
-
-<img src="../../../assets/mapIcons/forest.svg">

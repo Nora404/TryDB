@@ -3,14 +3,7 @@
     Ereignis auf {{coordinate[0]}}/{{coordinate[1]}}
 </h3>
 
-
-<div id="tileImgCon">
-    <img src="{{getImgUrl(tile?.icon)}}" [ngStyle]="getRadialColors(tile?.color)">
-</div>
-
-<div class="textElement tileDiscription" [ngStyle]="getStyleColors([])">
-    {{ tile?.discription }}
-</div>
+<app-event-dialog [tile]="tile"></app-event-dialog>
 
 <span *ngIf="isEvent()">
     <span *ngFor="let tileEvent of tile?.events">

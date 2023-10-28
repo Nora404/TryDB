@@ -1,18 +1,17 @@
 <h3 class="textElement"
-    [ngStyle]="getStyleColors(this.getMyPositionTile().color)">
+    [ngStyle]="createHeaderStyle()">
     Du befindest dich hier: {{this.getMyPositionTile().name}} 
 </h3>
 
 <p></p>
 
 <div id="playground">
-    <div id="map" [ngStyle]="getMapStyle()">
+    <div id="map" [ngStyle]="createMapStyle()">
         <div *ngFor="let row of map">
             
             <div *ngFor="let cell of row" class="kachel" [ngStyle]="createTileStyle(cell)">
                 <img [attr.src]="iconUrl(cell.icon)" alt="" 
-                     (error)="iconError($event.target)" 
-                     [ngStyle]="colorBlackSvg(cell.color)">
+                     (error)="iconError($event.target)">
             </div>
             
         </div>
@@ -26,17 +25,17 @@
 <table class="element">
     <tr>
         <td style="width: 33%;"></td>
-        <td><button (click)="nord()">norden</button><br></td>
+        <td><button (click)="move('nord')">norden</button><br></td>
         <td></td>
     </tr>
     <tr>
-        <td><button (click)="west()">westen</button><br></td>
+        <td><button (click)="move('west')">westen</button><br></td>
         <td style="width: 33%;"></td>
-        <td><button (click)="ost()">osten</button><br></td>
+        <td><button (click)="move('ost')">osten</button><br></td>
     </tr>
     <tr>
         <td></td>
-        <td><button (click)="sud()">süden</button><br></td>
+        <td><button (click)="move('sud')">süden</button><br></td>
         <td style="width: 33%;"></td>
     </tr>
 </table>

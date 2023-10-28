@@ -3,18 +3,17 @@ import { CommonModule } from '@angular/common';
 import { Biom, EmptyBiom } from '../db/biom';
 import { ActionComponent } from "./action/action.component";
 import { DialogComponent } from './action/dialog/dialog.component';
+import { EventDialogComponent } from './event-dialog/event-dialog.component';
 @Component({
     selector: 'app-event',
     standalone: true,
     templateUrl: './event.component.html',
     styleUrls: ['./event.component.scss'],
-    imports: [CommonModule, ActionComponent]
+    imports: [CommonModule, ActionComponent, EventDialogComponent]
 })
 export class EventComponent{
 
   @Input() tile: Biom | null = EmptyBiom;
-  private _imgUrl: string = '../../../assets/mapIcons/';
-
   @Input() coordinate: number[] = [0,0];
 
   @Output() actionID: EventEmitter<string> = new EventEmitter<string>();
@@ -38,27 +37,6 @@ export class EventComponent{
     }
     return style
   }
-
-  getImgUrl(name: string | undefined){
-    if(!name){
-      return this._imgUrl + 'nothing.svg';
-    }
-    return this._imgUrl + name + '.svg';
-  }
-
-  getRadialColors(color: number[] | undefined){
-    if(color){
-      return {
-        'background': `radial-gradient(circle, 
-            rgba(${color[0]}, ${color[1]}, ${color[2]}, 1) 0%, 
-            rgba(${color[0] * 0.8}, ${color[1] * 0.8}, ${color[2] * 0.8}, 1) 100%)`,
-        'border' : `5px solid rgb(${color[0] * 0.4}, ${color[1] * 0.4}, ${color[2] * 0.4})`,   
-        'height' : '100%',
-      }
-    }
-    return
-  }
-
 
   executeAction(actionID: string){
     this.actionID.emit(actionID);

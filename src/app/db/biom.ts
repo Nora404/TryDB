@@ -280,7 +280,7 @@ export const biom = [
        {   
         id: 21,
         name: 'Höhlen',
-        icon: 'dongeon-gate',
+        icon: 'dungeon-gate',
         color: [19, 19, 19],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],

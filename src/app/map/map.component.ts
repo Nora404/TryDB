@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BiomService } from './biom.service';
 import { KeyboardEventService } from 'src/app/keyboard-event.service';
 import { Biom, EmptyBiom } from '../db/biom';
+import { LayoutService } from '../layout/layout.service';
 
 @Component({
   selector: 'app-map',
@@ -51,13 +52,16 @@ export class MapComponent implements OnInit{
 
   // -------------------------------------------------------------------------------
 
-  constructor(private biomService: BiomService, private keyService: KeyboardEventService){
-    this.keyService.keydown$.subscribe((e:KeyboardEvent)=>{
-      if(e.key === 'w' || e.key === 'ArrowUp'){this.nord()};
-      if(e.key === 'a' || e.key === 'ArrowLeft'){this.west()};
-      if(e.key === 's' || e.key === 'ArrowDown'){this.sud()};
-      if(e.key === 'd' || e.key === 'ArrowRight'){this.ost()};
-    });
+  constructor(
+      private biomService: BiomService, 
+      private keyService: KeyboardEventService,
+      private layout: LayoutService){
+        this.keyService.keydown$.subscribe((e:KeyboardEvent)=>{
+          if(e.key === 'w' || e.key === 'ArrowUp'){this.move('nord')};
+          if(e.key === 'a' || e.key === 'ArrowLeft'){this.move('west')};
+          if(e.key === 's' || e.key === 'ArrowDown'){this.move('sud')};
+          if(e.key === 'd' || e.key === 'ArrowRight'){this.move('ost')};
+        });
   }
 
   ngOnInit(): void {
@@ -99,20 +103,22 @@ export class MapComponent implements OnInit{
   // -------------------------------------------------------------------------------
 
   createPlayerStyle(){
-    const color = this.getMyPositionTile().color;
-    const styleColors = this.getStyleColors(color);
+    return this.layout.getPlayerStyle(this.size);
+  }
 
-    const style = {
-      'width': this.size * 0.8 +'px',
-      'height': this.size * 0.8 +'px',
-      ... styleColors,
+  createHeaderStyle(){
+    return this.layout.getStyleColors(this.getMyPositionTile(), false);
+  }
+
+  createMapStyle() {
+    return{
+      'grid-template-columns': 'repeat(' + this.map.length + ',' + this.size + 'px)',
+      'grid-template-rows': 'repeat(' + this.map[0].length + ',' + this.size + 'px)',
     }
-    return style
   }
 
   createTileStyle(biom: Biom){
-    const styleColors = this.getStyleColors(biom.color);
-    const styleBorder = this.getStyleBorder(biom);
+    const styleColors = this.layout.getStyleColors(biom);
 
     const style = {
       'width': this.size +'px',
@@ -120,45 +126,13 @@ export class MapComponent implements OnInit{
       'top': this.top +'px',
       'left': this.left +'px',
       ... styleColors,
-      ... styleBorder,
     }
     return style;
   }
 
-  getStyleBorder(biom: Biom){
-      const big = '3px solid';
-      const small = '2px dotted'
-      const border = {
-        'border-top': biom.nord ? small : big,
-        'border-right': biom.ost ? small : big,
-        'border-bottom': biom.sud ? small : big,
-        'border-left': biom.west ? small : big,
-    }
-    return border;
-  }
-
-  getStyleColors(color: number[]){
-    const red: number = (color[0] || 100); 
-    const green: number = (color[1] || 100); 
-    const blue: number = (color[2] || 100); 
-
-    const style = {
-      'color':            `rgb(${red * 0.5},${green * 0.5},${blue * 0.5})`,
-      'border-color':     `rgb(${red * 0.8},${green * 0.8},${blue * 0.8})`,
-      'background-color': `rgb(${red},${green},${blue})`,
-    }
-    return style
-  }
-
-  getMapStyle() {
-    return{
-      'grid-template-columns': 'repeat(' + this.map.length + ',' + this.size + 'px)',
-      'grid-template-rows': 'repeat(' + this.map[0].length + ',' + this.size + 'px)',
-    }
-  }
 
   iconUrl(name:string){
-    return this.imgUrl + name + '.svg'
+    return this.layout.getImgUrlMap(name);
   }
 
   iconError(icon: EventTarget | null){
@@ -169,56 +143,37 @@ export class MapComponent implements OnInit{
 
   // -------------------------------------------------------------------------------
 
-  west(){
+  move(direction: 'nord' | 'west' | 'ost' | 'sud' ) {
     const currentTile = this.getMyPositionTile();
-    const futureLeft =  this.left + this.size;
-    if(this.isPositionAllowed(this.top, futureLeft)){
-
-      const newPosition = this.findMyPosition(this.top, futureLeft);
-      const newTile = this.map[newPosition[0]][newPosition[1]];
-
-      if(this.isWayAllowed('west', newTile)&&this.isWayAllowed('ost', currentTile)){
-        this.left = this.left + this.size;
-        this.currentTile.emit(this.getMyPositionTile());
-        this.currentCoordinate.emit([newPosition[0],newPosition[1]]);
-      } else {
-        this.hopUp();
-      }
-    } else {
-      this.hopUp();
+    let futureTop = this.top;
+    let futureLeft = this.left;
+  
+    if (direction === 'west') {
+      futureLeft += this.size;
+    } else if (direction === 'nord') {
+      futureTop += this.size;
+    } else if (direction === 'ost') {
+      futureLeft -= this.size;
+    } else if (direction === 'sud') {
+      futureTop -= this.size;
     }
-  }
-  nord(){
-    const currentTile = this.getMyPositionTile();
-    const futureTop = this.top + this.size;
-    if(this.isPositionAllowed(futureTop, this.left) && this.isWayAllowed('nord', currentTile)){
-      
-      const newPosition = this.findMyPosition(futureTop, this.left);
+  
+    if (this.isPositionAllowed(futureTop, futureLeft)) {
+      const newPosition = this.findMyPosition(futureTop, futureLeft);
       const newTile = this.map[newPosition[0]][newPosition[1]];
-
-      if(this.isWayAllowed('nord', newTile)&&this.isWayAllowed('sud', currentTile)){
+  
+      const allowedWays: {[key:string]: 'nord' | 'west' | 'ost' | 'sud'}  = {
+        west: 'ost',
+        nord: 'sud',
+        ost: 'west',
+        sud: 'nord',
+      };
+  
+      if (this.isWayAllowed(direction, newTile) && this.isWayAllowed(allowedWays[direction], currentTile)) {
         this.top = futureTop;
-        this.currentTile.emit(this.getMyPositionTile());
-        this.currentCoordinate.emit([newPosition[0],newPosition[1]]);
-      } else {
-        this.hopUp();
-      }
-    } else {
-      this.hopUp();
-    }
-  }
-  ost(){
-    const currentTile = this.getMyPositionTile();
-    const futureLeft = this.left - this.size; 
-    if(this.isPositionAllowed(this.top, futureLeft)){
-
-      const newPosition = this.findMyPosition(this.top, futureLeft);
-      const newTile = this.map[newPosition[0]][newPosition[1]];
-
-      if(this.isWayAllowed('ost', newTile)&&this.isWayAllowed('west', currentTile)){
         this.left = futureLeft;
         this.currentTile.emit(this.getMyPositionTile());
-        this.currentCoordinate.emit([newPosition[0],newPosition[1]]);
+        this.currentCoordinate.emit([newPosition[0], newPosition[1]]);
       } else {
         this.hopUp();
       }
@@ -226,25 +181,7 @@ export class MapComponent implements OnInit{
       this.hopUp();
     }
   }
-  sud(){
-    const currentTile = this.getMyPositionTile()
-    const futureTop = this.top - this.size;
-    if(this.isPositionAllowed(futureTop, this.left)){
-
-      const newPosition = this.findMyPosition(futureTop, this.left);
-      const newTile = this.map[newPosition[0]][newPosition[1]];
-
-      if(this.isWayAllowed('sud', newTile)&&this.isWayAllowed('nord', currentTile)){
-        this.top = futureTop;
-        this.currentTile.emit(this.getMyPositionTile());
-        this.currentCoordinate.emit([newPosition[0],newPosition[1]]);
-      } else {
-        this.hopUp();
-      }
-    } else {
-      this.hopUp();
-    }
-  }
+  
 
   // -------------------------------------------------------------------------------
 
@@ -300,48 +237,6 @@ export class MapComponent implements OnInit{
     if(way==='ost' && !biom.west){return false};
     if(way==='sud' && !biom.nord){return false};
     return true
-  }
-
-  colorBlackSvg(rgb: number[]){
-    const red = rgb[0]*0.4;
-    const green = rgb[1]*0.4;
-    const blue = rgb[2]*0.4;
-
-    let hue = this.rgbToHueRotate([red, green, blue])
-
-    return{
-      'filter:': 'hue-rotate(' + Math.floor(hue) + 'deg)',
-      'width': '80%',
-      'height': '80%',
-    }
-  }
-
-  // mit hue-rotate(xy) lässt sich ein Bild färben
-  // xy hat einen wer von 0-360
-  // Hier wird der wert anhand von rgb umgerechnet
-  rgbToHueRotate(rgb: number[]){
-    const red = rgb[0]/255;
-    const green = rgb[1]/255;
-    const blue = rgb[2]/255;
-
-    const max = Math.max(red, green, blue);
-    const min = Math.min(red, green, blue);
-    const lightness = (max + min)/2;
-    const differenz = max - min;
-    let hue = 0
-
-    if(max !== min){
-      if(max === red){
-        hue = 60* (((green - blue)/differenz)%6);
-      }
-      if(max === green){
-        hue = 60* (((blue - red)/differenz)+2);
-      }
-      if(max === blue){
-        hue = 60* (((red - green)/differenz)+4);
-      }
-    }
-    return hue
   }
 
   //-------------------------------------------------------------------
