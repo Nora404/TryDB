@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Biom, EmptyBiom } from 'src/app/db/biom';
 import { LayoutService } from 'src/app/layout/layout.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-event-dialog',
@@ -17,6 +18,7 @@ export class EventDialogComponent {
   @Input() icon: string = 'nothing';
   @Input() color: number[] = [];
   @Input() path: string = "map";
+  @Input() btn: string[] = [];
 
   constructor(private layout: LayoutService){}
 
@@ -39,6 +41,10 @@ export class EventDialogComponent {
 
   getRadialColors(){
     return this.layout.getRadialColors(this.color);
+  }
+
+  handleButtonEvent(event: string){
+    console.log(event);
   }
 
 }

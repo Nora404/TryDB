@@ -5,6 +5,8 @@ import { ActionComponent } from "./action/action.component";
 import { EventDialogComponent } from './event-dialog/event-dialog.component';
 import { LayoutService } from '../layout/layout.service';
 import { BehaviorSubject, of } from 'rxjs';
+import { tileEvent } from '../db/events';
+import { eventActions } from '../db/actions';
 
 @Component({
     selector: 'app-event',
@@ -24,12 +26,13 @@ export class EventComponent{
     this._icon$.next(tile?.icon || 'nothing');
     this._color$.next(tile?.color || [100, 100, 100]);
     this._path$.next('map');
+    this._btn$.next([]);
   }
   
   // tile: Biom | null = EmptyBiom;
 
   @Input() coordinate: number[] = [0,0];
-  @Output() actionID: EventEmitter<string> = new EventEmitter<string>();
+  @Output() actionType: EventEmitter<string> = new EventEmitter<string>();
 
   private _header$: BehaviorSubject<string> = new BehaviorSubject<string>('Unbekannte Stimme');
   get header$(){
@@ -51,6 +54,10 @@ export class EventComponent{
   get path$(){
     return this._path$.asObservable();
   }
+  private _btn$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  get btn$(){
+    return this._btn$.asObservable();
+  }
 
   constructor(private layout: LayoutService){}
 
@@ -65,13 +72,19 @@ export class EventComponent{
     return this.layout.getStyleColors(this._tile!, false);
   }
 
-  executeAction(actionID: string){
-    this.actionID.emit(actionID);
+  executeAction(actionID: any){
+    this.actionType.emit('Test');
+
+    const newAction = eventActions.find(action => action.id === actionID)
     
-    this._header$.next(actionID);
-    this._text$.next('Misstrauische Blicke sind auf dich gerichtet');
-    this._color$.next([100,50,60]);
-    this._icon$.next('chara');
-    this._path$.next('uiIcon')
+    if(newAction){
+      this._header$.next(newAction.header);
+      this._text$.next(newAction.text);
+      this._color$.next([100,50,60]);
+      this._icon$.next(newAction.icon);
+      this._path$.next(newAction.path)
+      this._btn$.next(['abbrechen', 'weiter']);
+    }
+    
   }
 }

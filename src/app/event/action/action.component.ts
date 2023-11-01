@@ -11,7 +11,7 @@ import { tileEvent } from 'src/app/db/events';
 })
 export class ActionComponent {
   @Input() eventID: number = 0;
-  @Output() actionID: EventEmitter<string> = new EventEmitter<string>();
+  @Output() actionID: EventEmitter<number> = new EventEmitter<number>();
 
   getEvent(){
     return tileEvent[this.eventID];
@@ -20,7 +20,7 @@ export class ActionComponent {
     return "../../../assets/uiIcons/" + tileEvent[this.eventID].icon + ".svg"
   }
 
-  handleAction(action: string){
+  handleAction(action: number){
     this.actionID.emit(action);
   }
 }

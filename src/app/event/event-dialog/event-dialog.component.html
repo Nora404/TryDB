@@ -8,6 +8,8 @@
         {{ text }}<br>
     </div>
     <div id="actionButtons">
-        <button id="btn">weiter</button>
+        <span *ngFor="let button of btn">
+            <button (click)="handleButtonEvent(button)">{{button}}</button>
+        </span>
     </div>
 </div>

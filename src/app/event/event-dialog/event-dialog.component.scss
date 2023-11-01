@@ -13,7 +13,7 @@ h3{
 }
 
 #actionButtons{
-    margin: 10px 5px 10px 0;
+    margin: 10px 5px 4px 0;
     align-self: flex-end;
 }
 
@@ -24,10 +24,11 @@ h3{
 }
 
 #discription{
-    min-height: $layoutWidth*0.35;
+    min-height: $layoutWidth*0.23;
     height: fit-content;
 }
 
 #btn{
     width: $layoutWidth*0.25;
+    margin: 2px 0 2px 10px;
 }

@@ -4,7 +4,7 @@
     <img src={{getImage()}} alt="">
     <div>
         <span *ngFor="let action of getEvent().action">
-            <button (click)="handleAction(action)">{{action}}</button>
+            <button (click)="handleAction(action.actionID)">{{action.button}}</button>
         </span>
     </div>
 </div>

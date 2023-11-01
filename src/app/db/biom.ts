@@ -313,6 +313,18 @@ export const biom = [
         ost: true,
         sud: true,
        },
+       {   
+        id: 24,
+        name: 'Pilzhütte',
+        icon: 'mushroom-house',
+        color: [71, 124, 108],
+        discription: 'Vor dir steht ein verwunschenes Pilshaus, es sieht einladend und lecker aus.',
+        events: [[]],
+        west: true,
+        nord: false,
+        ost: true,
+        sud: true,
+       },
     ]
 
  
