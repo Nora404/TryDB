@@ -1,4 +1,4 @@
-export interface TileEvent{
+export interface TileEvent {
     id: number;
     name: string;
     type: string;
@@ -26,14 +26,14 @@ export const tileEvent: TileEvent[] = [
         id: 1,
         name: 'Bauer',
         type: 'DIALOG',
-        icon: 'people',
-        action: [{ button: 'anschauen', actionID: 1 },{ button: 'ansprechen', actionID: 2 }],
-    }, 
+        icon: 'm02',
+        action: [{ button: 'anschauen', actionID: 1 }, { button: 'ansprechen', actionID: 2 }],
+    },
     {
         id: 2,
         name: 'Bäuerin',
         type: 'DIALOG',
-        icon: 'people',
-        action: [{ button: 'anschauen', actionID: 4 },{ button: 'ansprechen', actionID: 5 }],
+        icon: 'w02',
+        action: [{ button: 'anschauen', actionID: 4 }, { button: 'ansprechen', actionID: 5 }],
     }
 ]

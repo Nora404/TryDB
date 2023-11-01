@@ -5,6 +5,7 @@
     grid-template-columns: $layoutWidth*0.4 (
         ($smallWidth)-($layoutWidth*0.645)
     );
+
 }
 
 #tileImgCon {
@@ -32,7 +33,7 @@ h3 {
 }
 
 #discription {
-    // min-height: $layoutWidth*0.23; //0.23
+    // min-height: $layoutWidth*0.43; //0.23
     // height: fit-content;
     text-align: left;
     padding: 5px 0 0 5px;

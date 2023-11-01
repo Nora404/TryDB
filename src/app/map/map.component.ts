@@ -293,14 +293,9 @@ export class MapComponent implements OnInit {
   }
 
   executeAction(actionID: number) {
-    console.log(actionID);
-
-
     const tile = this.getMyPositionTile()
 
     if (actionID === 0 && tile) {
-      console.log('Hallo!');
-
       this._header$.next(tile.name);
       this._text$.next(tile.discription);
       this._color$.next(tile.color);
@@ -314,7 +309,7 @@ export class MapComponent implements OnInit {
     if (newAction) {
       this._header$.next(newAction.header);
       this._text$.next(newAction.text);
-      this._color$.next([100, 50, 60]);
+      this._color$.next(newAction.color);
       this._icon$.next(newAction.icon);
       this._path$.next(newAction.path)
       this._btn$.next(newAction.action);
