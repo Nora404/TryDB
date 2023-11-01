@@ -11,32 +11,32 @@ import { BehaviorSubject, Observable, Observer, of } from 'rxjs';
 import { MapEditorComponent } from './map/map-editor/map-editor.component';
 
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    imports: [CommonModule, RouterOutlet, FormsModule, PlayerEditorComponent, MapComponent, MenuComponent, EventComponent, MapEditorComponent]
+  selector: 'app-root',
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  imports: [CommonModule, RouterOutlet, FormsModule, PlayerEditorComponent, MapComponent, MenuComponent, EventComponent, MapEditorComponent]
 })
-export class AppComponent{
+export class AppComponent {
   title = 'TryDB';
   private _currentTile: BehaviorSubject<Biom> = new BehaviorSubject<Biom>(EmptyBiom);
-  private _currentCoordinate: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([0,0])
+  private _actionID: BehaviorSubject<number> = new BehaviorSubject<number>(0)
 
   showDialog: boolean = false;
 
-  setCurrentTile(tile: Biom){
+  setCurrentTile(tile: Biom) {
     this._currentTile.next(tile);
   }
 
-  get currentTile(){
+  get currentTile() {
     return this._currentTile.asObservable();
   }
 
-  setCurrentCoordinate(coor: number[]){
-    this._currentCoordinate.next(coor);
+  setActionID(id: number) {
+    this._actionID.next(id);
   }
 
-  get currentCoordinate(){
-    return this._currentCoordinate.asObservable();
+  get actionID() {
+    return this._actionID.asObservable();
   }
 }

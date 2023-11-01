@@ -1,15 +1,18 @@
-<div id="tileImgCon">
-    <img src="{{getImgUrl()}}" [ngStyle]="getRadialColors()">
+<div id="tileEvents">
+    <div id="tileImgCon">
+        <img src="{{getImgUrl()}}" [ngStyle]="getRadialColors()">
+    </div>
+    
+    <div id="discriptionContainer" class="textElement tileDiscription">
+        <div id="discription">
+            <h3>{{header}}</h3>
+            {{ text }}<br>
+        </div>
+        <div id="actionButtons">
+            <span *ngFor="let item of btn">
+                <button (click)="handleButtonEvent(item.actionID)">{{item.button}}</button>
+            </span>
+        </div>
+    </div>
 </div>
 
-<div id="discriptionContainer" class="textElement tileDiscription">
-    <div id="discription">
-        <h3>{{header}}</h3>
-        {{ text }}<br>
-    </div>
-    <div id="actionButtons">
-        <span *ngFor="let button of btn">
-            <button (click)="handleButtonEvent(button)">{{button}}</button>
-        </span>
-    </div>
-</div>

@@ -60,6 +60,7 @@
 
 #right {
   width: $layoutWidth;
+  padding-top: 10px;
   @media (max-width: #{$maxWidth}) {
     width: $smallWidth;
     grid-row: 2;

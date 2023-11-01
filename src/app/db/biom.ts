@@ -15,7 +15,7 @@ export const EmptyBiom: Biom = {
     id: 0,
     name: "",
     icon: "",
-    color: [100,100,100],
+    color: [100, 100, 100],
     discription: "",
     events: [[]],
     west: true,
@@ -25,7 +25,7 @@ export const EmptyBiom: Biom = {
 }
 
 export const biom = [
-       {   
+    {
         id: 0,
         name: 'Nichts',
         icon: 'nothing',
@@ -36,20 +36,20 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 1,
         name: 'Wiese',
         icon: 'grass',
         color: [135, 167, 135],
-        discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. AeneanLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.Lorem ipsum dolor sit amet, consectetuer adipiscinLorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aeneang elit. Aenean commodo ligula eget dolor. Aenean Aenean',
+        discription: 'm ipsum dolor sit amet, consectetuer adipiscinLorem ipsu',
         events: [[]],
         west: true,
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 2,
         name: 'Blumen',
         icon: 'flowers',
@@ -60,20 +60,20 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },    
-       {   
+    },
+    {
         id: 3,
         name: 'Gebäude',
         icon: 'wood-cabin',
         color: [135, 167, 135],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
-        events: [[1, 100],[2,50]],
+        events: [[1, 100], [2, 50]],
         west: false,
         nord: false,
         ost: false,
         sud: true,
-       },   
-       {   
+    },
+    {
         id: 4,
         name: 'Feld',
         icon: 'wheat',
@@ -84,8 +84,8 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       }, 
-       {   
+    },
+    {
         id: 5,
         name: 'Mühle',
         icon: 'windmill',
@@ -96,8 +96,8 @@ export const biom = [
         nord: false,
         ost: false,
         sud: true,
-       }, 
-       {   
+    },
+    {
         id: 6,
         name: 'Brunnen',
         icon: 'well',
@@ -108,8 +108,8 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       }, 
-       {   
+    },
+    {
         id: 7,
         name: 'Tannenwald',
         icon: 'pine-tree',
@@ -120,8 +120,8 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 8,
         name: 'Dichter Tannenwald',
         icon: 'pine-forest',
@@ -132,8 +132,8 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 9,
         name: 'Laubwald',
         icon: 'beech',
@@ -144,8 +144,8 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 10,
         name: 'Dichter Laubwald',
         icon: 'beechForest',
@@ -156,8 +156,8 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 11,
         name: 'Flaches Gewässer',
         icon: 'waterFlat',
@@ -168,8 +168,8 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 12,
         name: 'Fluss',
         icon: 'water',
@@ -180,8 +180,8 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 13,
         name: 'Brücke',
         icon: 'brigeV',
@@ -192,8 +192,8 @@ export const biom = [
         nord: true,
         ost: false,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 14,
         name: 'Fluss',
         icon: 'brigeH',
@@ -204,8 +204,8 @@ export const biom = [
         nord: false,
         ost: true,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 15,
         name: 'Ozean',
         icon: 'waterDeep',
@@ -216,8 +216,8 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 16,
         name: 'Sand',
         icon: 'nothing',
@@ -228,8 +228,8 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 17,
         name: 'Gestein',
         icon: 'stone-pile',
@@ -240,8 +240,8 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 18,
         name: 'Gebierge',
         icon: 'nothing',
@@ -252,8 +252,8 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 19,
         name: 'Steinwände',
         icon: 'stone-wall',
@@ -264,8 +264,8 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 20,
         name: 'Klippen',
         icon: 'nothing',
@@ -276,8 +276,8 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 21,
         name: 'Höhlen',
         icon: 'dungeon-gate',
@@ -288,8 +288,8 @@ export const biom = [
         nord: false,
         ost: false,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 22,
         name: 'Schnee',
         icon: 'nothing',
@@ -300,8 +300,8 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 23,
         name: 'Weg',
         icon: 'weg',
@@ -312,8 +312,8 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 24,
         name: 'Pilzhütte',
         icon: 'mushroom-house',
@@ -324,7 +324,6 @@ export const biom = [
         nord: false,
         ost: true,
         sud: true,
-       },
-    ]
+    },
+]
 
- 

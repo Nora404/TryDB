@@ -1,19 +1,12 @@
-<h3 class="element" style="border: 5px solid;"
-    [ngStyle]="getStyleColors()">
-    Ereignis auf {{coordinate[0]}}/{{coordinate[1]}}
+<h3 class="element" style="border: 5px solid" [ngStyle]="getStyleColors()">
+  Aktionen
 </h3>
 
-    <app-event-dialog   [icon]="(icon$ | async)??''"
-                        [color]="(color$ | async)?? []"
-                        [header]="(header$ | async)??''"
-                        [text]="(text$ | async) ?? ''"
-                        [path]="(path$ | async) ?? ''"
-                        [btn]="(btn$ | async)?? []">
-    </app-event-dialog>
-
 <span *ngIf="isEvent()">
-    <span *ngFor="let tileEvent of _tile?.events">
-        <app-action [eventID]="tileEvent[0]" (actionID)="executeAction($event)"></app-action>
-    </span>
+  <span *ngFor="let tileEvent of _tile?.events">
+    <app-action
+      [eventID]="tileEvent[0]"
+      (actionID)="executeAction($event)"
+    ></app-action>
+  </span>
 </span>
-

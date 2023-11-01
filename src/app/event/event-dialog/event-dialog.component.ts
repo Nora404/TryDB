@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Biom, EmptyBiom } from 'src/app/db/biom';
 import { LayoutService } from 'src/app/layout/layout.service';
@@ -15,36 +15,38 @@ export class EventDialogComponent {
 
   @Input() header: string = 'Unbekannte Stimme';
   @Input() text: string = "Hallo?";
-  @Input() icon: string = 'nothing';
-  @Input() color: number[] = [];
+  @Input() icon: string = 'love';
+  @Input() color: number[] = [100, 90, 80];
   @Input() path: string = "map";
-  @Input() btn: string[] = [];
+  @Input() btn: Array<{ button: string, actionID: number }> = [];
 
-  constructor(private layout: LayoutService){}
+  @Output() actionID: EventEmitter<number> = new EventEmitter<number>();
+
+  constructor(private layout: LayoutService) { }
 
 
-  getImgUrl(){
-    switch(this.path){
+  getImgUrl() {
+    switch (this.path) {
       case 'uiIcon':
         return this.layout.getImgUrlUiIcons(this.icon);
       case 'kreatur':
         return this.layout.getImgUrlCreature(this.icon);
       default:
-        return this.layout.getImgUrlMap(this.icon);  
+        return this.layout.getImgUrlMap(this.icon);
     }
-    
+
   }
 
-  getImgUrlUiIcon(event:any){
+  getImgUrlUiIcon(event: any) {
     event.target.scr = this.layout.getImgUrlUiIcons(this.icon);
   }
 
-  getRadialColors(){
+  getRadialColors() {
     return this.layout.getRadialColors(this.color);
   }
 
-  handleButtonEvent(event: string){
-    console.log(event);
+  handleButtonEvent(id: number) {
+    this.actionID.next(id);
   }
 
 }
