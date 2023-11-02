@@ -1,42 +1,58 @@
-<h3 class="textElement"
-    [ngStyle]="getStyleColors(this.getMyPositionTile().color)">
-    Du befindest dich hier: {{this.getMyPositionTile().name}} 
+<h3 class="textElement" [ngStyle]="createHeaderStyle()">
+  {{ this.getMyPositionTile().name }}
 </h3>
 
 <p></p>
 
 <div id="playground">
-    <div id="map" [ngStyle]="getMapStyle()">
-        <div *ngFor="let row of map">
-            
-            <div *ngFor="let cell of row" class="kachel" [ngStyle]="createTileStyle(cell)">
-                <img [attr.src]="iconUrl(cell.icon)" alt="" 
-                     (error)="iconError($event.target)" 
-                     [ngStyle]="colorBlackSvg(cell.color)">
-            </div>
-            
-        </div>
+  <div id="map" [ngStyle]="createMapStyle()">
+    <div *ngFor="let row of map">
+      <div
+        *ngFor="let cell of row"
+        class="kachel"
+        [ngStyle]="createTileStyle(cell)"
+      >
+        <img
+          [attr.src]="iconUrl(cell.icon)"
+          alt=""
+          (error)="iconError($event.target)"
+        />
+      </div>
     </div>
-    <div id="player" 
-        [ngStyle]="createPlayerStyle()">
-        <img class="player" [class.hop-up]="isHoppingUp"  src="../../../assets/player/humanW.svg">
-    </div>
+  </div>
+  <div id="player" [ngStyle]="createPlayerStyle()">
+    <img
+      class="player"
+      [class.hop-up]="isHoppingUp"
+      src="../../../assets/player/humanW.svg"
+    />
+  </div>
 </div>
 
-<table class="element">
-    <tr>
-        <td style="width: 33%;"></td>
-        <td><button (click)="nord()">norden</button><br></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td><button (click)="west()">westen</button><br></td>
-        <td style="width: 33%;"></td>
-        <td><button (click)="ost()">osten</button><br></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td><button (click)="sud()">süden</button><br></td>
-        <td style="width: 33%;"></td>
-    </tr>
-</table>
+<div
+  class="element"
+  [ngStyle]="{ 'margin-left': 'auto', 'margin-right': 'auto' }"
+>
+  <button (click)="move('west')">westen</button>
+  <button (click)="move('nord')">norden</button>
+  <button (click)="move('ost')">osten</button>
+  <button (click)="move('sud')">süden</button>
+</div>
+
+<h3
+  class="element"
+  style="border: 5px solid; margin-top: 10px"
+  *ngIf="currentCoordinate2 | async as coordinate"
+  [ngStyle]="createHeaderStyle()">
+  Du befindest dich hier: {{ coordinate[0] }}/{{ coordinate[1] }} 
+</h3>
+
+<app-event-dialog
+  [icon]="(icon$ | async) ?? ''"
+  [color]="(color$ | async) ?? []"
+  [header]="(header$ | async) ?? ''"
+  [text]="(text$ | async) ?? ''"
+  [path]="(path$ | async) ?? ''"
+  [btn]="(btn$ | async) ?? []"
+  (actionID)="executeAction($event)"
+></app-event-dialog>

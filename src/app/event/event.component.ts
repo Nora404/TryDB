@@ -2,66 +2,40 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Biom, EmptyBiom } from '../db/biom';
 import { ActionComponent } from "./action/action.component";
-import { DialogComponent } from './action/dialog/dialog.component';
+import { EventDialogComponent } from './event-dialog/event-dialog.component';
+import { LayoutService } from '../layout/layout.service';
+
 @Component({
-    selector: 'app-event',
-    standalone: true,
-    templateUrl: './event.component.html',
-    styleUrls: ['./event.component.scss'],
-    imports: [CommonModule, ActionComponent]
+  selector: 'app-event',
+  standalone: true,
+  templateUrl: './event.component.html',
+  styleUrls: ['./event.component.scss'],
+  imports: [CommonModule, ActionComponent, EventDialogComponent]
 })
-export class EventComponent{
+export class EventComponent {
 
-  @Input() tile: Biom | null = EmptyBiom;
-  private _imgUrl: string = '../../../assets/mapIcons/';
+  public _tile: Biom = EmptyBiom;
+  @Input()
+  set tile(tile: Biom | null) {
+    this._tile = tile ? tile : EmptyBiom;
+  }
 
-  @Input() coordinate: number[] = [0,0];
+  @Output() actionID: EventEmitter<number> = new EventEmitter<number>();
 
-  @Output() actionID: EventEmitter<string> = new EventEmitter<string>();
+  constructor(private layout: LayoutService) { }
 
-  isEvent(){
-    if(this.tile){     
-      return this.tile.events[0].length > 0 ? true : false;
+  isEvent() {
+    if (this._tile) {
+      return this._tile.events[0].length > 0 ? true : false;
     }
     return false
   }
 
-  getStyleColors(color: number[]){
-    const red: number = (color[0] || 100); 
-    const green: number = (color[1] || 100); 
-    const blue: number = (color[2] || 100); 
-
-    const style = {
-      'color':            `rgb(${red * 0.3},${green * 0.3},${blue * 0.3})`,
-      'border-color':     `rgb(${red * 0.5},${green * 0.5},${blue * 0.5})`,
-      'background-color': `rgb(${red},${green},${blue})`,
-    }
-    return style
+  getStyleColors() {
+    return this.layout.getGrayColors();
   }
 
-  getImgUrl(name: string | undefined){
-    if(!name){
-      return this._imgUrl + 'nothing.svg';
-    }
-    return this._imgUrl + name + '.svg';
-  }
-
-  getRadialColors(color: number[] | undefined){
-    if(color){
-      return {
-        'background': `radial-gradient(circle, 
-            rgba(${color[0]}, ${color[1]}, ${color[2]}, 1) 0%, 
-            rgba(${color[0] * 0.8}, ${color[1] * 0.8}, ${color[2] * 0.8}, 1) 100%)`,
-        'border' : `5px solid rgb(${color[0] * 0.4}, ${color[1] * 0.4}, ${color[2] * 0.4})`,   
-        'height' : '100%',
-      }
-    }
-    return
-  }
-
-
-  executeAction(actionID: string){
+  executeAction(actionID: number) {
     this.actionID.emit(actionID);
   }
-
 }

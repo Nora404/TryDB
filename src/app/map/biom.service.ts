@@ -10,7 +10,7 @@ export class BiomService {
   tryMap: Biom[][] = [[EmptyBiom]];
 
   getRandomColor(base: number){
-    return base + Math.floor(Math.random() * 21);
+    return base + Math.floor(Math.random() * 15);
   }
 
   addRandomColorToBiom(biom: Biom): Biom{

@@ -15,7 +15,7 @@ export const EmptyBiom: Biom = {
     id: 0,
     name: "",
     icon: "",
-    color: [100,100,100],
+    color: [100, 100, 100],
     discription: "",
     events: [[]],
     west: true,
@@ -25,7 +25,7 @@ export const EmptyBiom: Biom = {
 }
 
 export const biom = [
-       {   
+    {
         id: 0,
         name: 'Nichts',
         icon: 'nothing',
@@ -36,23 +36,23 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 1,
         name: 'Wiese',
         icon: 'grass',
         color: [135, 167, 135],
-        discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
+        discription: 'm ipsum dolor sit amet, consectetuer adipiscinLorem ipsu',
         events: [[]],
         west: true,
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 2,
         name: 'Blumen',
-        icon: 'flower',
+        icon: 'flowers',
         color: [135, 167, 135],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -60,23 +60,23 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },    
-       {   
+    },
+    {
         id: 3,
         name: 'Gebäude',
-        icon: 'home',
+        icon: 'wood-cabin',
         color: [135, 167, 135],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
-        events: [[1, 100],[2,50]],
+        events: [[1, 100], [2, 50]],
         west: false,
         nord: false,
         ost: false,
         sud: true,
-       },   
-       {   
+    },
+    {
         id: 4,
         name: 'Feld',
-        icon: 'sprout',
+        icon: 'wheat',
         color: [160, 175, 100],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -84,11 +84,11 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       }, 
-       {   
+    },
+    {
         id: 5,
         name: 'Mühle',
-        icon: 'mill',
+        icon: 'windmill',
         color: [160, 175, 100],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -96,11 +96,11 @@ export const biom = [
         nord: false,
         ost: false,
         sud: true,
-       }, 
-       {   
+    },
+    {
         id: 6,
         name: 'Brunnen',
-        icon: 'spring',
+        icon: 'well',
         color: [160, 175, 100],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -108,11 +108,11 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       }, 
-       {   
+    },
+    {
         id: 7,
         name: 'Tannenwald',
-        icon: 'tree',
+        icon: 'pine-tree',
         color: [71, 124, 108],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -120,11 +120,11 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 8,
         name: 'Dichter Tannenwald',
-        icon: 'forest',
+        icon: 'pine-forest',
         color: [35, 61, 53],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -132,11 +132,11 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 9,
         name: 'Laubwald',
-        icon: 'nothing',
+        icon: 'beech',
         color: [90, 115, 63],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -144,11 +144,11 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 10,
         name: 'Dichter Laubwald',
-        icon: 'nothing',
+        icon: 'beechForest',
         color: [40, 51, 28],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -156,8 +156,8 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 11,
         name: 'Flaches Gewässer',
         icon: 'waterFlat',
@@ -168,8 +168,8 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 12,
         name: 'Fluss',
         icon: 'water',
@@ -180,8 +180,8 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 13,
         name: 'Brücke',
         icon: 'brigeV',
@@ -192,8 +192,8 @@ export const biom = [
         nord: true,
         ost: false,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 14,
         name: 'Fluss',
         icon: 'brigeH',
@@ -204,8 +204,8 @@ export const biom = [
         nord: false,
         ost: true,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 15,
         name: 'Ozean',
         icon: 'waterDeep',
@@ -216,8 +216,8 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 16,
         name: 'Sand',
         icon: 'nothing',
@@ -228,11 +228,11 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 17,
         name: 'Gestein',
-        icon: 'nothing',
+        icon: 'stone-pile',
         color: [115, 112, 107],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -240,8 +240,8 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 18,
         name: 'Gebierge',
         icon: 'nothing',
@@ -252,11 +252,11 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 19,
         name: 'Steinwände',
-        icon: 'nothing',
+        icon: 'stone-wall',
         color: [54, 50, 49],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -264,8 +264,8 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 20,
         name: 'Klippen',
         icon: 'nothing',
@@ -276,11 +276,11 @@ export const biom = [
         nord: false,
         ost: false,
         sud: false,
-       },
-       {   
+    },
+    {
         id: 21,
         name: 'Höhlen',
-        icon: 'nothing',
+        icon: 'dungeon-gate',
         color: [19, 19, 19],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
         events: [[]],
@@ -288,8 +288,8 @@ export const biom = [
         nord: false,
         ost: false,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 22,
         name: 'Schnee',
         icon: 'nothing',
@@ -300,8 +300,8 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-       {   
+    },
+    {
         id: 23,
         name: 'Weg',
         icon: 'weg',
@@ -312,7 +312,18 @@ export const biom = [
         nord: true,
         ost: true,
         sud: true,
-       },
-    ]
+    },
+    {
+        id: 24,
+        name: 'Pilzhütte',
+        icon: 'mushroom-house',
+        color: [71, 124, 108],
+        discription: 'Vor dir steht ein verwunschenes Pilshaus, es sieht einladend und lecker aus.',
+        events: [[]],
+        west: true,
+        nord: false,
+        ost: true,
+        sud: true,
+    },
+]
 
- 

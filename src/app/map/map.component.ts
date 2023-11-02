@@ -1,20 +1,27 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BiomService } from './biom.service';
 import { KeyboardEventService } from 'src/app/keyboard-event.service';
 import { Biom, EmptyBiom } from '../db/biom';
+import { LayoutService } from '../layout/layout.service';
+import { BehaviorSubject } from 'rxjs';
+import { EventDialogComponent } from '../event/event-dialog/event-dialog.component';
+import { eventActions } from '../db/actions';
 
 @Component({
   selector: 'app-map',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, EventDialogComponent],
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit{
+export class MapComponent implements OnInit {
 
   @Output() currentTile: EventEmitter<Biom> = new EventEmitter<Biom>();
-  @Output() currentCoordinate: EventEmitter<number[]> = new EventEmitter<number[]>();
+  @Input()
+  set actionID(id: number) {
+    this.executeAction(id);
+  };
 
   // Das ist die Karte, ein Mehrdimensionales Array
   // [[1,2,3][1,2,3]] Diese Karte ist 2x3 Kacheln groß
@@ -25,8 +32,10 @@ export class MapComponent implements OnInit{
   top: number = 0;
   left: number = 0;
 
+  currentCoordinate2: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([this.left, this.top]);
+
   // Die Größe der Kacheln, in Pixeln
-  size: number = 50*1.5;
+  size: number = 50 * 1.5;
 
   // Die Größe des sichtbaren Spielfeldes
   // der Multiplikator (ungerade) sind die gewünschten Kacheln
@@ -48,15 +57,21 @@ export class MapComponent implements OnInit{
   imgUrl: string = '../../../assets/mapIcons/';
 
 
+  // -------------------------------------------------------------------------------
+
+
 
   // -------------------------------------------------------------------------------
 
-  constructor(private biomService: BiomService, private keyService: KeyboardEventService){
-    this.keyService.keydown$.subscribe((e:KeyboardEvent)=>{
-      if(e.key === 'w' || e.key === 'ArrowUp'){this.nord()};
-      if(e.key === 'a' || e.key === 'ArrowLeft'){this.west()};
-      if(e.key === 's' || e.key === 'ArrowDown'){this.sud()};
-      if(e.key === 'd' || e.key === 'ArrowRight'){this.ost()};
+  constructor(
+    private biomService: BiomService,
+    private keyService: KeyboardEventService,
+    private layout: LayoutService) {
+    this.keyService.keydown$.subscribe((e: KeyboardEvent) => {
+      if (e.key === 'w' || e.key === 'ArrowUp') { this.move('nord') };
+      if (e.key === 'a' || e.key === 'ArrowLeft') { this.move('west') };
+      if (e.key === 's' || e.key === 'ArrowDown') { this.move('sud') };
+      if (e.key === 'd' || e.key === 'ArrowRight') { this.move('ost') };
     });
   }
 
@@ -64,12 +79,13 @@ export class MapComponent implements OnInit{
     // this.loadMap('trymap');
     this.loadMap('trymap').then(() => {
       this.setStartPosition(4, 5);
+      this.executeAction(0);
     });
   }
 
-  async loadMap(map:string) {
+  async loadMap(map: string) {
     const loadedMap = await this.biomService.loadMap(map);
-    if (loadedMap){
+    if (loadedMap) {
       // Die Map wurde um 90° gedreht, also muss sie zurück gedreht werden
       const rotMap = this.biomService.rotateMap90Degrees(loadedMap)
       this.biomService.generateMap(rotMap);
@@ -84,7 +100,9 @@ export class MapComponent implements OnInit{
     // Berechne den neuen Startpunkt in Pixeln
     const newLeft = this.left - (this.size * right);
     const newTop = this.top - (this.size * down);
-  
+
+    this.currentCoordinate2.next([down, right])
+
     // Überprüfe, ob die neue Position innerhalb der Grenzen der Karte liegt
     if (this.isPositionAllowed(newTop, newLeft)) {
       this.left = newLeft;
@@ -94,165 +112,99 @@ export class MapComponent implements OnInit{
       console.log('Die gewünschte Startposition ist außerhalb der Karte.');
     }
   }
-  
+
 
   // -------------------------------------------------------------------------------
 
-  createPlayerStyle(){
-    const color = this.getMyPositionTile().color;
-    const styleColors = this.getStyleColors(color);
-
-    const style = {
-      'width': this.size * 0.8 +'px',
-      'height': this.size * 0.8 +'px',
-      ... styleColors,
-    }
-    return style
+  createPlayerStyle() {
+    return this.layout.getPlayerStyle(this.size);
   }
 
-  createTileStyle(biom: Biom){
-    const styleColors = this.getStyleColors(biom.color);
-    const styleBorder = this.getStyleBorder(biom);
-
-    const style = {
-      'width': this.size +'px',
-      'height': this.size +'px',
-      'top': this.top +'px',
-      'left': this.left +'px',
-      ... styleColors,
-      ... styleBorder,
-    }
-    return style;
+  createHeaderStyle() {
+    return this.layout.getStyleColors(this.getMyPositionTile(), false);
   }
 
-  getStyleBorder(biom: Biom){
-      const big = '3px solid';
-      const small = '2px dotted'
-      const border = {
-        'border-top': biom.nord ? small : big,
-        'border-right': biom.ost ? small : big,
-        'border-bottom': biom.sud ? small : big,
-        'border-left': biom.west ? small : big,
-    }
-    return border;
-  }
-
-  getStyleColors(color: number[]){
-    const red: number = (color[0] || 100); 
-    const green: number = (color[1] || 100); 
-    const blue: number = (color[2] || 100); 
-
-    const style = {
-      'color':            `rgb(${red * 0.5},${green * 0.5},${blue * 0.5})`,
-      'border-color':     `rgb(${red * 0.8},${green * 0.8},${blue * 0.8})`,
-      'background-color': `rgb(${red},${green},${blue})`,
-    }
-    return style
-  }
-
-  getMapStyle() {
-    return{
+  createMapStyle() {
+    return {
       'grid-template-columns': 'repeat(' + this.map.length + ',' + this.size + 'px)',
       'grid-template-rows': 'repeat(' + this.map[0].length + ',' + this.size + 'px)',
     }
   }
 
-  iconUrl(name:string){
-    return this.imgUrl + name + '.svg'
+  createTileStyle(biom: Biom) {
+    const styleColors = this.layout.getStyleColors(biom);
+
+    const style = {
+      'width': this.size + 'px',
+      'height': this.size + 'px',
+      'top': this.top + 'px',
+      'left': this.left + 'px',
+      ...styleColors,
+    }
+    return style;
   }
 
-  iconError(icon: EventTarget | null){
-    if(icon instanceof HTMLImageElement){
+
+  iconUrl(name: string) {
+    return this.layout.getImgUrlMap(name);
+  }
+
+  iconError(icon: EventTarget | null) {
+    if (icon instanceof HTMLImageElement) {
       icon.style.display = 'none';
-    }  
+    }
   }
 
   // -------------------------------------------------------------------------------
 
-  west(){
+  move(direction: 'nord' | 'west' | 'ost' | 'sud') {
     const currentTile = this.getMyPositionTile();
-    const futureLeft =  this.left + this.size;
-    if(this.isPositionAllowed(this.top, futureLeft)){
+    let futureTop = this.top;
+    let futureLeft = this.left;
 
-      const newPosition = this.findMyPosition(this.top, futureLeft);
-      const newTile = this.map[newPosition[0]][newPosition[1]];
-
-      if(this.isWayAllowed('west', newTile)&&this.isWayAllowed('ost', currentTile)){
-        this.left = this.left + this.size;
-        this.currentTile.emit(this.getMyPositionTile());
-        this.currentCoordinate.emit([newPosition[0],newPosition[1]]);
-      } else {
-        this.hopUp();
-      }
-    } else {
-      this.hopUp();
+    if (direction === 'west') {
+      futureLeft += this.size;
+    } else if (direction === 'nord') {
+      futureTop += this.size;
+    } else if (direction === 'ost') {
+      futureLeft -= this.size;
+    } else if (direction === 'sud') {
+      futureTop -= this.size;
     }
-  }
-  nord(){
-    const currentTile = this.getMyPositionTile();
-    const futureTop = this.top + this.size;
-    if(this.isPositionAllowed(futureTop, this.left) && this.isWayAllowed('nord', currentTile)){
-      
-      const newPosition = this.findMyPosition(futureTop, this.left);
+
+    if (this.isPositionAllowed(futureTop, futureLeft)) {
+      const newPosition = this.findMyPosition(futureTop, futureLeft);
       const newTile = this.map[newPosition[0]][newPosition[1]];
 
-      if(this.isWayAllowed('nord', newTile)&&this.isWayAllowed('sud', currentTile)){
+      const allowedWays: { [key: string]: 'nord' | 'west' | 'ost' | 'sud' } = {
+        west: 'ost',
+        nord: 'sud',
+        ost: 'west',
+        sud: 'nord',
+      };
+
+      if (this.isWayAllowed(direction, newTile) && this.isWayAllowed(allowedWays[direction], currentTile)) {
         this.top = futureTop;
-        this.currentTile.emit(this.getMyPositionTile());
-        this.currentCoordinate.emit([newPosition[0],newPosition[1]]);
-      } else {
-        this.hopUp();
-      }
-    } else {
-      this.hopUp();
-    }
-  }
-  ost(){
-    const currentTile = this.getMyPositionTile();
-    const futureLeft = this.left - this.size; 
-    if(this.isPositionAllowed(this.top, futureLeft)){
-
-      const newPosition = this.findMyPosition(this.top, futureLeft);
-      const newTile = this.map[newPosition[0]][newPosition[1]];
-
-      if(this.isWayAllowed('ost', newTile)&&this.isWayAllowed('west', currentTile)){
         this.left = futureLeft;
         this.currentTile.emit(this.getMyPositionTile());
-        this.currentCoordinate.emit([newPosition[0],newPosition[1]]);
+        this.currentCoordinate2.next([newPosition[0], newPosition[1]]);
       } else {
         this.hopUp();
       }
     } else {
       this.hopUp();
     }
+    this.executeAction(0);
   }
-  sud(){
-    const currentTile = this.getMyPositionTile()
-    const futureTop = this.top - this.size;
-    if(this.isPositionAllowed(futureTop, this.left)){
 
-      const newPosition = this.findMyPosition(futureTop, this.left);
-      const newTile = this.map[newPosition[0]][newPosition[1]];
-
-      if(this.isWayAllowed('sud', newTile)&&this.isWayAllowed('nord', currentTile)){
-        this.top = futureTop;
-        this.currentTile.emit(this.getMyPositionTile());
-        this.currentCoordinate.emit([newPosition[0],newPosition[1]]);
-      } else {
-        this.hopUp();
-      }
-    } else {
-      this.hopUp();
-    }
-  }
 
   // -------------------------------------------------------------------------------
 
-  findMyPosition(top = this.top, left = this.left){
+  findMyPosition(top = this.top, left = this.left) {
     // Um den Index[?][?] zu finden werden zur besseren lesbarkeit Hilfsvariabeln erstellt
     // Hilfsvariabel um den Pixelwert der mittleren Kachel zu finden 
-    const tileWidthPosition: number = this.size* this.tileMiddelWidth -this.size;
-    const tileHeigthPosition: number = this.size* this.tileMiddelHeigth -this.size;
+    const tileWidthPosition: number = this.size * this.tileMiddelWidth - this.size;
+    const tileHeigthPosition: number = this.size * this.tileMiddelHeigth - this.size;
 
     // Nun wird die Position im Bezug zur ganzen Karte ermittelt
     const relativeLeft: number = left - tileWidthPosition;
@@ -266,27 +218,27 @@ export class MapComponent implements OnInit{
     return [indexMiddleWidth, indexMiddleHeigth, relativeLeft, relativeTop];
   }
 
-  getMyPositionTile(): Biom{
+  getMyPositionTile(): Biom {
     const index = this.findMyPosition();
-    if (!this.map || index[0] >= this.map.length || index[0] < 0 || 
-        index[1] >= this.map[index[0]].length || index[1] < 0) {
+    if (!this.map || index[0] >= this.map.length || index[0] < 0 ||
+      index[1] >= this.map[index[0]].length || index[1] < 0) {
       return EmptyBiom;
     }
     return this.map[index[0]][index[1]];
   }
 
-  isPositionAllowed(futureTop: number, futureLeft: number){
+  isPositionAllowed(futureTop: number, futureLeft: number) {
     // futureIndex = [indexWidth, indexHeigth, relativeLeft, relativeTop]
     const futureIndex = this.findMyPosition(futureTop, futureLeft);
 
     // furtureIndex hat keine negativen Werte, sie werden in positive umgewandelt
     // Also ist -1 = 1 und ich muss zusätzlich mit dem relativen Wert vergleichen
-    if(futureIndex[0] === 1 && futureIndex[2] > 0 || futureIndex[0] >= this.maxWidth) {
+    if (futureIndex[0] === 1 && futureIndex[2] > 0 || futureIndex[0] >= this.maxWidth) {
       console.log('Horizontal außerhalb der Grenzen!');
       return false;
     }
-  
-    if(futureIndex[1] === 1 && futureIndex[3] > 0 || futureIndex[1] >= this.maxHeight) {
+
+    if (futureIndex[1] === 1 && futureIndex[3] > 0 || futureIndex[1] >= this.maxHeight) {
       console.log('Vertikal außerhalb der Grenzen!');
       return false;
     }
@@ -294,64 +246,76 @@ export class MapComponent implements OnInit{
     return true;
   }
 
-  isWayAllowed(way: 'west'|'nord'|'ost'|'sud', biom: Biom){
-    if(way==='west' && !biom.ost){return false};
-    if(way==='nord' && !biom.sud){return false};
-    if(way==='ost' && !biom.west){return false};
-    if(way==='sud' && !biom.nord){return false};
+  isWayAllowed(way: 'west' | 'nord' | 'ost' | 'sud', biom: Biom) {
+    if (way === 'west' && !biom.ost) { return false };
+    if (way === 'nord' && !biom.sud) { return false };
+    if (way === 'ost' && !biom.west) { return false };
+    if (way === 'sud' && !biom.nord) { return false };
     return true
-  }
-
-  colorBlackSvg(rgb: number[]){
-    const red = rgb[0]*0.4;
-    const green = rgb[1]*0.4;
-    const blue = rgb[2]*0.4;
-
-    let hue = this.rgbToHueRotate([red, green, blue])
-
-    return{
-      'filter:': 'hue-rotate(' + Math.floor(hue) + 'deg)',
-      'width': '80%',
-      'height': '80%',
-    }
-  }
-
-  // mit hue-rotate(xy) lässt sich ein Bild färben
-  // xy hat einen wer von 0-360
-  // Hier wird der wert anhand von rgb umgerechnet
-  rgbToHueRotate(rgb: number[]){
-    const red = rgb[0]/255;
-    const green = rgb[1]/255;
-    const blue = rgb[2]/255;
-
-    const max = Math.max(red, green, blue);
-    const min = Math.min(red, green, blue);
-    const lightness = (max + min)/2;
-    const differenz = max - min;
-    let hue = 0
-
-    if(max !== min){
-      if(max === red){
-        hue = 60* (((green - blue)/differenz)%6);
-      }
-      if(max === green){
-        hue = 60* (((blue - red)/differenz)+2);
-      }
-      if(max === blue){
-        hue = 60* (((red - green)/differenz)+4);
-      }
-    }
-    return hue
   }
 
   //-------------------------------------------------------------------
 
-  isHoppingUp:boolean = false;
+  isHoppingUp: boolean = false;
   hopUp() {
     this.isHoppingUp = true;
     setTimeout(() => {
       this.isHoppingUp = false;
     }, 300); // Dauer der Animation in Millisekunden
   }
+
+  // --------------------------------------------------------------------
+
+
+  private _header$: BehaviorSubject<string> = new BehaviorSubject<string>('Unbekannte Stimme');
+  get header$() {
+    return this._header$.asObservable();
+  }
+  private _text$: BehaviorSubject<string> = new BehaviorSubject<string>('Hallo?');
+  get text$() {
+    return this._text$.asObservable();
+  }
+  private _icon$: BehaviorSubject<string> = new BehaviorSubject<string>('nothing');
+  get icon$() {
+    return this._icon$.asObservable();
+  }
+  private _color$: BehaviorSubject<number[]> = new BehaviorSubject<number[]>([100, 100, 100]);
+  get color$() {
+    return this._color$.asObservable();
+  }
+  private _path$: BehaviorSubject<string> = new BehaviorSubject<string>('map');
+  get path$() {
+    return this._path$.asObservable();
+  }
+  private _btn$: BehaviorSubject<Array<{ button: string, actionID: number }>> = new BehaviorSubject<Array<{ button: string, actionID: number }>>([]);
+  get btn$() {
+    return this._btn$.asObservable();
+  }
+
+  executeAction(actionID: number) {
+    const tile = this.getMyPositionTile()
+
+    if (actionID === 0 && tile) {
+      this._header$.next(tile.name);
+      this._text$.next(tile.discription);
+      this._color$.next(tile.color);
+      this._icon$.next(tile.icon);
+      this._path$.next('mapIcon')
+      this._btn$.next([]);
+    }
+
+    const newAction = eventActions.find(action => action.id === actionID)
+
+    if (newAction) {
+      this._header$.next(newAction.header);
+      this._text$.next(newAction.text);
+      this._color$.next(newAction.color);
+      this._icon$.next(newAction.icon);
+      this._path$.next(newAction.path)
+      this._btn$.next(newAction.action);
+    }
+
+  }
+
 
 }
