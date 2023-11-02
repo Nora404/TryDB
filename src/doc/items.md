@@ -2,12 +2,12 @@
 
 Es gibt Items die
 
-- man in Biomen findet oder abbaut
-- man von Kreaturen erbeutet
-- als Zutat oder Rohstoff herstellt
-- an Stationen herstellt
-- man kaufen muss
-- man geschenkt bekommt
+- (found) man in Biomen findet oder abbaut
+- (loot) man von Kreaturen erbeutet
+- (tinker) als Zutat oder Rohstoff herstellt
+- (craft) an Stationen herstellt
+- (buy) man kaufen muss
+- (gift) man geschenkt bekommt
 
 #### Essen
 
@@ -122,13 +122,15 @@ Faden
 
 #### Werkzeuge
 
-| Name       | Verb      |
-| ---------- | --------- |
-| Sense      | ernten    |
-| Schaufel   | graben    |
-| Axt        | fällen    |
-| Spitzhacke | schlagen  |
-| Gieskanne  | gießen    |
-| Angel      | fischen   |
-| Netz       | fangen    |
-| Messer     | schneiden |
+| Name        | Verb      | Beruf      |
+| ----------- | --------- | ---------- |
+| Sense       | ernten    | Feldarbeit |
+| Schaufel    | graben    | Archiologe |
+| Axt         | fällen    | Holzfäller |
+| Spitzhacke  | schlagen  | Steinmetz  |
+| Hammer      | schlagen  | Schmied    |
+| Gieskanne   | gießen    | Feldarbeit |
+| Angel       | fischen   | Angler     |
+| Netz        | fangen    | Sammler    |
+| Messer      | schneiden | Kürschner  |
+| Feuerstelle | kochen    | Kochen     |
