@@ -16,7 +16,7 @@ Das erste innere Array wird als erste Spalte gerendert. Im Code muss daher die R
 Später sollen die Karten in einer Datenbank gespeichert werden. Um Quests oder einzigartige Events in die Karte einfügen zu können muss das Array erweitert werden. Statt Nummern müssen es dann Objekte werden.
 
 ```typescript
-{biomID: number, eventID: number, icon: string}
+{biomID: number, eventID: number[], icon: string}
 ```
 
 Da eine Quest durch ein Ereignis ausgelöst wird, reicht die Angabe der eventID  
@@ -24,7 +24,7 @@ Mit der Angabe eines Icons kann dem Biom ein zusätzliches Symbol gegeben werden
 
 In einer Datenbank kommt noch der Name der Karte, sowie die Position hinzu. Die biomID und eventID sind Fremdschlüssel. Primärschlüssel könnten (map + x + y) sein, finde eine einfache id leichter zu handhaben.
 ```typescript
-{id: number, map: string, x: number, y: number, biomID: number, eventID: number, icon: string}
+{id: number, map: string, x: number, y: number, biomID: number, eventID: number[], icon: string}
 ```
 
 <hr>
