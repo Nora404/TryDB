@@ -1,291 +1,127 @@
-<style>
-    .tile{
-        width: 55px;
-        height: 55px;
-        float: left;
-        margin: 0 10px 0 0;
-    }
-    .symbol{
-        width: 30px;
-        height: 30px;
-        margin: 0 5px 0 0;
-    }
-    .event{
-        width: 25px;
-        height: 25px;
-        float: left;
-        margin: 0 5px 0 0;
-    }
-</style>
+### Map
 
-### MAP
+Eine Karte besteht aus Biomen. Zur Zeit besteht eine Karte aus einem mehrdimensionalen Array.
+Dieses wird mit dem Map-Editor erstellt und als JSON abgespeichert. Dei Werte des Arrays sind Zahlen, welche für die ID des Bioms stehen
 
-Die Karte besteht aus quadratichen Kacheln, die Biome genannt werden. Sie haben eine Hintergrundfarbe und ein Symbol im SVG-Format. Diese Symbole haben maximal zwei Volltonfarben. Kacheln die in dieser Liste mit einem <b>X</b> makiert sind, sind undurchdrinbar und meist als Kartenrand oder Abgrenzung gedacht. Es gibt noch Varianten die den gleichen Hintergund, aber ein anderes Symbol besitzten. Dort befinden sich andere Ereignisse.
-(Jede Kachel hat bis zu drei aktive Ereignisse die je bis zu drei aktive Aktionen haben)
+```typescript
+tryMap = [
+    [1,1,2,1,3],
+    [1,2,2,1,3],
+    [2,2,2,3,3],
+    [1,1,3,3,3],
+]
+```
 
-<img src="./img/map.png">
+Das erste innere Array wird als erste Spalte gerendert. Im Code muss daher die Reihen gedreht werden.
+Später sollen die Karten in einer Datenbank gespeichert werden. Um Quests oder einzigartige Events in die Karte einfügen zu können muss das Array erweitert werden. Statt Nummern müssen es dann Objekte werden.
 
-Die Hintergrundfarbe wird mithilfe einer Funktion random leicht verändert, um die Karte lebendiger zu gestalten. Die Farben der Symbole lassen sich zur Zeit nicht per Code verändern und sind fix (Hardcodiert)
+```typescript
+{biomID: number, eventID: number, icon: string}
+```
 
-Es gibt
+Da eine Quest durch ein Ereignis ausgelöst wird, reicht die Angabe der eventID  
+Mit der Angabe eines Icons kann dem Biom ein zusätzliches Symbol gegeben werden, zum Beispiel eine Figur oder ein Hindernis. 
 
-- Böden, (immer begehbar)
-- Wasser, (benötigt Schwimmen)
-- Wälder, (benötigt Durchdringen)
-- Wände, (benötigt Klettern)
+In einer Datenbank kommt noch der Name der Karte, sowie die Position hinzu. Die biomID und eventID sind Fremdschlüssel. Primärschlüssel könnten (map + x + y) sein, finde eine einfache id leichter zu handhaben.
+```typescript
+{id: number, map: string, x: number, y: number, biomID: number, eventID: number, icon: string}
+```
 
 <hr>
 
-### Biome
+#### Die Klasse (mit JSON-Datei)
 
-<table>
-    <tr>
-        <td>Wiese</td>
-        <td>Varianten</td>
-        <td>Begegnungen</td>
-        <td>Kreaturen</td>
-        <td>Gegenstände</td>
-        <td>Entdecken</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #87a787;" class="tile"></div><br>#87a787</td>
-        <td>
-            <img src="../assets/mapIcons/grass.svg" class="symbol"> 1 Wiese<br>
-            <img src="../assets/mapIcons/flower.svg" class="symbol"> 2 Blumen<br>
-            <img src="../assets/mapIcons/home.svg" class="symbol"> 3 Gebäude<br>
-        </td>
-        <td id="npcs">Bauer (Q)<br>Bäuerin (Q)</td>
-        <td id="angr">Schlange (10%)<br>Biene (50% Blumen)</td>
-        <td id="item">Brot (Gebäude)<br>Suppe (Gebäude)</td>
-        <td id="such">Feldweg</td>
-    </tr>
-    <tr>
-        <td colspan="6">Feld</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #8F9C52;" class="tile"></div><br>#8F9C52</td>
-        <td>
-            <img src="../assets/mapIcons/sprout.svg" class="symbol"> 4 Feld<br>
-            <img src="../assets/mapIcons/mill.svg" class="symbol"> 5 Mühle<br>
-            <img src="../assets/mapIcons/spring.svg" class="symbol"> 6 Brunnen<br>
-        </td>
-        <td id="npcs">Vogelscheuche</td>
-        <td id="angr">Ratte (25%)<br>Käfer (10%)</td>
-        <td id="item">Kartoffeln<br>Zwiebeln<br>Weizen<br>Wasser (Brunnen)<br>Mehl (Mühle)</td>
-        <td id="such"></td>
-    </tr>
-    <tr>
-        <td colspan="6">Tannenwald</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #477c6c;" class="tile"></div><br>#477c6c</td>
-        <td>
-            <img src="../assets/mapIcons/tree.svg" class="symbol"> 7 Tannenwald<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr">Wolf (50%)</td>
-        <td id="item">Hartholz<br>Pilze</td>
-        <td id="such">Hohler Baumstumpf</td>
-    </tr> 
-    <tr>
-        <td colspan="6">Dichter Tannenwald</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #233d35;" class="tile">X</div><br>#233d35</td>
-        <td>
-            <img src="../assets/mapIcons/forest.svg" class="symbol"> 8 Dichter Tannenwald<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item"></td>
-        <td id="such"></td>
-    </tr>    
-    <tr>
-        <td colspan="6">Laubwald</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #5a733f;" class="tile"></div><br>#5a733f</td>
-        <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 9 Laubwald<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item">Holz<br>Beeren</td>
-        <td id="such">Dichtes Gestrüpp</td>
-    </tr>  
-    <tr>
-        <td colspan="6">Dichter Laubwald</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #28331c;" class="tile">X</div><br>#28331c</td>
-        <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 10 Dichter Laubwald<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item"></td>
-        <td id="such"></td>
-    </tr>      
-    <tr>
-        <td colspan="6">Flaches Wasser</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #4c8491;" class="tile"></div><br>#4c8491</td>
-        <td>
-            <img src="../assets/mapIcons/waterFlat.svg" class="symbol"> 11 Flaches Wasser<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item">Fische<br>Wasser</td>
-        <td id="such">Glitzer</td>
-    </tr> 
-    <tr>
-        <td colspan="6">Fluss</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #5d7dac;" class="tile">X</div><br>#5d7dac</td>
-        <td>
-            <img src="../assets/mapIcons/water.svg" class="symbol"> 12 Fluss<br>
-            <img src="../assets/mapIcons/brigeV.svg" class="symbol"> 13 Brücke Vertikal<br>
-            <img src="../assets/mapIcons/brigeH.svg" class="symbol"> 14 Brücke Horizontal<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item"></td>
-        <td id="such"></td>
-    </tr>          
-    <tr>
-        <td colspan="6">Tiefes Wasser</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #304069;" class="tile">X</div><br>#304069</td>
-        <td>
-            <img src="../assets/mapIcons/waterDeep.svg" class="symbol"> 15 Tiefes Wasser<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item"></td>
-        <td id="such"></td>
-    </tr>
-    <tr>
-        <td colspan="6">Sand</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #ab9c5f;" class="tile"></div><br>#ab9c5f</td>
-        <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 16 Sand<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item">Sand</td>
-        <td id="such"></td>
-    </tr>      
-    <tr>
-        <td colspan="6">Gestein</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #73706b;" class="tile"></div><br>#73706b</td>
-        <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 17 Gestein<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item">Stein<br>Eisenerz</td>
-        <td id="such"></td>
-    </tr> 
-    <tr>
-        <td colspan="6">Gebirge</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #525252;" class="tile">X</div><br>#525252</td>
-        <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 18 Gebirge<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item"></td>
-        <td id="such"></td>
-    </tr>    
-    <tr>
-        <td colspan="6">Steinwände</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #363231;" class="tile">X</div><br>#363231</td>
-        <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 19 Steinwände<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item"></td>
-        <td id="such"></td>
-    </tr>   
-    <tr>
-        <td colspan="6">Klippen</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #131313;" class="tile">X</div><br>#131313</td>
-        <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 20 Klippen<br>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 21 Höhle<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item"></td>
-        <td id="such"></td>
-    </tr>   
-    <tr>
-        <td colspan="6">Schnee</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #b5b5bd;" class="tile"></div><br>#b5b5bd</td>
-        <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 22 Schnee<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item"></td>
-        <td id="such"></td>
-    </tr>      
-        <tr>
-        <td colspan="6">Weg</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #73706b;;" class="tile"></div><br>#b5b5bd</td>
-        <td>
-            <img src="../assets/mapIcons/weg.svg" class="symbol"> 22 Weg<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item"></td>
-        <td id="such"></td>
-    </tr> 
-        </tr>      
-        <tr>
-        <td colspan="6">Toter Baum</td>
-    </tr>
-    <tr>
-        <td><div style="background-color: #73706b;;" class="tile"></div><br>#b5b5bd</td>
-        <td>
-            <img src="../assets/mapIcons/love.svg" class="symbol"> 23 Toter Baum<br>
-        </td>
-        <td id="npcs"></td>
-        <td id="angr"></td>
-        <td id="item"></td>
-        <td id="such"></td>
-    </tr> 
-</table>
+Hier werden die wichtigsten Variabeln und Methoden der Komponente Map beschrieben.
+Die Komponente macht zur Zeit noch mehr und sollte bei gelegenheit zerlegt werden! Folgende Variabeln werden benötigt:
+
+```typescript
+map: Biom[][] // Die Karte mit dem mehrdimensionalen Array
+
+top: number   // Position der Karte in Pixeln (Startposition)
+left: number  // Position der Karte in Pixeln (Startposition)
+size: number  // Größe der Kacheln in Pixeln 
+
+playgroundWidth: number   // Größe des sichtbaren Spielfeldes in Kacheln = size * <ungrade zahl>
+playgroundHeight: number  // Größe des sichtbaren Spielfeldes in Kacheln = size * <ungrade zahl>
+
+maxWidth: number   // Anzahl der Kacheln der gesamten Karte = map.lenght
+maxHeight: number  // Anzahl der Kacheln der gesamten Karte = map[0].lenght
+
+tileWidth: number  //Anzahl der Kacheln auf dem sichtbaren Spielfeld = playgroundWidth / size
+tileHeight: number //Anzahl der Kacheln auf dem sichtbaren Spielfeld = playgroundHeight / size
+
+tileMiddelWidth: number   // Die Kachel in der Mitte des sichtbaren Spielfeldes = Math.round(tileWidth / 2)
+tileMiddelHeigth: number  // Die Kachel in der Mitte des sichtbaren Spielfeldes = Math.round(tileHeight / 2)
+```
+
+Folgende Funktionen werden benötigt:
+
+```typescript
+ngOnInit() // läd die Karte, setzt die Startposition und die initiale Action
+
+async loadMap(map: string)                  // Läd die Karte und setzt Werte von Membervariabeln
+setStartPosition(top: number, left: number) // Die Karte wird verschoben
+executeAction(actionID: number)             // Getriggerte Action wird ausgeführt
+
+createStyle() // Steht führ mehrere Funktionen, die sich um das css Layout kümmern
+
+move(direction: 'nord' | 'west' | 'ost' | 'sud')               // Die Karte wird verschoben
+
+findMyPosition(top = this.top, left = this.left)               // Gibt ein Array mit Positionswerte zurück
+getMyPositionTile()                                            // Gibt das aktuelle Biom zurück
+isPositionAllowed(futureTop: number, futureLeft: number)       // Ende der Karte Abfrage
+isWayAllowed(way: 'west' | 'nord' | 'ost' | 'sud', biom: Biom) // Kollisionsabfrage
+```
+
+Wird die Komponente geladen wird mit `ngOnInit()` die Karte geladen. Sie benutzt dafür die `async loadMap(map: string)` Funktion. Der Übergabewert ist der Dateiname der Karte. Dann wird der BiomService genutzt und die Karte mit allen Biomen in der Membervariabel `map` gespeichert. Auch `maxWidth` und `maxHeigt` bekommen ihre Werte.
+
+Mit `setStartPosition(top: number, left: number)` wird die Karte so verschoben, das die Figur des Spielers auf der gewünschten Kachel startet. Mit `move()` wird die Karte verschoben, was so ausschaut als ob die Figur über die Karte läuft. Dabei muss immer überprüft werden, ob die Figur den "Schritt" machen darf.
+
+Die Werte des Bioms werden von verschiedenen Funktionen erfragt. Es ist nicht nur notwendig um einen "Schritt" zu machen, es werden auch Farben, Icons und Events abgefragt.
 
 <hr>
 
-### Mögliche weitere Biome
+#### Der Service
 
-- Wüste
-- Ruine
-- Kristall
-- Sumpf
-- Lava
-- Vulkan
-- Leere
-- Dorf (Menschen, Elfen, Zwerge)
+Im Service wird aus dem Array eine Karte erstellt und die Hintergundfarbe ermittelt.
+Aus der default Farbe wird ein zufälliger Wert (0-15) addiert
 
-Varianten mit besonderen Inhalten wie Handwerk, Gebäude, Besondere Orte, sowas wie ein magischer Baum?
+```typescript
+getRandomColor(default: number): number
+addRandomColorToBiom(biom: Biom): Biom
+```
+
+Mit einem fetch in `async loadMap(map: string):Promise<number[][]>` wird das Array geladen.
+Es muss eine async Funktion sein, weil sonst alle anderen Funktionen nicht arbeiten können. 
+Um nun die Werte passen neu anzuordnen, damit sie richtig gerendert werden, hat der Service die Funktion `rotateMap90Degress(map: number[][]): number[][]` Das Ergebniss wird an `generateMap(map: number[][])` geschickt welches die Map im Service speichert. Dafür benutzt es `getBiomByID(biomCode: number): Biom` welches die zufällige Hintergrundfarbe hinzufügt.  
+
+#### Im Template
+
+Hier zeige ich nur das rendern der Karte. Es wird mit einer verschachtelten Schleife umgesetzt
+
+```html
+<div id="playground">
+  <div id="map" [ngStyle]="createMapStyle()">
+    <div *ngFor="let row of map">
+      <div *ngFor="let cell of row" class="kachel" [ngStyle]="createTileStyle(cell)">
+        <img [attr.src]="iconUrl(cell.icon)" (error)="iconError($event.target)"/>
+      </div>
+    </div>
+  </div>
+  <div id="player" [ngStyle]="createPlayerStyle()">
+    <img class="player" [class.hop-up]="isHoppingUp" src="../../../assets/player/humanW.svg"/>
+  </div>
+</div>
+```
+
+Die dazu passenden css Klassen sorgen zum Beispiel dafür das mit `overflow: hidden` nur der Teil der Karte angezeigt wird, der im "Playground" zu sehen ist. Die Map selber ist in einem Grid dessen Beschreibung die Funktion `createMapStyle()` zurück gibt. Dafür werden die Membervariabeln genutzt.
+Die meisten css angaben müssen dynamisch generiert werden, weswegen es einige create-Funktionen gibt.
+
+```typescript
+  createMapStyle() {
+    return {
+      'grid-template-columns': 'repeat(' + this.map.length + ',' + this.size + 'px)',
+      'grid-template-rows': 'repeat(' + this.map[0].length + ',' + this.size + 'px)',
+    }
+  }
+```
