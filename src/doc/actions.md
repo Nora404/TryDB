@@ -25,6 +25,10 @@ export interface Action {
 - Eine Action kann eine Vorbedingung haben (Zustand des Spiels)
 - Eine Action kann eine Gameplay-Meschanik auslösen (Kampf, Handwerk)
 
+<hr>
+
+#### Vorbedingungen
+
 Es muss also einen Zustand des Spieles geben, der abgefragt werden kann.
 Vorbedingungen können sein:
 
@@ -33,5 +37,22 @@ Vorbedingungen können sein:
 - Eine andere Quest wurde ausgeführt (quest.wasActivated)
 - Eine bestimmte Fähigkeit hat einen bestimmten Wert
 
-heißt, die funktion gibt einen boolean aus
-Es wird immer ein Wert abgefragt
+Es wird immer ein Wert aus einer Tabelle abgefragt.   
+
+**tabel** = Name der Tabelle wie `actions` | `items` | `quests` | `player`  
+**itemID** = ID des konkreten Gegenstandes, eine Nummer  
+**prov** = Eigenschaft des Gegenstandes der abgefragt werden soll  
+**value** = Wert der Eigenschaft welche die Bedingung erfüllt
+
+```typescript
+ifWhen: Array<{tabel: string, itemID: number, prov: string, value: any}>
+```
+Beispiele:  
+```typescript
+// Eine bestimmte Action wurde bereits getriggert
+{tabel: 'action', itemID: 7, prov: 'wasActivated', value: true}
+// Ein bestimmter Gegenstand befindet sich 5 mal im Inventar
+{tabel: 'items', itemID: 122, prov: 'own', value: 5}
+// Eine bestimmte Fähigkeit hat das Level 10 erreicht
+{tabel: 'skill', itemID: 34, prov: 'level', value: 10}
+```
