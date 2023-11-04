@@ -1,23 +1,25 @@
+<button class="arrow" (click)="expandUp()">▲ oben erweitern</button>
+<button class="arrow" (click)="expandLeft()">◄ links erweitern</button>
+<button class="arrow" (click)="expandRight()">► rechts erweitern</button>
+<button class="arrow" (click)="expandDown()">▼ unten erweitern</button>
 <div class="editor-container">
   <div class="map-controls">
-      <button class="arrow" (click)="expandUp()">▲ Nach oben erweitern</button>
-      <button class="arrow" (click)="expandLeft()">◄ Nach links erweitern</button>
       <div class="map-view">
           <!-- Die äußere Schleife, die die Zeilen deiner Karte rendert -->
           <div *ngFor="let row of mapArray; let rowIndex = index" class="map-row">
               <!-- Die innere Schleife, die die Kacheln in einer Zeile rendert -->
               <div *ngFor="let tile of row; let colIndex = index" 
                   class="map-tile" 
-                  [style.background-color]="getTileColor(tile)"
-                  (click)="setTile(rowIndex, colIndex)">
-                  <img [src]="'../../../assets/mapIcons/' + getTileSymbol(tile) + '.svg'" alt="">
+                  [style.background-color]="getTileColor(tile.biomID)"
+                  (click)="setTile(rowIndex, colIndex, selectedEvent.id)">
+                  <img [src]="'../../../assets/mapIcons/' + getTileSymbol(tile.biomID) + '.svg'" alt="">
               </div>
           </div>
       </div>
-      <button class="arrow" (click)="expandRight()">► Nach rechts erweitern</button>
-      <button class="arrow" (click)="expandDown()">▼ Nach unten erweitern</button>
   </div>
   
+<!---------------------------------------------------------------------------------------------------------->
+
   <div class="biome-selector">
       <!-- Biome-Auswahl -->
       <div class="biome-tile" 
@@ -30,6 +32,25 @@
   </div>
   
 {{selectedBiome.name ?? ''}}
+
+<!---------------------------------------------------------------------------------------------------------->
+
+<div>
+    <button *ngFor="let te of tileEvents" 
+        style="width: 300px;" 
+        [class.selected-event]="selectedEvent === te"
+        (click)="selectEvent(te)">
+        {{te.id}} {{te.name}} {{te.type}}
+    </button>
+</div><br>
+
+<button (click)="clearEvent()">
+    Kein Event auswählen
+</button>
+
+<!---------------------------------------------------------------------------------------------------------->
+
+
 
   <div class="map-array-output">
       <button (click)="fillMapWithSelectedBiome()">Alles füllen</button>
