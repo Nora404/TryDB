@@ -39,6 +39,7 @@ Items können benutzt, oder verkauft werden. Generell können alle Gegenstände 
  ```typescript
 namen:         string 
 beschreibung:  string
+tier:          1 | 2 | 3 | 4 | 5 | 6 
 kategorie:     "Schwert" | "Bogen" | "Stab"
 angriff:       number
 attribut:      "str" | "sta" | "int"
@@ -50,6 +51,7 @@ icon:          string
  ```typescript
 namen:         string
 beschreibung:  string 
+tier:          1 | 2 | 3 | 4 | 5 | 6 
 kategorie:     "Rüstung" | "Schmuck" | "Ausrüstung"
 verteidigung:  number
 attribut:      "def" | "luck" | "hp"
@@ -80,6 +82,7 @@ icon:          string
 ```typescript
 namen:         string
 beschreibung:  string 
+tier:          1 | 2 | 3 | 4 | 5 | 6 
 kategorie:     "Gericht" | "Trank" | "Monition" | "Werfen" 
 ziel:          "spieler" | "gegner" 
 attribut:      "str" | "sta" | "int" | "def" | "luck" | "hp"
@@ -101,6 +104,7 @@ icon:          string
 #### Wertsteigerung
 
  ```
+              1             2            3             4               5                6 
 Schmuck :    Kupfer     -> Silber    -> Gold       -> Platin       -> Kristall      -> Diamant
 Stoff:       Jute       -> Leinen    -> Wolle      -> Baumwolle    -> Seide         -> Brokat
 Leder:       Rohleder   -> Wildleder -> Hartleder  -> Starkleder   -> Panzerleder   -> Drachenleder
