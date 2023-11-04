@@ -56,3 +56,29 @@ Beispiele:
 // Eine bestimmte Fähigkeit hat das Level 10 erreicht
 {tabel: 'skill', itemID: 34, prov: 'level', value: 10}
 ```
+
+<hr>
+
+#### Auslösen - Interaktion
+
+Ein Ereignis hat eine Eigenschaft die action heißt. Der Wert ist ein Array mit Objekten die alle zugehörigen actions beinhalten. 
+
+```typescript
+action: [{ button: 'anschauen', actionID: 4 }, { button: 'ansprechen', actionID: 5 }],
+```
+Wird ein button aktiviert (Eigene Komponente, die je eine action im Template darstellt), so sendet das Ereignis die actionID per EventEmitter zur Elternkomponente. Diese halt die ID in einem BehaviorSubjekt um es der Map Komponente weiter zu leiten. Der Dialog befindet sich in der Map Komponente. Es könnte sinnvoll sein dies später aus der Map Komponente heraus zu nehmen und direkt in oberster Ebene einzubinden.  
+Die Id wird zur Funktion `executeAction(id: number)` geschickt. Diese sendet alle Informationen an BehaviorSubjects die ihre Werte als Observabel zum Template schickt. Dort werden die Informationen an die Dialog-Komponente geschickt
+
+```html
+<app-event-dialog
+  [icon]="(icon$ | async) ?? ''"
+  [color]="(color$ | async) ?? []"
+  [header]="(header$ | async) ?? ''"
+  [text]="(text$ | async) ?? ''"
+  [path]="(path$ | async) ?? ''"
+  [btn]="(btn$ | async) ?? []"
+  (actionID)="executeAction($event)"
+></app-event-dialog>
+```
+
+Auch der Dialog hat Buttons, hier kann der Spieler auf die Dialoge reagieren. Wie bei den Ereignissen wird die ID der nachfolgenden action an die Elternkomponente zur Funktion `executeAction(id: number)` geschickt. Hat die ID den Wert `0` so wird der Dialog zurück gesetzt und beschreibt wieder nur das aktuelle Biom.
