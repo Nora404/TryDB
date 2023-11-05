@@ -45,8 +45,12 @@ export class EventDialogComponent {
     return this.layout.getRadialColors(this.color);
   }
 
-  handleButtonEvent(id: number) {
-    this.actionID.next(id);
+  handleButtonEvent(actionID: number) {
+    this.actionID.next(actionID);
+  }
+
+  test() {
+    console.log(this.header);
   }
 
 }

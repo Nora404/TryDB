@@ -32,8 +32,8 @@ export class AppComponent {
     return this._currentTile.asObservable();
   }
 
-  setActionID(id: number) {
-    this._actionID.next(id);
+  setActionID(actionID: number) {
+    this._actionID.next(actionID);
   }
 
   get actionID() {

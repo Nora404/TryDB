@@ -43,4 +43,18 @@ export const tileEvent: TileEvent[] = [
         icon: 'chara',
         actions: [{ button: 'anschauen', actionID: 6 }],
     },
+    {
+        id: 4,
+        name: 'Burgtor',
+        type: 'VIEW',
+        icon: 'doorway',
+        actions: [{ button: 'anschauen', actionID: 7 }],
+    },
+    {
+        id: 5,
+        name: 'Willhelm',
+        type: 'VIEW',
+        icon: 'willhelm',
+        actions: [{ button: 'anschauen', actionID: 8 }],
+    },
 ]

@@ -81,4 +81,24 @@ export const eventActions: Action[] = [
         color: [44, 44, 44],
         action: [{ button: 'zurück', actionID: 0 }]
     },
+    {
+        id: 7,
+        event: 4,
+        header: "Burgtor",
+        text: "Das Tor ist geschlossen, du weißt nicht ob es sich öffnen lässt",
+        icon: "doorway",
+        path: "uiIcon",
+        color: [100, 135, 117],
+        action: [{ button: 'zurück', actionID: 0 }, { button: 'öffnen', actionID: 0 }]
+    },
+    {
+        id: 8,
+        event: 5,
+        header: "Willhelm",
+        text: "BOO!",
+        icon: "willhelm",
+        path: "uiIcon",
+        color: [44, 44, 44],
+        action: [{ button: 'zurück', actionID: 0 }]
+    },
 ]

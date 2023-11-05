@@ -21,7 +21,9 @@ export class ActionComponent {
     return event ? "../../../assets/uiIcons/" + event.icon + ".svg" : '';
   }
 
-  handleAction(action: number) {
-    this.actionID.emit(action);
+  handleAction(actionID: number) {
+    console.log(actionID);
+
+    this.actionID.emit(actionID);
   }
 }
