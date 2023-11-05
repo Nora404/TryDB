@@ -67,7 +67,7 @@ export const biom = [
         icon: 'wood-cabin',
         color: [135, 167, 135],
         discription: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean',
-        events: [[1, 100], [2, 50]],
+        events: [[]],
         west: false,
         nord: false,
         ost: false,

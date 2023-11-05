@@ -4,9 +4,12 @@
 
 <span *ngIf="isEvent()">
   <span *ngFor="let tileEvent of _tile.events">
-    <app-action
-      [eventID]="tileEvent[0]??0"
-      (actionID)="executeAction($event)"
-    ></app-action>
+    <!-- Hier prüfen wir, ob tileEvent[0] nicht gleich 0 ist -->
+    <ng-container *ngIf="tileEvent[0]">
+      <app-action
+        [eventID]="tileEvent[0]"
+        (actionID)="executeAction($event)"
+      ></app-action>
+    </ng-container>
   </span>
 </span>

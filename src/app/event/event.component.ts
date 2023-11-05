@@ -25,11 +25,12 @@ export class EventComponent {
   constructor(private layout: LayoutService) { }
 
   isEvent() {
-    // Es ist besser, zuerst zu prüfen, ob this._tile definiert ist, bevor wir darauf zugreifen.
-    if (this._tile && Array.isArray(this._tile.events) && this._tile.events.length > 0) {
-      // Überprüfe, ob das erste Element von events ein Array ist und Elemente enthält.
-      return Array.isArray(this._tile.events[0]) && this._tile.events[0].length > 0;
+    // Prüfe zuerst, ob _tile definiert ist und events ein Array ist.
+    if (this._tile && Array.isArray(this._tile.events)) {
+      // Verwende some() um zu prüfen, ob mindestens ein Event-Array Elemente enthält.
+      return this._tile.events.some(event => Array.isArray(event) && event.length > 0);
     }
+    // Wenn _tile nicht definiert ist oder keine events hat, gebe false zurück.
     return false;
   }
 
