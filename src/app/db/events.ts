@@ -41,6 +41,6 @@ export const tileEvent: TileEvent[] = [
         name: 'Ina',
         type: 'DIALOG',
         icon: 'chara',
-        action: [],
+        action: [{ button: 'anschauen', actionID: 6 }],
     }
 ]

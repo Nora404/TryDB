@@ -56,11 +56,6 @@ export class MapComponent implements OnInit {
 
   imgUrl: string = '../../../assets/mapIcons/';
 
-
-  // -------------------------------------------------------------------------------
-
-
-
   // -------------------------------------------------------------------------------
 
   constructor(
@@ -77,7 +72,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit(): void {
     // this.loadMap('trymap');
-    this.loadMap('trymap').then(() => {
+    this.loadMap('tutorial').then(() => {
       this.setStartPosition(4, 5);
       this.executeAction(0);
     });
