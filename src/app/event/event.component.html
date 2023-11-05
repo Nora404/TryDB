@@ -3,9 +3,9 @@
 </h3>
 
 <span *ngIf="isEvent()">
-  <span *ngFor="let tileEvent of _tile?.events">
+  <span *ngFor="let tileEvent of _tile.events">
     <app-action
-      [eventID]="tileEvent[0]"
+      [eventID]="tileEvent[0]??0"
       (actionID)="executeAction($event)"
     ></app-action>
   </span>

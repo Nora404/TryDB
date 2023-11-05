@@ -4,7 +4,7 @@ export interface Biom {
     icon: string;
     color: number[],
     discription: string;
-    events: number[][];
+    events: ([number, number] | [])[],
     west: boolean;
     nord: boolean;
     ost: boolean;

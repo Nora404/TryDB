@@ -80,5 +80,5 @@ export const eventActions: Action[] = [
         path: "uiIcon",
         color: [44, 44, 44],
         action: [{ button: 'zurück', actionID: 0 }]
-    }
+    },
 ]

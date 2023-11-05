@@ -25,10 +25,12 @@ export class EventComponent {
   constructor(private layout: LayoutService) { }
 
   isEvent() {
-    if (this._tile) {
-      return this._tile.events[0].length > 0 ? true : false;
+    // Es ist besser, zuerst zu prüfen, ob this._tile definiert ist, bevor wir darauf zugreifen.
+    if (this._tile && Array.isArray(this._tile.events) && this._tile.events.length > 0) {
+      // Überprüfe, ob das erste Element von events ein Array ist und Elemente enthält.
+      return Array.isArray(this._tile.events[0]) && this._tile.events[0].length > 0;
     }
-    return false
+    return false;
   }
 
   getStyleColors() {

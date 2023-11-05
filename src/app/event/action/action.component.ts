@@ -13,14 +13,15 @@ export class ActionComponent {
   @Input() eventID: number = 0;
   @Output() actionID: EventEmitter<number> = new EventEmitter<number>();
 
-  getEvent(){
-    return tileEvent[this.eventID];
+  getEvent() {
+    return tileEvent.find(event => event.id === this.eventID);
   }
-  getImage(){
-    return "../../../assets/uiIcons/" + tileEvent[this.eventID].icon + ".svg"
+  getImage() {
+    const event = this.getEvent();
+    return event ? "../../../assets/uiIcons/" + event.icon + ".svg" : '';
   }
 
-  handleAction(action: number){
+  handleAction(action: number) {
     this.actionID.emit(action);
   }
 }

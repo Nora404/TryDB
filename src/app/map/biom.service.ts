@@ -47,16 +47,23 @@ export class BiomService {
   }
 
   getBiomById(biomID: number, eventID: number[]): Biom {
-    const foundBiom = biom.find(b => b.id === biomID);
+    const foundBiom = biom.find(b => b.id === biomID); // angenommen, 'biomes' ist deine Liste von Biomen
     if (foundBiom) {
-      let clonedBiom = { ...foundBiom, events: foundBiom.events.map(e => [...e]) };
+      // Klonen des Bioms, um die Originaldaten nicht zu verändern
+      let clonedBiom = {
+        ...foundBiom, events: foundBiom.events.map(e => [...e]) as ([number, number] | [])[],
+      };
 
-      eventID.forEach((id) => {
+      // Für jede ID im eventIDs Array...
+      eventID.forEach(id => {
+        // ... füge das Event nur dann hinzu, wenn die ID nicht 0 ist.
         if (id !== 0) {
-          clonedBiom.events.push([id]);
+          clonedBiom.events.push([id, 100]); // Alle Events haben eine Wahrscheinlichkeit von 100%
         }
       });
 
+      // Stelle sicher, dass du die addRandomColorToBiom Funktion aufrufst,
+      // nachdem du alle neuen Events hinzugefügt hast.
       clonedBiom = this.addRandomColorToBiom(clonedBiom);
 
       return clonedBiom;

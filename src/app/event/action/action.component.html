@@ -1,10 +1,14 @@
-<h3>{{getEvent().name}}</h3>
-
-<div class="action">
-    <img src={{getImage()}} alt="">
-    <div>
-        <span *ngFor="let action of getEvent().action">
-            <button (click)="handleAction(action.actionID)">{{action.button}}</button>
-        </span>
+<!-- Template action -->
+<ng-container *ngIf="getEvent() as event">
+    <h3>{{ event.name }}</h3>
+  
+    <div class="action">
+        <img [src]="getImage()" alt="">
+        <div>
+            <span *ngFor="let action of event.actions">
+                <button (click)="handleAction(action.actionID)">{{ action.button }}</button>
+            </span>
+        </div>
     </div>
-</div>
+  </ng-container>
+  

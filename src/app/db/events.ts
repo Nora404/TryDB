@@ -3,7 +3,7 @@ export interface TileEvent {
     name: string;
     type: string;
     icon: string;
-    action: Array<{ button: string, actionID: number }>;
+    actions: Array<{ button: string, actionID: number }>;
 }
 
 export const EmptyTileEvent: TileEvent = {
@@ -11,36 +11,36 @@ export const EmptyTileEvent: TileEvent = {
     name: 'Nothing',
     type: 'DIALOG',
     icon: 'people',
-    action: [],
+    actions: [],
 }
 
 export const tileEvent: TileEvent[] = [
     {
         id: 0,
         name: 'Nothing',
-        type: 'DIALOG',
-        icon: 'people',
-        action: [],
+        type: 'Nothing',
+        icon: 'nothing',
+        actions: [],
     },
     {
         id: 1,
         name: 'Bauer',
         type: 'DIALOG',
         icon: 'm02',
-        action: [{ button: 'anschauen', actionID: 1 }, { button: 'ansprechen', actionID: 2 }],
+        actions: [{ button: 'anschauen', actionID: 1 }, { button: 'ansprechen', actionID: 2 }],
     },
     {
         id: 2,
         name: 'Bäuerin',
         type: 'DIALOG',
         icon: 'w02',
-        action: [{ button: 'anschauen', actionID: 4 }, { button: 'ansprechen', actionID: 5 }],
+        actions: [{ button: 'anschauen', actionID: 4 }, { button: 'ansprechen', actionID: 5 }],
     },
     {
         id: 3,
         name: 'Ina',
         type: 'DIALOG',
         icon: 'chara',
-        action: [{ button: 'anschauen', actionID: 6 }],
-    }
+        actions: [{ button: 'anschauen', actionID: 6 }],
+    },
 ]
